@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryTypeController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\MainController as UserMainController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,12 +61,22 @@ Route::name('user.')->group(function () {
 *********************** Admin *************************
 =======================================================*/
 
-Route::prefix('admin')
-	->name('admin.')
+Route::name('admin.')
+	->prefix('admin')
 	->middleware(['auth', 'is.admin'])
-	->group(function () {
-		Route::get('/', [AdminMainController::class, 'index'])->name('index');
-});;
+	->group(function() {
+	// Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+
+	// Route::post('login', [LoginController::class, 'login']);
+	// Route::post('logout', [LoginController::class, 'logout']);
+
+	// Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+	// Route::post('register', [RegisterController::class, 'register'])->name('register');
+
+	Route::get('/', [AdminMainController::class, 'index'])->name('index');
+
+	Route::get('/category_types', [AdminMainController::class, 'category_types'])->name('category.types');
+});
 
 /*=======================================================
 *********************** Admin *************************
