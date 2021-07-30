@@ -1,5 +1,7 @@
 @extends('Admin.Layouts.index')
 
+@section('title', 'Главные категории')
+
 @section('content')
 <div id="main-content">
 	<div class="container-fluid">

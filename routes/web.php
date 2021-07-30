@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryTypeController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\MainController as UserMainController;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +75,8 @@ Route::name('admin.')
 	Route::get('/', [AdminMainController::class, 'index'])->name('index');
 
 	Route::get('/category_types', [AdminMainController::class, 'category_types'])->name('category.types');
+	
+	Route::resource('/categories', CategoryController::class);
 });
 
 /*=======================================================

@@ -43,6 +43,22 @@
 		<!-- MAIN CONTENT -->
 		@yield('content')
 		<!-- END MAIN CONTENT -->
+
+		@if (session()->has('success'))
+			<div id="toast-container" class="toast-top-center">
+				<div class="toast toast-info" aria-live="polite" style="display: block;">
+					<div class="toast-message">{{ session()->get('success') }}</div>
+				</div>
+			</div>
+		@endif
+
+		@if (session()->has('danger'))
+			<div id="toast-container" class="toast-top-center">
+				<div class="toast toast-info" aria-live="polite" style="display: block;">
+					<div class="toast-message">{{ session()->get('danger') }}</div>
+				</div>
+			</div>
+		@endif
 	</div>
 
 	<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -57,6 +73,7 @@
 	<script src="{{ asset('vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js') }}"></script>
 	<script src="{{ asset('vendor/toastr/toastr.js') }}"></script>
 	<script src="{{ asset('js/Admin/common.js') }}"></script>
+	@yield('scripts')
 	<script>
 		$(function () {
 

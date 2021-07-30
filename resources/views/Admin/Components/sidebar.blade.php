@@ -23,6 +23,8 @@
 				<li class="@if(Route::is('admin.index')) active @endif"><a href="{{ route('admin.index') }}"><i class="lnr lnr-home"></i> <span>Главная</span></a></li>
 				
 				<li class="@if(Route::is('admin.category.types')) active @endif"><a href="{{ route('admin.category.types') }}"><i class="lnr lnr-home"></i> <span>Главные категории</span></a></li>
+
+				<li class="@if(Route::is('admin.categories.index')) active @endif"><a href="{{ route('admin.categories.index') }}"><i class="lnr lnr-home"></i> <span>Категории</span></a></li>
 			</ul>
 		</nav>
 	</div>
