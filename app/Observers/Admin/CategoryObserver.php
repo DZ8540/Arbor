@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class CategoryObserver
 {
 	public function creating(Category $category) {
-		if (!empty($category->slug)) {
+		if (empty($category->slug)) {
 			$category->slug = Str::slug($category->name, '_');
 		}
 	}

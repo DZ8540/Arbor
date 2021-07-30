@@ -46,10 +46,7 @@ class CategoryController extends BaseController
 			$path = $request->file('image')->store('Categories');
 			$params['image'] = $path;
 		}
-
-		if (empty($params['slug'])) {
-			$params['slug'] = Str::slug($params['name'], '_');
-		}
+		
 		Category::create($params);
 		return redirect()->route('admin.categories.index')->with('success', 'Категория успешно добавлена');
 	}

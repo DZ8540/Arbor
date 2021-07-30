@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label for="image" class="control-label">Изображение категории</label>
 							<br>
-							<img src="{{ asset('img/fallback-image.jpg') }}" alt="" width="200px">
+							<img src="{{ Storage::url($category->image) }}" alt="" width="200px">
 						</div>
 
 						<br>
