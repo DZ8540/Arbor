@@ -8,7 +8,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>Админ панель - @yield('title') - {{ config('app.name', 'Laravel') }}</title>
+	<title>Админ панель - @yield('title') - {{ config('app.name', 'Arbor') }}</title>
 
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,11 +33,11 @@
 <body>
 	<div id="wrapper">
 		<!-- NAVBAR -->
-		@include('Admin.Components.header')
+    @includeWhen(Auth::check(), 'Admin.Components.header')
 		<!-- END NAVBAR -->
 
 		<!-- LEFT SIDEBAR -->
-		@include('Admin.Components.sidebar')
+    @includeWhen(Auth::check(), 'Admin.Components.sidebar')
 		<!-- END LEFT SIDEBAR -->
 
 		<!-- MAIN CONTENT -->
@@ -260,13 +260,6 @@
 					});
 				}
 			});
-
-
-			// notification popup
-			toastr.options.closeButton = true;
-			toastr.options.positionClass = 'toast-bottom-right';
-			toastr.options.showDuration = 1000;
-			toastr['info']('Hello, welcome to DiffDash, a unique admin dashboard.');
 
 		});
 	</script>
