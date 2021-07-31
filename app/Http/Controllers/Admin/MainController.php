@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Config;
 
 class MainController extends BaseController
 {
-	public function index() {
+	public function index() 
+  {
 		return view('Admin.index');
 	}
 
-	public function category_types() {
+	public function category_types() 
+  {
 		$category_types = CategoryType::get();
 		return view('Admin.category_types', compact('category_types'));
 	}

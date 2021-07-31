@@ -24,7 +24,9 @@
 				
 				<li class="@if(Route::is('admin.category.types')) active @endif"><a href="{{ route('admin.category.types') }}"><i class="lnr lnr-star"></i> <span>Главные категории</span></a></li>
 
-				<li class="@if(Route::is('admin.categories.index')) active @endif"><a href="{{ route('admin.categories.index') }}"><i class="lnr lnr-link"></i> <span>Категории</span></a></li>
+				<li class="@if(Route::is('admin.categories*')) active @endif"><a href="{{ route('admin.categories.index') }}"><i class="lnr lnr-link"></i> <span>Категории</span></a></li>
+
+				<li class="@if(Route::is('admin.colors*')) active @endif"><a href="{{ route('admin.colors.index') }}"><i class="lnr lnr-highlight"></i> <span>Цвета</span></a></li>
 			</ul>
 		</nav>
 	</div>
