@@ -27,9 +27,9 @@
 	<meta name="og:locale" content="ru_RU" />
 	<meta name="og:type" content="website" />
 	<!-- styles -->
-	<link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+	<link rel="stylesheet" href="{{ asset('css/User/swiper-bundle.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('css/User/bootstrap.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('css/User/style.css') }}" />
 </head>
 
 <body>
@@ -61,11 +61,11 @@
 	<!-- QR Modal -->
 	@include('User.Components.Modals.qr_modal')
 
-	<script src="{{ asset('js/jquery(v.3.5.1).min.js') }}"></script>
-	<script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
-	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('js/script.js') }}"></script>
-	<script src="{{ asset('js/my-swipers.js') }}"></script>
+	<script src="{{ asset('js/User/jquery(v.3.5.1).min.js') }}"></script>
+	<script src="{{ asset('js/User/swiper-bundle.min.js') }}"></script>
+	<script src="{{ asset('js/User/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('js/User/script.js') }}"></script>
+	<script src="{{ asset('js/User/my-swipers.js') }}"></script>
 
 </body>
 
