@@ -18,7 +18,8 @@ class CategoryController extends BaseController
 	 */
 	public function index()
 	{
-		$categories = Category::get();
+    $columns = ['id', 'slug', 'name', 'category_type_id'];
+		$categories = Category::select($columns)->with(['category_type:id,name'])->get();
 		return view('Admin.Categories.index', compact('categories'));
 	}
 
@@ -29,7 +30,8 @@ class CategoryController extends BaseController
 	 */
 	public function create()
 	{
-		$category_types = CategoryType::get();
+    $columns = ['id', 'name'];
+		$category_types = CategoryType::select($columns)->toBase()->get();
 		return view('Admin.Categories.create', compact('category_types'));
 	}
 
@@ -69,7 +71,8 @@ class CategoryController extends BaseController
 	 */
 	public function edit(Category $category)
 	{
-    $category_types = CategoryType::get();
+    $columns = ['id', 'name'];
+    $category_types = CategoryType::select($columns)->toBase()->get();
     return view('Admin.Categories.edit', compact('category', 'category_types'));
 	}
 
