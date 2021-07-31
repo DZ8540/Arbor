@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
+use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\User\MainController as UserMainController;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +81,8 @@ Route::name('admin.')
 	Route::resource('/categories', CategoryController::class);
 
   Route::resource('/colors', ColorController::class);
+
+  Route::resource('/manufacturers', ManufacturerController::class);
 });
 
 /*=======================================================

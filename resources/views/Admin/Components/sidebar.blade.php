@@ -27,6 +27,8 @@
 				<li class="@if(Route::is('admin.categories*')) active @endif"><a href="{{ route('admin.categories.index') }}"><i class="lnr lnr-link"></i> <span>Категории</span></a></li>
 
 				<li class="@if(Route::is('admin.colors*')) active @endif"><a href="{{ route('admin.colors.index') }}"><i class="lnr lnr-highlight"></i> <span>Цвета</span></a></li>
+
+				<li class="@if(Route::is('admin.manufacturers*')) active @endif"><a href="{{ route('admin.manufacturers.index') }}"><i class="lnr lnr-apartment"></i> <span>Производители</span></a></li>
 			</ul>
 		</nav>
 	</div>
