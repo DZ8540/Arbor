@@ -16,6 +16,8 @@
 				<div class="row">
 					
 					<form action="{{ route('admin.categories.update', $category) }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="category" value="{{ $category->id }}">
+
 						<div class="form-group">
 							<label class="control-label" for="categoryType">Главная категория *</label>
 							<select class="form-control @error('category_type_id') parsley-error @enderror" id="categoryType" name="category_type_id">

@@ -5,6 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
@@ -38,7 +39,7 @@ class CategoryRequest extends FormRequest
 			'category_type_id' => 'required|numeric|exists:category_types,id',
 			'name' => 'required|string',
 			'image' => 'image',
-			'slug' => 'unique:categories,slug|string'
+			'slug' => 'unique:categories,slug,' . $this->category . '|string'
 		];
 	}
 }
