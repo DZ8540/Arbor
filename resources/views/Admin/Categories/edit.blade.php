@@ -60,7 +60,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="image" class="control-label">Изображение категории *</label>
+							<label for="image" class="control-label">Изображение категории</label>
 							<br>
 							<img src="{{ Storage::url($category->image) }}" id="imagePreview" alt="" width="200px">
 							<br>

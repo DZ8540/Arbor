@@ -56,12 +56,12 @@
 						</div>
 
 						<div class="form-group">
-							<label for="image" class="control-label">Изображение категории *</label>
+							<label for="image" class="control-label">Изображение категории</label>
 							<br>
 							<img src="{{ asset('img/fallback-image.jpg') }}" id="imagePreview" alt="" width="200px">
 							<br>
 							<br>
-							<input type="file" class="btn btn-primary" id="image" name="image" value="{{ old('image', '') }}">
+							<input type="file" class="btn btn-primary" id="image" name="image">
 
 							@error('image')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
