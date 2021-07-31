@@ -43,10 +43,9 @@ class CategoryController extends BaseController
 	{
 		$params = $request->all();
 		if ($request->has('image')) {
-			$path = $request->file('image')->store('Categories');
+			$path = $request->file('image')->store('public/Categories');
 			$params['image'] = $path;
 		}
-		
 		Category::create($params);
 		return redirect()->route('admin.categories.index')->with('success', 'Категория успешно добавлена');
 	}
@@ -70,7 +69,8 @@ class CategoryController extends BaseController
 	 */
 	public function edit(Category $category)
 	{
-			//
+    $category_types = CategoryType::get();
+    return view('Admin.Categories.edit', compact('category', 'category_types'));
 	}
 
 	/**
@@ -80,9 +80,15 @@ class CategoryController extends BaseController
 	 * @param  \App\Models\Category  $category
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Category $category)
+	public function update(CategoryRequest $request, Category $category)
 	{
-			//
+    $params = $request->all();
+		if ($request->has('image')) {
+			$path = $request->file('image')->store('public/Categories');
+			$params['image'] = $path;
+		}
+		$category->update($params);
+		return redirect()->route('admin.categories.index')->with('success', 'Категория успешно изменена');
 	}
 
 	/**
@@ -93,6 +99,7 @@ class CategoryController extends BaseController
 	 */
 	public function destroy(Category $category)
 	{
-			//
+    $category->delete();
+		return redirect()->route('admin.categories.index')->with('danger', 'Категория удалена');
 	}
 }

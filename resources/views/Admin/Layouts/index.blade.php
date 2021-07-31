@@ -43,23 +43,29 @@
 		<!-- MAIN CONTENT -->
 		@yield('content')
 		<!-- END MAIN CONTENT -->
-
-		@if (session()->has('success'))
-			<div id="toast-container" class="toast-top-center">
-				<div class="toast toast-info" aria-live="polite" style="display: block;">
-					<div class="toast-message">{{ session()->get('success') }}</div>
-				</div>
-			</div>
-		@endif
-
-		@if (session()->has('danger'))
-			<div id="toast-container" class="toast-top-center">
-				<div class="toast toast-info" aria-live="polite" style="display: block;">
-					<div class="toast-message">{{ session()->get('danger') }}</div>
-				</div>
-			</div>
-		@endif
 	</div>
+
+  @if (session()->has('success'))
+    <div style="position: absolute; z-index: 1000; display: flex; justify-content: center; width: 100%; top: 15px;">
+      <div>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <i class="fa fa-check-circle"></i> {{ session()->get('success') }}
+        </div>
+      </div>
+    </div>
+  @endif
+
+  @if (session()->has('danger'))
+    <div style="position: absolute; z-index: 1000; display: flex; justify-content: center; width: 100%; top: 15px;">
+      <div>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <i class="fa fa-times-circle"></i> {{ session()->get('danger') }}
+        </div>
+      </div>
+    </div>
+  @endif
 
 	<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 	<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>

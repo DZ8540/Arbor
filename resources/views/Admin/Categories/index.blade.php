@@ -38,6 +38,7 @@
 										<a href="{{ route('admin.categories.edit', $item) }}" class="btn btn-warning">Редактировать</a>
 										<form action="{{ route('admin.categories.destroy', $item) }}" method="POST" style="display: inline">
 											@method('DELETE')
+                      @csrf
 											<button type="submit" class="btn btn-danger">Удалить</button>
 										</form>
 									</td>

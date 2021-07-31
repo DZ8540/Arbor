@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryRequest extends FormRequest
 {
@@ -17,6 +18,15 @@ class CategoryRequest extends FormRequest
 		return Auth::check();
 	}
 
+  protected function prepareForValidation()
+  {
+    if (empty($this->slug)) {
+      $this->merge([
+        'slug' => Str::slug($this->name, '_')
+      ]);
+    }
+  }
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -27,8 +37,8 @@ class CategoryRequest extends FormRequest
 		return [
 			'category_type_id' => 'required|numeric|exists:category_types,id',
 			'name' => 'required|string',
-			'image' => 'required|image',
-			'slug' => 'unique:categories,slug'
+			'image' => 'image',
+			'slug' => 'unique:categories,slug|string'
 		];
 	}
 }
