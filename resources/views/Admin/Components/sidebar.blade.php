@@ -29,6 +29,8 @@
 				<li class="@if(Route::is('admin.colors*')) active @endif"><a href="{{ route('admin.colors.index') }}"><i class="lnr lnr-highlight"></i> <span>Цвета</span></a></li>
 
 				<li class="@if(Route::is('admin.manufacturers*')) active @endif"><a href="{{ route('admin.manufacturers.index') }}"><i class="lnr lnr-apartment"></i> <span>Производители</span></a></li>
+
+				<li class="@if(Route::is('admin.thicknesses*')) active @endif"><a href="{{ route('admin.thicknesses.index') }}"><i class="lnr lnr-layers"></i> <span>Толщина</span></a></li>
 			</ul>
 		</nav>
 	</div>
