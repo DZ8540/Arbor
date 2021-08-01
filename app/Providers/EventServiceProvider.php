@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
-use App\Observers\Admin\CategoryObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

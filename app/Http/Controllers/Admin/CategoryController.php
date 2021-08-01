@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
 use App\Models\CategoryType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoryController extends BaseController
@@ -44,10 +45,12 @@ class CategoryController extends BaseController
 	public function store(CategoryRequest $request)
 	{
 		$params = $request->all();
+
 		if ($request->has('image')) {
 			$path = $request->file('image')->store('public/Categories');
 			$params['image'] = $path;
 		}
+
 		Category::create($params);
 		return redirect()->route('admin.categories.index')->with('success', 'Категория успешно добавлена');
 	}
@@ -86,10 +89,13 @@ class CategoryController extends BaseController
 	public function update(CategoryRequest $request, Category $category)
 	{
     $params = $request->all();
+    
 		if ($request->has('image')) {
+      Storage::delete($category->image);
 			$path = $request->file('image')->store('public/Categories');
 			$params['image'] = $path;
 		}
+
 		$category->update($params);
 		return redirect()->route('admin.categories.index')->with('success', 'Категория успешно изменена');
 	}

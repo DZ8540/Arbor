@@ -34,12 +34,9 @@ class AboutCompanyController extends Controller
     $params = $request->all();
 
     if ($request->has('logo')) {
+      Storage::delete($about->first()->logo);
       $path = $request->file('logo')->store('public/About');
       $params['logo'] = $path;
-    }
-
-    if (!empty($about->first()->logo)) {
-      Storage::delete($about->first()->logo);
     }
 
     $about->first()->update($params);
