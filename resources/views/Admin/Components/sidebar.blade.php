@@ -31,6 +31,8 @@
 				<li class="@if(Route::is('admin.manufacturers*')) active @endif"><a href="{{ route('admin.manufacturers.index') }}"><i class="lnr lnr-apartment"></i> <span>Производители</span></a></li>
 
 				<li class="@if(Route::is('admin.thicknesses*')) active @endif"><a href="{{ route('admin.thicknesses.index') }}"><i class="lnr lnr-layers"></i> <span>Толщина</span></a></li>
+
+				<li class="@if(Route::is('admin.about.company*')) active @endif"><a href="{{ route('admin.about.company.index') }}"><i class="lnr lnr-cog"></i> <span>О компании</span></a></li>
 			</ul>
 		</nav>
 	</div>

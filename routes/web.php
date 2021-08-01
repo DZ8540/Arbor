@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutCompanyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
@@ -86,6 +87,9 @@ Route::name('admin.')
   Route::resource('/manufacturers', ManufacturerController::class);
 
   Route::resource('/thicknesses', ThicknessController::class);
+
+  Route::get('/about_company', [AboutCompanyController::class, 'index'])->name('about.company.index');
+  Route::post('/about_company', [AboutCompanyController::class, 'update'])->name('about.company.update');
 });
 
 /*=======================================================

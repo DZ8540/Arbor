@@ -78,6 +78,7 @@
 	<script src="{{ asset('vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js') }}"></script>
 	<script src="{{ asset('vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js') }}"></script>
 	<script src="{{ asset('vendor/toastr/toastr.js') }}"></script>
+	<script src="{{ asset('vendor/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
 	<script src="{{ asset('js/Admin/common.js') }}"></script>
 	@yield('scripts')
 	<script>
