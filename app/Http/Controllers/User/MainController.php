@@ -9,51 +9,82 @@ class MainController extends BaseController
 {
 	public function index()
   {
-		return view('User.index');
+		return view('User.index', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types,
+			'categories' => $this->categories
+		]);
 	}
 
 	public function about()
   {
-		return view('User.about');
+		return view('User.about', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function services()
   {
-		return view('User.services');
+		return view('User.services', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function news()
   {
-		return view('User.news');
+		return view('User.news', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function news_item($slug = null)
   {
-		return view('User.news_item', compact('slug'));
+		return view('User.news_item', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function catalog()
   {
-		return view('User.catalog');
+		return view('User.catalog', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function category($slug = null)
   {
-		return view('User.category', compact('slug'));
+		return view('User.category', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function product($category_slug = null, $product_slug = null)
   {
-		return view('User.product', compact('category_slug', 'product_slug'));
+		return view('User.product', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function cart()
   {
-		return view('User.cart');
+		return view('User.cart', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 
 	public function order()
   {
-		return view('User.order');
+		return view('User.order', [
+			'about_company' => $this->about_company,
+			'category_types' => $this->category_types
+		]);
 	}
 }
