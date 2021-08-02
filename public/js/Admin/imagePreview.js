@@ -1,15 +1,6 @@
-document.querySelector('#image').addEventListener('change', function() {
-	var preview = document.querySelector('#imagePreview');
-  var file = this.files[0];
-  var reader = new FileReader();
-
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  }
-
+document.querySelector('#image').onchange = evt => {
+  const [file] = document.querySelector('#image').files;
   if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
+    document.querySelector('#imagePreview').src = URL.createObjectURL(file);
   }
-});
+}

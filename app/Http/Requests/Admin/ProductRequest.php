@@ -40,6 +40,7 @@ class ProductRequest extends FormRequest
 			'name' => 'required|string',
 			'description' => 'required|string',
 			'image' => 'image',
+            'gallery[]' => 'image',
 			'code' => 'required|alpha_dash|unique:products,code,' . $this->product,
 			'price' => 'numeric|min:0|nullable',
 			'format' => 'required|string',

@@ -8,7 +8,9 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\Manufacturer;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\thickness;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -52,12 +54,24 @@ class ProductController extends Controller
 	{
 		$params = $request->all();
 
-		if ($request->has('image')) {
+        if ($request->has('image')) {
 			$path = $request->file('image')->store("public/Products/{$params['slug']}");
 			$params['image'] = $path;
 		}
-		
-		Product::create($params);
+
+        $product = Product::create($params);
+
+		if ($request->has('gallery')) {
+		    foreach ($params['gallery'] as $image) {
+                $path = Storage::putFile("public/Products/{$params['slug']}/images", new File($image));
+                $arr = [
+                    'image' => $path,
+                    'product_id' => $product->id
+                ];
+                ProductImage::create($arr);
+            }
+        }
+
 		return redirect()->route('admin.products.index')->with('success', 'Продукт успешно добавлен');
 	}
 
@@ -106,8 +120,25 @@ class ProductController extends Controller
 			$path = $request->file('image')->store("public/Products/{$params['slug']}");
 			$params['image'] = $path;
 		}
+
+        $product->update($params);
+
+        if ($request->has('gallery')) {
+            foreach ($product->productImages as $image) {
+                Storage::delete($image->image);
+                $image->delete();
+            }
+
+            foreach ($params['gallery'] as $image) {
+                $path = Storage::putFile("public/Products/{$params['slug']}/images", new File($image));
+                $arr = [
+                    'image' => $path,
+                    'product_id' => $product->id
+                ];
+                ProductImage::create($arr);
+            }
+        }
 		
-		$product->update($params);
 		return redirect()->route('admin.products.index')->with('success', 'Продукт успешно изменен');
 	}
 

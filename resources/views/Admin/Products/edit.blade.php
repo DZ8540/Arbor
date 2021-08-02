@@ -82,6 +82,26 @@
 						</div>
 
 						<div class="form-group">
+							<label for="gallery" class="control-label">Остальные изображения товара</label>
+							<br>
+							<div id="galleryPreview" style="display: flex; overflow: scroll">
+								@foreach($product->productImages as $image)
+									<div style="margin-right: 20px; position: relative">
+										<img src="{{ Storage::url($image->image) }}" width="200px" alt="">
+									</div>
+								@endforeach
+							</div>
+							<br>
+							<input type="file" class="btn btn-primary" id="gallery" name="gallery[]" multiple>
+
+							@error('gallery')
+							<ul class="parsley-errors-list filled" id="parsley-id-29">
+								<li class="parsley-required">{{ $message }}</li>
+							</ul>
+							@enderror
+						</div>
+
+						<div class="form-group">
 							<label for="code">Код *</label>
 							<input type="text" id="code" class="form-control" name="code" value="{{ old('code', $product->code) }}">
 
@@ -200,4 +220,5 @@
 
 @section('scripts')
 <script src="{{ asset('js/Admin/imagePreview.js') }}"></script>
+<script src="{{ asset('js/Admin/galleryPreview.js') }}"></script>
 @endsection

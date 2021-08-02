@@ -84,7 +84,7 @@
 						<div class="form-group">
 							<label for="gallery" class="control-label">Остальные изображения товара</label>
 							<br>
-							<div id="galleryPreview"></div>
+							<div id="galleryPreview" style="display: flex; overflow: scroll"></div>
 							<br>
 							<input type="file" class="btn btn-primary" id="gallery" name="gallery[]" multiple>
 
