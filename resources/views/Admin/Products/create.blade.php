@@ -67,7 +67,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="image" class="control-label">Главное изображение товара *</label>
+							<label for="image" class="control-label">Главное изображение товара</label>
 							<br>
 							<img src="{{ asset('img/fallback-image.jpg') }}" id="imagePreview" alt="" width="200px">
 							<br>
@@ -75,6 +75,20 @@
 							<input type="file" class="btn btn-primary" id="image" name="image">
 
 							@error('image')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+						<div class="form-group">
+							<label for="gallery" class="control-label">Остальные изображения товара</label>
+							<br>
+							<div id="galleryPreview"></div>
+							<br>
+							<input type="file" class="btn btn-primary" id="gallery" name="gallery[]" multiple>
+
+							@error('gallery')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
 									<li class="parsley-required">{{ $message }}</li>
 								</ul>
@@ -196,4 +210,5 @@
 
 @section('scripts')
 <script src="{{ asset('js/Admin/imagePreview.js') }}"></script>
+<script src="{{ asset('js/Admin/galleryPreview.js') }}"></script>
 @endsection
