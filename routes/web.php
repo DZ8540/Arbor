@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
 use App\Http\Controllers\Admin\ManufacturerController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ThicknessController;
 use App\Http\Controllers\User\MainController as UserMainController;
 use Illuminate\Support\Facades\Route;
@@ -90,6 +91,8 @@ Route::name('admin.')
 
   Route::get('/about_company', [AboutCompanyController::class, 'index'])->name('about.company.index');
   Route::post('/about_company', [AboutCompanyController::class, 'update'])->name('about.company.update');
+
+	Route::resource('/products', ProductController::class);
 });
 
 /*=======================================================
