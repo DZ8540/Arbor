@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutCompanyController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BannersAdditionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
@@ -96,6 +97,9 @@ Route::name('admin.')
 	Route::resource('/products', ProductController::class);
 
 	Route::resource('/banners', BannerController::class);
+
+  Route::get('/addition_banner', [BannersAdditionController::class, 'index'])->name('addition.banner.index');
+  Route::patch('/addition_banner', [BannersAdditionController::class, 'update'])->name('addition.banner.update');
 });
 
 /*=======================================================
