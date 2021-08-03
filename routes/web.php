@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutCompanyController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
@@ -93,6 +94,8 @@ Route::name('admin.')
   Route::post('/about_company', [AboutCompanyController::class, 'update'])->name('about.company.update');
 
 	Route::resource('/products', ProductController::class);
+
+	Route::resource('/banners', BannerController::class);
 });
 
 /*=======================================================

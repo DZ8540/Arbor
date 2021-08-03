@@ -59,7 +59,7 @@
 							<label for="description">Описание *</label>
 							<textarea name="description" id="description" cols="30" rows="10" class="form-control @error('description') parsley-error @enderror">{{ old('description') }}</textarea>
 
-							@error('name')
+							@error('description')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
 									<li class="parsley-required">{{ $message }}</li>
 								</ul>

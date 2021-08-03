@@ -54,23 +54,23 @@ class ProductController extends Controller
 	{
 		$params = $request->all();
 
-        if ($request->has('image')) {
+		if ($request->has('image')) {
 			$path = $request->file('image')->store("public/Products/{$params['slug']}");
 			$params['image'] = $path;
 		}
 
-        $product = Product::create($params);
+		$product = Product::create($params);
 
 		if ($request->has('gallery')) {
-		    foreach ($params['gallery'] as $image) {
-                $path = Storage::putFile("public/Products/{$params['slug']}/images", new File($image));
-                $arr = [
-                    'image' => $path,
-                    'product_id' => $product->id
-                ];
-                ProductImage::create($arr);
-            }
-        }
+			foreach ($params['gallery'] as $image) {
+				$path = Storage::putFile("public/Products/{$params['slug']}/images", new File($image));
+				$arr = [
+					'image' => $path,
+					'product_id' => $product->id
+				];
+				ProductImage::create($arr);
+			}
+		}
 
 		return redirect()->route('admin.products.index')->with('success', 'Продукт успешно добавлен');
 	}
