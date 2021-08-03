@@ -8,39 +8,21 @@
 		<div class="col-lg-7 col-xl-8 mb-3 mb-lg-0">
 			<div class="swiper-container swiper-banner mb-4 mb-lg-0 h-100">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div
-							class="d-flex flex-column-reverse align-items-center text-center text-xl-start flex-xl-row linear rounded-30">
-							<div>
-								<h2 class="mb-3">Распиловка ЛДСП, МДФ, ДВПО</h2>
-								<p class="fs-5 mb-4">Краткое описание новости в несколько строк</p>
-								<a href="services.html" class="bttn bttn-lg">Подробнее</a>
+					
+					@foreach ($banners as $item)
+						<div class="swiper-slide">
+							<div
+								class="d-flex flex-column-reverse align-items-center text-center text-xl-start flex-xl-row linear rounded-30">
+								<div>
+									<h2 class="mb-3">{{ $item->title }}</h2>
+									<p class="fs-5 mb-4">{{ $item->description }}</p>
+									<a href="{{ $item->link }}" class="bttn bttn-lg">Подробнее</a>
+								</div>
+								<img src="{{ Storage::url($item->image) }}" alt="" />
 							</div>
-							<img src="img/images/banner-img.png" alt="" />
 						</div>
-					</div>
-					<div class="swiper-slide">
-						<div
-							class="d-flex flex-column-reverse align-items-center text-center text-xl-start flex-xl-row linear rounded-30">
-							<div>
-								<h2 class="mb-3">Второй баннер с заголовком</h2>
-								<p class="fs-5 mb-4">Параграф с информацией к баннеру</p>
-								<a href="services.html" class="bttn bttn-lg">Подробнее</a>
-							</div>
-							<img src="img/images/banner-img-2.png" alt="" />
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div
-							class="d-flex flex-column-reverse align-items-center text-center text-xl-start flex-xl-row linear rounded-30">
-							<div>
-								<h2 class="mb-3">Третий баннер с заголовком</h2>
-								<p class="fs-5 mb-4">Параграф с некоторой информацией к баннеру</p>
-								<a href="services.html" class="bttn bttn-lg">Подробнее</a>
-							</div>
-							<img src="img/images/banner-img-3.png" alt="" />
-						</div>
-					</div>
+					@endforeach
+					
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>

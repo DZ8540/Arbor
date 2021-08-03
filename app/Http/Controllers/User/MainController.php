@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\User\BaseController;
-use Illuminate\Http\Request;
+use App\Models\Banner;
 
 class MainController extends BaseController
 {
 	public function index()
   {
+		$columns = ['title', 'description', 'link', 'image'];
+		$banners = Banner::select($columns)->get();
+
 		return view('User.index', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-			'categories' => $this->categories
+			'categories' => $this->categories,
+			'banners' => $banners
 		]);
 	}
 
