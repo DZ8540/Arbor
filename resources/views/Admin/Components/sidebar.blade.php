@@ -39,6 +39,8 @@
 				<li class="@if(Route::is('admin.banners*')) active @endif"><a href="{{ route('admin.banners.index') }}"><i class="lnr lnr-picture"></i> <span>Баннеры на главной</span></a></li>
 
 				<li class="@if(Route::is('admin.addition.banner*')) active @endif"><a href="{{ route('admin.addition.banner.index') }}"><i class="lnr lnr-select"></i> <span>Специальный баннер</span></a></li>
+
+				<li class="@if(Route::is('admin.news*')) active @endif"><a href="{{ route('admin.news.index') }}"><i class="lnr lnr-flag"></i> <span>Новости</span></a></li>
 			</ul>
 		</nav>
 	</div>

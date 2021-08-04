@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
 use App\Http\Controllers\Admin\ManufacturerController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ThicknessController;
 use App\Http\Controllers\User\MainController as UserMainController;
@@ -100,6 +101,8 @@ Route::name('admin.')
 
   Route::get('/addition_banner', [BannersAdditionController::class, 'index'])->name('addition.banner.index');
   Route::patch('/addition_banner', [BannersAdditionController::class, 'update'])->name('addition.banner.update');
+
+	Route::resource('/news', NewsController::class);
 });
 
 /*=======================================================
