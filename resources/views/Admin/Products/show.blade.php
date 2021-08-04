@@ -50,7 +50,7 @@
 						<div class="form-group">
 							<label class="control-label">Остальные изображения товара</label>
 							<br>
-							<div id="galleryPreview" style="display: flex; overflow: scroll">
+							<div style="display: flex; overflow: scroll">
 								@foreach($product->productImages as $image)
 									<div style="margin-right: 20px; position: relative">
 										<img src="{{ Storage::url($image->image) }}" width="200px" alt="">

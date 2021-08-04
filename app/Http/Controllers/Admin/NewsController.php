@@ -3,86 +3,105 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Admin\BaseController;
+use App\Http\Requests\Admin\NewsRequest;
 use App\Models\News;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-			$columns = ['id', 'slug', 'name', 'image', 'publication_date', 'publication_time'];
-			$news = News::select($columns)->get();
-			return view('Admin.News.index', compact('news'));
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
+    $columns = ['id', 'slug', 'name', 'image'];
+    $news = News::select($columns)->get();
+    return view('Admin.News.index', compact('news'));
+  }
+
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create()
+  {
+    return view('Admin.News.create');
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(NewsRequest $request)
+  {
+    $params = $request->all();
+
+    if ($request->has('image')) {
+      $path = $request->file('image')->store("public/News/{$params['slug']}");
+      $params['image'] = $path;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-			return view('Admin.News.create');
+    News::create($params);
+    return redirect()->route('admin.news.index')->with('success', 'Новость была успешно добавлена');
+  }
+
+  /**
+   * Display the specified resource.
+   *
+   * @param  \App\Models\News  $news
+   * @return \Illuminate\Http\Response
+   */
+  public function show(News $news)
+  {
+    return view('Admin.News.show', compact('news'));
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  \App\Models\News  $news
+   * @return \Illuminate\Http\Response
+   */
+  public function edit(News $news)
+  {
+    return view('Admin.News.edit', compact('news'));
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  \App\Models\News  $news
+   * @return \Illuminate\Http\Response
+   */
+  public function update(NewsRequest $request, News $news)
+  {
+    $params = $request->all();
+
+    if ($request->has('image')) {
+      Storage::delete($news->image);
+      $path = $request->file('image')->store("public/News/{$params['slug']}");
+      $params['image'] = $path;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    $news->update($params);
+    return redirect()->route('admin.news.index')->with('success', 'Новость была успешно изменена');
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function show(News $news)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(News $news)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, News $news)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(News $news)
-    {
-        //
-    }
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  \App\Models\News  $news
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy(News $news)
+  {
+    $news->delete();
+    return redirect()->route('admin.news.index')->with('danger', 'Новость была удалена');
+  }
 }

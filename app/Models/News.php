@@ -9,5 +9,10 @@ class News extends Model
 {
 	use HasFactory;
 
-	protected $fillable = ['slug', 'name', 'description', 'image', 'publication_date', 'publication_time'];
+	protected $fillable = ['slug', 'name', 'description', 'image'];
+
+  public function getRouteKeyName()
+  {
+    return 'slug';
+  }
 }

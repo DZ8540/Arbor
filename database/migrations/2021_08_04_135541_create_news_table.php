@@ -18,9 +18,7 @@ class CreateNewsTable extends Migration
 			$table->string('slug')->unique();
 			$table->string('name');
 			$table->text('description');
-			$table->string('image');
-			$table->date('publication_date');
-			$table->time('publication_time');
+			$table->string('image')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -32,6 +30,6 @@ class CreateNewsTable extends Migration
 	 */
 	public function down()
 	{
-			Schema::dropIfExists('news');
+    Schema::dropIfExists('news');
 	}
 }

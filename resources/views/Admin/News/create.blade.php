@@ -15,7 +15,7 @@
 			<div class="panel-content">
 				<div class="row">
 					
-					<form action="{{ route('admin.news.store') }}" method="post">
+					<form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
 						@csrf
 
 						<div class="form-group">
@@ -40,6 +40,46 @@
 							@enderror
 						</div>
 
+            <div class="form-group">
+							<label for="description">Описание *</label>
+							<textarea name="description" id="description" cols="30" rows="10" class="form-control @error('description') parsley-error @enderror">{{ old('description') }}</textarea>
+
+							@error('description')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+            <div class="form-group">
+							<label for="image" class="control-label">Главное изображение новости</label>
+							<br>
+							<img src="{{ asset('img/fallback-image.jpg') }}" id="imagePreview" alt="" width="200px">
+							<br>
+							<br>
+							<input type="file" class="btn btn-primary" id="image" name="image">
+
+							@error('image')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+						<div class="form-group">
+							<label for="gallery" class="control-label">Остальные изображения новости</label>
+							<br>
+							<div id="galleryPreview" style="display: flex; overflow: scroll"></div>
+							<br>
+							<input type="file" class="btn btn-primary" id="gallery" name="gallery[]" multiple>
+
+							@error('gallery')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
 						<br>
 
 						<button type="submit" class="btn btn-success">Добавить</button>
@@ -51,4 +91,9 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/Admin/imagePreview.js') }}"></script>
+<script src="{{ asset('js/Admin/galleryPreview.js') }}"></script>
 @endsection

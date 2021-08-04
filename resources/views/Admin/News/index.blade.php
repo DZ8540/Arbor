@@ -23,8 +23,6 @@
 								<td>#</td>
 								<td>Отображение в адресной строке</td>
 								<td>Название</td>
-								<td>Дата</td>
-								<td>Время</td>
 								<td>Изображение</td>
 								<td>Действия</td>
 							</tr>
@@ -35,9 +33,9 @@
 									<td>{{ $item->id }}</td>
 									<td>{{ $item->slug }}</td>
 									<td>{{ $item->name }}</td>
-									<td>{{ $item->publication_date }}</td>
-									<td>{{ $item->publication_time }}</td>
-									<td>{{ $item->image }}</td>
+									<td>
+                    <img src="{{ Storage::url($item->image) }}" width="200px" alt="">
+                  </td>
 									<td>
 										<a href="{{ route('admin.news.show', $item) }}" class="btn btn-primary">Просмотр</a>
 										<a href="{{ route('admin.news.edit', $item) }}" class="btn btn-warning">Редактировать</a>
