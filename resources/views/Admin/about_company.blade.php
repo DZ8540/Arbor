@@ -51,6 +51,8 @@
 
 						@csrf
 
+						@method('PATCH')
+
 						<div class="form-group">
 							<label for="description">Описание компании</label>
 							<textarea id="description" class="form-control @error('description') parsley-error @enderror" name="description">{{ old('description', $about->description) }}</textarea>

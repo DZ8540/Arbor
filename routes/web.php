@@ -92,7 +92,7 @@ Route::name('admin.')
   Route::resource('/thicknesses', ThicknessController::class);
 
   Route::get('/about_company', [AboutCompanyController::class, 'index'])->name('about.company.index');
-  Route::post('/about_company', [AboutCompanyController::class, 'update'])->name('about.company.update');
+  Route::patch('/about_company', [AboutCompanyController::class, 'update'])->name('about.company.update');
 
 	Route::resource('/products', ProductController::class);
 
