@@ -6,9 +6,7 @@ use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
 use App\Models\CategoryType;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class CategoryController extends BaseController
 {

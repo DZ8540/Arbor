@@ -29,20 +29,27 @@
 		</div>
 
 		<div class="col-lg-5 col-xl-4">
-			<div class="h-100 d-flex flex-column justify-content-center rounded-30 bg-yellow p-4 p-md-5 p-lg-4 p-xxl-5">
-				<h3 class="mb-4">Широкий выбор ЛДСП</h3>
-				<p class="fs-5 mb-4">Как принято считать, базовые сценарии поведения пользователей набирают популярность
-					среди определённых слоёв населения, а значит, должны быть разоблачены</p>
-				<a href="category.html" class="roboto fs-5 fw-5 d-flex align-items-center">
-					<span class="me-2">Читать подробнее</span>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M4.99988 12H18.9999" stroke="black" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-						<path d="M11.9999 5L18.9999 12L11.9999 19" stroke="black" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</a>
-			</div>
+			
+			@if(!empty($banner_addition->title) && !empty($banner_addition->description))
+				<div class="h-100 d-flex flex-column justify-content-center rounded-30 bg-yellow p-4 p-md-5 p-lg-4 p-xxl-5">
+					<h3 class="mb-4">{{ $banner_addition->title }}</h3>
+					<p class="fs-5 mb-4">{{ $banner_addition->description }}</p>
+					
+					@if (!empty($banner_addition->link))
+						<a href="{{ $banner_addition->link }}" class="roboto fs-5 fw-5 d-flex align-items-center">
+							<span class="me-2">Читать подробнее</span>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M4.99988 12H18.9999" stroke="black" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" />
+								<path d="M11.9999 5L18.9999 12L11.9999 19" stroke="black" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" />
+							</svg>
+						</a>
+					@endif
+
+				</div>
+			@endif
+
 		</div>
 	</div>
 </section>

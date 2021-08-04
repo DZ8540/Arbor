@@ -15,12 +15,12 @@
 			<div class="panel-content">
 				<div class="row">
 					
-					<form action="{{ route('admin.addition.banner.update', $banner) }}" method="post">
+					<form action="{{ route('admin.addition.banner.update') }}" method="post">
 						@csrf
 
 						<div class="form-group">
 							<label for="title">Заголовок</label>
-							<input type="text" id="title" class="form-control @error('title') parsley-error @enderror" name="title" value="{{ old('title') }}">
+							<input type="text" id="title" class="form-control @error('title') parsley-error @enderror" name="title" value="{{ old('title', $check_banner ? $banner->title : '') }}">
 
 							@error('title')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
@@ -33,7 +33,7 @@
   
             <div class="form-group">
 							<label for="description">Описание</label>
-							<textarea id="description" class="form-control @error('description') parsley-error @enderror" cols="30" rows="10" name="description">{{ old('description') }}</textarea>
+							<textarea id="description" class="form-control @error('description') parsley-error @enderror" cols="30" rows="10" name="description">{{ old('description', $check_banner ? $banner->description : '') }}</textarea>
 
 							@error('description')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
@@ -44,7 +44,7 @@
 
             <div class="form-group">
 							<label for="link">Ссылка</label>
-							<input type="text" id="link" class="form-control @error('link') parsley-error @enderror" name="link" value="{{ old('link') }}">
+							<input type="text" id="link" class="form-control @error('link') parsley-error @enderror" name="link" value="{{ old('link', $check_banner ? $banner->link : '') }}">
 
 							@error('link')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\ManufacturerRequest;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
-class ManufacturerController extends Controller
+class ManufacturerController extends BaseController
 {
   /**
    * Display a listing of the resource.

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Category;
 use App\Models\Color;
@@ -13,7 +13,7 @@ use App\Models\thickness;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
 	/**
 	 * Display a listing of the resource.

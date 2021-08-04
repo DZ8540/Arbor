@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\ThicknessRequest;
 use App\Models\Thickness;
 use Illuminate\Http\Request;
 
-class ThicknessController extends Controller
+class ThicknessController extends BaseController
 {
   /**
    * Display a listing of the resource.

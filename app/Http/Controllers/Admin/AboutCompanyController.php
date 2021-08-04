@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\AboutCompanyRequest;
 use App\Models\AboutCompany;
 use Illuminate\Support\Facades\Storage;
 
-class AboutCompanyController extends Controller
+class AboutCompanyController extends BaseController
 {
   public function index() 
   {

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\BannerRequest;
 use App\Models\Banner;
 use Illuminate\Support\Facades\Storage;
 
-class BannerController extends Controller
+class BannerController extends BaseController
 {
 	/**
 	 * Display a listing of the resource.
