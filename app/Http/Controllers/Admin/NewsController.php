@@ -18,7 +18,7 @@ class NewsController extends BaseController
    */
   public function index()
   {
-    $columns = ['id', 'slug', 'name', 'image'];
+    $columns = ['id', 'slug', 'name', 'image', 'created_at'];
     $news = News::select($columns)->get();
     return view('Admin.News.index', compact('news'));
   }
