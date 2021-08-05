@@ -32,6 +32,20 @@ class News extends Model
 		return $this->getDateOrTime(1);
 	}
 
+	public function getDateForCardAttribute()
+	{
+		$date = strtotime($this->date);
+		$format_date = date('Y.m', $date);
+		return $format_date;
+	}
+
+	public function getTimeForCardAttribute()
+	{
+		$time = strtotime($this->time);
+		$format_time = date('H:i', $time);
+		return $format_time;
+	}
+
 	/**
 	 * Get date or time function
 	 * If you have get date, use 0

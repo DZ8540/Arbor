@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\User\BaseController;
 use App\Models\Banner;
 use App\Models\BannersAddition;
+use App\Models\News;
 
 class MainController extends BaseController
 {
@@ -16,12 +17,17 @@ class MainController extends BaseController
 		$banner_addition_columns = ['title', 'description', 'link'];
 		$banner_addition = BannersAddition::select($banner_addition_columns)->toBase()->first();
 
+		$news_columns = ['slug', 'image', 'name', 'created_at'];
+		$news_count = 20;
+		$news = News::select($news_columns)->take($news_count)->get();
+
 		return view('User.index', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
 			'categories' => $this->categories,
 			'banners' => $banners,
-			'banner_addition' => $banner_addition
+			'banner_addition' => $banner_addition,
+			'news' => $news
 		]);
 	}
 
@@ -49,11 +55,14 @@ class MainController extends BaseController
 		]);
 	}
 
-	public function news_item($slug = null)
+	public function news_item($slug)
   {
+		$columns = ['id', 'name', 'image', 'description', 'created_at'];
+		$news = News::select($columns)->firstWhere('slug', $slug);
 		return view('User.news_item', [
 			'about_company' => $this->about_company,
-			'category_types' => $this->category_types
+			'category_types' => $this->category_types,
+			'news' => $news
 		]);
 	}
 

@@ -139,48 +139,17 @@
 		<div class="position-relative">
 			<div class="swiper-container position-static swiper-news col-xxl-10">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<img class="w-100" src="img/images/news-1.jpeg" alt="" />
-						<div class="py-2 px-3">
-							<a href="new.html" class="d-block stretched-link m-0">Распродажа выставочных образцов</a>
-							<time datetime="2021-03-09 18:41">18:41 9.03</time>
+
+					@foreach ($news as $item)
+						<div class="swiper-slide">
+							<img class="w-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
+							<div class="py-2 px-3">
+								<a href="{{ route('user.news.item', $item) }}" class="d-block stretched-link m-0">{{ $item->name }}</a>
+								<time datetime="2021-03-09 18:41">{{ $item->timeForCard }} {{ $item->dateForCard }}</time>
+							</div>
 						</div>
-					</div>
-					<div class="swiper-slide">
-						<img class="w-100" src="img/images/categ-3.jpeg" alt="" />
-						<div class="py-2 px-3">
-							<a href="new.html" class="d-block stretched-link m-0">Заголовок новости или акции</a>
-							<time datetime="2021-03-09 18:41">18:41 9.03</time>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<img class="w-100" src="img/images/news-1.jpeg" alt="" />
-						<div class="py-2 px-3">
-							<a href="new.html" class="d-block stretched-link m-0">Распродажа выставочных образцов</a>
-							<time datetime="2021-03-09 18:41">18:41 9.03</time>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<img class="w-100" src="img/images/categ-3.jpeg" alt="" />
-						<div class="py-2 px-3">
-							<a href="new.html" class="d-block stretched-link m-0">Заголовок новости или акции</a>
-							<time datetime="2021-03-09 18:41">18:41 9.03</time>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<img class="w-100" src="img/images/news-1.jpeg" alt="" />
-						<div class="py-2 px-3">
-							<a href="new.html" class="d-block stretched-link m-0">Распродажа выставочных образцов</a>
-							<time datetime="2021-03-09 18:41">18:41 9.03</time>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<img class="w-100" src="img/images/categ-3.jpeg" alt="" />
-						<div class="py-2 px-3">
-							<a href="new.html" class="d-block stretched-link m-0">Заголовок новости или акции</a>
-							<time datetime="2021-03-09 18:41">18:41 9.03</time>
-						</div>
-					</div>
+					@endforeach
+					
 				</div>
 				<div class="swiper-button-prev">
 					<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
