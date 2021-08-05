@@ -121,23 +121,23 @@ class ProductController extends BaseController
 			$params['image'] = $path;
 		}
 
-        $product->update($params);
+		$product->update($params);
 
-        if ($request->has('gallery')) {
-            foreach ($product->productImages as $image) {
-                Storage::delete($image->image);
-                $image->delete();
-            }
+		if ($request->has('gallery')) {
+			foreach ($product->productImages as $item) {
+				Storage::delete($item->image);
+				$item->delete();
+			}
 
-            foreach ($params['gallery'] as $image) {
-                $path = Storage::putFile("public/Products/{$params['slug']}/images", new File($image));
-                $arr = [
-                    'image' => $path,
-                    'product_id' => $product->id
-                ];
-                ProductImage::create($arr);
-            }
-        }
+			foreach ($params['gallery'] as $item) {
+				$path = Storage::putFile("public/Products/{$params['slug']}/images", new File($item));
+				$arr = [
+					'image' => $path,
+					'product_id' => $product->id
+				];
+				ProductImage::create($arr);
+			}
+		}
 		
 		return redirect()->route('admin.products.index')->with('success', 'Продукт успешно изменен');
 	}

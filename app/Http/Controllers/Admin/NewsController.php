@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\BaseController;
 use App\Http\Requests\Admin\NewsRequest;
 use App\Models\News;
+use App\Models\NewsImages;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
 class NewsController extends BaseController
@@ -46,7 +48,19 @@ class NewsController extends BaseController
       $params['image'] = $path;
     }
 
-    News::create($params);
+    $news = News::create($params);
+
+		if ($request->has('gallery')) {
+			foreach ($params['gallery'] as $item) {
+				$path = Storage::putFile("public/News/{$params['slug']}/Images", new File($item));
+				$image = [
+					'image' => $path,
+					'news_id' => $news->id
+				];
+				NewsImages::create($image);
+			}
+		}
+
     return redirect()->route('admin.news.index')->with('success', 'Новость была успешно добавлена');
   }
 
@@ -90,6 +104,23 @@ class NewsController extends BaseController
     }
 
     $news->update($params);
+
+		if ($request->has('gallery')) {
+			foreach ($news->newsImages as $item) {
+				Storage::delete($item->image);
+				$item->delete();
+			}
+
+			foreach ($params['gallery'] as $item) {
+				$path = Storage::putFile("public/News/{$params['slug']}/Images", new File($item));
+				$arr = [
+					'image' => $path,
+					'news_id' => $news->id
+				];
+				NewsImages::create($arr);
+			}
+		}
+
     return redirect()->route('admin.news.index')->with('success', 'Новость была успешно изменена');
   }
 

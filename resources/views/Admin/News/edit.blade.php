@@ -74,11 +74,11 @@
 							<label for="gallery" class="control-label">Остальные изображения новости</label>
 							<br>
 							<div id="galleryPreview" style="display: flex; overflow: scroll">
-                {{-- @foreach($news->productImages as $image)
+                @foreach($news->newsImages as $item)
 									<div style="margin-right: 20px; position: relative">
-										<img src="{{ Storage::url($image->image) }}" width="200px" alt="">
+										<img src="{{ Storage::url($item->image) }}" width="200px" alt="">
 									</div>
-								@endforeach --}}
+								@endforeach
               </div>
 							<br>
 							<input type="file" class="btn btn-primary" id="gallery" name="gallery[]" multiple>
@@ -92,7 +92,7 @@
 
 						<br>
 
-						<button type="submit" class="btn btn-success">Добавить</button>
+						<button type="submit" class="btn btn-success">Изменить</button>
 					</form>
 
 				</div>

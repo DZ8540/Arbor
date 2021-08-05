@@ -15,4 +15,9 @@ class News extends Model
   {
     return 'slug';
   }
+
+	public function newsImages()
+	{
+		return $this->hasMany(NewsImages::class);
+	}
 }
