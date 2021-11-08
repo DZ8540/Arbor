@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends BaseController
 {
+  public $directory = 'public/Categories';
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -45,7 +47,7 @@ class CategoryController extends BaseController
 		$params = $request->all();
 
 		if ($request->has('image')) {
-			$path = $request->file('image')->store('public/Categories');
+			$path = $request->file('image')->store("{$this->directory}");
 			$params['image'] = $path;
 		}
 
@@ -90,7 +92,7 @@ class CategoryController extends BaseController
     
 		if ($request->has('image')) {
       Storage::delete($category->image);
-			$path = $request->file('image')->store('public/Categories');
+			$path = $request->file('image')->store("{$this->directory}");
 			$params['image'] = $path;
 		}
 
@@ -106,6 +108,7 @@ class CategoryController extends BaseController
 	 */
 	public function destroy(Category $category)
 	{
+    Storage::delete($category->image);
     $category->delete();
 		return redirect()->route('admin.categories.index')->with('danger', 'Категория удалена');
 	}

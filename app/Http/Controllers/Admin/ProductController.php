@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends BaseController
 {
+  public $directory = 'public/Products/';
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -55,7 +57,7 @@ class ProductController extends BaseController
 		$params = $request->all();
 
 		if ($request->has('image')) {
-			$path = $request->file('image')->store("public/Products/{$params['slug']}");
+			$path = $request->file('image')->store("{$this->directory}{$params['slug']}");
 			$params['image'] = $path;
 		}
 
@@ -63,7 +65,7 @@ class ProductController extends BaseController
 
 		if ($request->has('gallery')) {
 			foreach ($params['gallery'] as $image) {
-				$path = Storage::putFile("public/Products/{$params['slug']}/images", new File($image));
+				$path = Storage::putFile("{$this->directory}{$params['slug']}/images", new File($image));
 				$arr = [
 					'image' => $path,
 					'product_id' => $product->id
@@ -117,7 +119,7 @@ class ProductController extends BaseController
 
 		if ($request->has('image')) {
 			Storage::delete($product->image);
-			$path = $request->file('image')->store("public/Products/{$params['slug']}");
+			$path = $request->file('image')->store("{$this->directory}{$params['slug']}");
 			$params['image'] = $path;
 		}
 
@@ -130,7 +132,7 @@ class ProductController extends BaseController
 			}
 
 			foreach ($params['gallery'] as $item) {
-				$path = Storage::putFile("public/Products/{$params['slug']}/images", new File($item));
+				$path = Storage::putFile("{$this->directory}{$params['slug']}/images", new File($item));
 				$arr = [
 					'image' => $path,
 					'product_id' => $product->id
@@ -150,6 +152,7 @@ class ProductController extends BaseController
 	 */
 	public function destroy(Product $product)
 	{
+    Storage::deleteDirectory("{$this->directory}/{$product->slug}");
 		$product->delete();
 		return redirect()->route('admin.products.index')->with('danger', 'Продукт был удален');
 	}

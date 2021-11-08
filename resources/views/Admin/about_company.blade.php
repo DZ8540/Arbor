@@ -17,7 +17,7 @@
 
 					<form action="{{ route('admin.about.company.index') }}" method="post" enctype="multipart/form-data">
 						<div class="form-group">
-							<label for="name">Название компании</label>
+							<label for="name">Название компании *</label>
 							<input type="text" id="name" class="form-control @error('name') parsley-error @enderror" name="name" value="{{ old('name', $about->name) }}">
 
               @error('name')
