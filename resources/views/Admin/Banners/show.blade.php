@@ -37,6 +37,11 @@
 							<img src="{{ $banner->image ? Storage::url($banner->image) : asset('img/fallback-image.jpg') }}" alt="" width="200px">
 							<br>
 						</div>
+
+            <div class="form-group">
+							<label for="link">Специальный</label>
+							<input type="text" class="form-control" value="{{ $banner->is_additional }}" disabled>
+						</div>
 					</form>
 
 				</div>

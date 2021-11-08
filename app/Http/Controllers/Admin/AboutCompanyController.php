@@ -19,7 +19,7 @@ class AboutCompanyController extends BaseController
       'email',
       'phone',
       'logo',
-      'adress',
+      'address',
       'vk',
       'facebook',
       'instagram',

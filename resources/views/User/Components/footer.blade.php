@@ -116,10 +116,10 @@
 				@endif
 				
 				<!-- address -->
-				@if(!empty($about_company->adress))
+				@if(!empty($about_company->address))
 					<div class="fs-5 my-4">
 						<span>Мы находимся:</span>
-						<span class="fw-6">{{ $about_company->adress }}</span>
+						<span class="fw-6">{{ $about_company->address }}</span>
 					</div>
 				@endif
 				

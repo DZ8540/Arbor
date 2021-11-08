@@ -68,6 +68,20 @@
 							@enderror
 						</div>
 
+            <div class="form-group">
+              <label class="control-label" for="is_additional">Специальный (если у вас уже есть специальный баннер, то этот пункт не будет обрабатываться)</label>
+              <select class="form-control @error('is_additional') parsley-error @enderror" id="is_additional" name="is_additional">
+                <option value="0" @if ($banner->is_additional == 'Нет') selected @endif>Нет</option>
+                <option value="1" @if ($banner->is_additional == 'Да') selected @endif>Да</option>
+              </select>
+
+              @error('is_additional')
+                <ul class="parsley-errors-list filled" id="parsley-id-29">
+                  <li class="parsley-required">{{ $message }}</li>
+                </ul>
+              @enderror
+            </div>
+
 						<br>
 
 						<button type="submit" class="btn btn-success">Изменить</button>

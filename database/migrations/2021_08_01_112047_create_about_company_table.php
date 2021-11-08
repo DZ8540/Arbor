@@ -22,7 +22,7 @@ class CreateAboutCompanyTable extends Migration
       $table->string('email')->nullable();
       $table->string('phone')->nullable();
       $table->string('logo')->nullable();
-      $table->string('adress')->nullable();
+      $table->string('address')->nullable();
       $table->string('vk')->nullable();
       $table->string('facebook')->nullable();
       $table->string('instagram')->nullable();

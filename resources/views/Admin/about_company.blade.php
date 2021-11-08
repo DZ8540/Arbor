@@ -102,10 +102,10 @@
 						</div>
 
             <div class="form-group">
-							<label for="adress">Адрес компании</label>
-							<input type="text" id="adress" class="form-control @error('adress') parsley-error @enderror" name="adress" value="{{ old('adress', $about->adress) }}">
+							<label for="address">Адрес компании</label>
+							<input type="text" id="address" class="form-control @error('address') parsley-error @enderror" name="address" value="{{ old('address', $about->address) }}">
 
-              @error('adress')
+              @error('address')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
 									<li class="parsley-required">{{ $message }}</li>
 								</ul>

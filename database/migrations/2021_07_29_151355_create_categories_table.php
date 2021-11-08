@@ -18,10 +18,10 @@ class CreateCategoriesTable extends Migration
 			$table->string('slug')->unique();
 			$table->string('name');
 			$table->string('image')->nullable();
-			$table->unsignedBigInteger('category_type_id');
-			$table->timestamps();
+      
+      $table->foreignId('category_type_id')->constrained('category_types');
 
-			$table->foreign('category_type_id')->references('id')->on('category_types');
+			$table->timestamps();
 		});
 	}
 

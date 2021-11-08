@@ -99,9 +99,6 @@ Route::name('admin.')
 
 	Route::resource('/banners', BannerController::class);
 
-  Route::get('/addition_banner', [BannersAdditionController::class, 'index'])->name('addition.banner.index');
-  Route::patch('/addition_banner', [BannersAdditionController::class, 'update'])->name('addition.banner.update');
-
 	Route::resource('/news', NewsController::class);
 });
 

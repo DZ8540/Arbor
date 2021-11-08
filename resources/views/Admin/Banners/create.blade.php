@@ -66,6 +66,22 @@
 							@enderror
 						</div>
 
+            @if (!$show_additional_select)
+              <div class="form-group">
+                <label class="control-label" for="is_additional">Специальный</label>
+                <select class="form-control @error('is_additional') parsley-error @enderror" id="is_additional" name="is_additional">
+                  <option value="0">Нет</option>
+                  <option value="1">Да</option>
+                </select>
+
+                @error('is_additional')
+                  <ul class="parsley-errors-list filled" id="parsley-id-29">
+                    <li class="parsley-required">{{ $message }}</li>
+                  </ul>
+                @enderror
+              </div>
+            @endif
+
 						<br>
 
 						<button type="submit" class="btn btn-success">Добавить</button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\Banner;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,15 @@ class BannerRequest extends FormRequest
 		return Auth::check();
 	}
 
+  // TODO: Не сохраняется значение "нет"
+  protected function prepareForValidation()
+	{
+		if ($this->is_additional) {
+			if (Banner::where('is_additional', 1)->exists())
+        $this->merge([ 'is_additional' => 0 ]);
+    }
+	}
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -28,7 +38,8 @@ class BannerRequest extends FormRequest
 			'title' => 'required|string',
 			'description' => 'required|string',
 			'link' => 'required|string',
-			'image' => 'image'
+			'image' => 'image',
+      'is_additional' => 'boolean'
 		];
 	}
 }

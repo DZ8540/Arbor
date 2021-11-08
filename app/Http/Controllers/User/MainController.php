@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\User\BaseController;
 use App\Models\Banner;
-use App\Models\BannersAddition;
 use App\Models\News;
 
 class MainController extends BaseController
@@ -12,10 +11,10 @@ class MainController extends BaseController
 	public function index()
   {
 		$banners_columns = ['title', 'description', 'link', 'image'];
-		$banners = Banner::select($banners_columns)->get();
+		$banners = Banner::where('is_additional', '0')->select($banners_columns)->get();
 
 		$banner_addition_columns = ['title', 'description', 'link'];
-		$banner_addition = BannersAddition::select($banner_addition_columns)->toBase()->first();
+		$banner_addition = Banner::where('is_additional', '1')->select($banner_addition_columns)->toBase()->first();
 
 		$news_columns = ['slug', 'image', 'name', 'created_at'];
 		$news_count = 20;

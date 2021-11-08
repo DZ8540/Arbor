@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/.history
 .mwb.bak
 .env.backup
 .phpunit.result.cache

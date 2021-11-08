@@ -24,6 +24,7 @@
 								<td>Описание</td>
 								<td>Ссылка</td>
 								<td>Изображение</td>
+								<td>Специальный</td>
 								<td>Действия</td>
 							</tr>
 						</thead>
@@ -37,6 +38,7 @@
 									<td>
 										<img src="{{ Storage::url($item->image) }}" width="200px" alt="">
 									</td>
+									<td>{{ $item->is_additional }}</td>
 									<td>
 										<a href="{{ route('admin.banners.show', $item) }}" class="btn btn-primary">Просмотр</a>
 										<a href="{{ route('admin.banners.edit', $item) }}" class="btn btn-warning">Редактировать</a>

@@ -32,7 +32,7 @@ class AboutCompanyRequest extends FormRequest
       'email' => 'string|email|nullable',
       'phone' => 'string|nullable',
       'logo' => 'image',
-      'adress' => 'string|nullable',
+      'address' => 'string|nullable',
       'vk' => 'string|nullable',
       'facebook' => 'string|nullable',
       'instagram' => 'string|nullable',

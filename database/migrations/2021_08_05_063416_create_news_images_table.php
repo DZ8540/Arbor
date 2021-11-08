@@ -16,7 +16,9 @@ class CreateNewsImagesTable extends Migration
 		Schema::create('news_images', function (Blueprint $table) {
 			$table->id();
 			$table->string('image');
-			$table->foreignId('news_id')->constrained('news')->onDelete('cascade');
+
+			$table->foreignId('news_id')->constrained()->onDelete('cascade');
+      
 			$table->timestamps();
 		});
 	}

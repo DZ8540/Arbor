@@ -16,7 +16,7 @@ class BannerController extends BaseController
 	 */
 	public function index()
 	{
-		$columns = ['id', 'title', 'description', 'link', 'image'];
+		$columns = ['id', 'title', 'description', 'link', 'image', 'is_additional'];
 		$banners = Banner::select($columns)->get();
 		return view('Admin.Banners.index', compact('banners'));
 	}
@@ -28,7 +28,13 @@ class BannerController extends BaseController
 	 */
 	public function create()
 	{
-		return view('Admin.Banners.create');
+    $show_additional_select = false;
+
+    if (Banner::where('is_additional', 1)->exists()) {
+      $show_additional_select = true;
+    }
+
+		return view('Admin.Banners.create', compact('show_additional_select'));
 	}
 
 	/**

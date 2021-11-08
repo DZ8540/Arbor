@@ -20,7 +20,7 @@ class AboutCompany extends Model
     'email',
     'phone',
     'logo',
-    'adress',
+    'address',
     'vk',
     'facebook',
     'instagram',

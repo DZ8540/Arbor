@@ -17,7 +17,7 @@ class CreateColorsTable extends Migration
       $table->id();
       $table->string('slug')->unique();
       $table->string('name');
-      $table->string('hex_code');
+      $table->string('hex_code')->unique();
       $table->timestamps();
     });
   }

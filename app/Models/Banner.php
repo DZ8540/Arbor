@@ -9,5 +9,10 @@ class Banner extends Model
 {
 	use HasFactory;
 
-	protected $fillable = ['title', 'description', 'link', 'image'];
+	protected $fillable = ['title', 'description', 'link', 'image', 'is_additional'];
+
+  public function getIsAdditionalAttribute($val)
+	{
+		return $val ? 'Да' : 'Нет';
+	}
 }

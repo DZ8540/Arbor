@@ -27,7 +27,7 @@ class BaseController extends Controller
 			'vk',
 			'instagram',
 			'telegram',
-			'adress'
+			'address'
 		];
 		$this->about_company = AboutCompany::select($about_company_columns)->toBase()->first();
 
