@@ -72,7 +72,7 @@
 			</a>
 
 			<!-- catalogue -->
-			<a href="catalogue.html"
+			<a href="{{ route('user.catalog') }}"
 				class="p-1 py-xl-2 px-xl-3 bttn d-flex align-items-center mx-3 mx-xxl-4 menu-hover-link">
 				<svg class="me-xxl-2" width="24" height="25" viewBox="0 0 24 25" fill="none"
 					xmlns="http://www.w3.org/2000/svg">

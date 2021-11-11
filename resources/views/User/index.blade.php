@@ -54,24 +54,26 @@
 	</div>
 </section>
 
-<section class="container py-5 categ-section">
-	<h2 class="mb-4">Категории товаров</h2>
-	<div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4 text-center h4 fw-5">
-		
-		@foreach ($categories as $item)
-			<div>
-				<div class="rounded-30">
-					<img class="w-100 h-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
-					<a href="{{ route('user.category', $item->slug) }}" class="p-3 w-100 start-0 bottom-0 position-absolute">{{ $item->name }}</a>
-				</div>
-			</div>
-		@endforeach
+@if ($categories->count())
+  <section class="container py-5 categ-section">
+    <h2 class="mb-4">Категории товаров</h2>
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4 text-center h4 fw-5">
+      
+      @foreach ($categories as $item)
+        <div>
+          <div class="rounded-30">
+            <img class="w-100 h-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
+            <a href="{{ route('user.category', $item->slug) }}" class="p-3 w-100 start-0 bottom-0 position-absolute">{{ $item->name }}</a>
+          </div>
+        </div>
+      @endforeach
 
-	</div>
-	<div class="text-center mt-4">
-		<a href="{{ route('user.catalog') }}" class="bttn bttn-lg">Посмотреть ещё</a>
-	</div>
-</section>
+    </div>
+    <div class="text-center mt-4">
+      <a href="{{ route('user.catalog') }}" class="bttn bttn-lg">Посмотреть ещё</a>
+    </div>
+  </section>
+@endif
 
 <section class="py-5 services-section bg-gray-light">
 	<div class="container">
@@ -133,43 +135,45 @@
 	</div>
 </section>
 
-<section class="news-section bg-gray-light py-5">
-	<div class="container">
-		<h2 class="h1 mb-5">Новости</h2>
-		<div class="position-relative">
-			<div class="swiper-container position-static swiper-news col-xxl-10">
-				<div class="swiper-wrapper">
+@if ($news->count())
+  <section class="news-section bg-gray-light py-5">
+    <div class="container">
+      <h2 class="h1 mb-5">Новости</h2>
+      <div class="position-relative">
+        <div class="swiper-container position-static swiper-news col-xxl-10">
+          <div class="swiper-wrapper">
 
-					@foreach ($news as $item)
-						<div class="swiper-slide">
-							<img class="w-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
-							<div class="py-2 px-3">
-								<a href="{{ route('user.news.item', $item) }}" class="d-block stretched-link m-0">{{ $item->name }}</a>
-								<time datetime="2021-03-09 18:41">{{ $item->date }}</time>
-							</div>
-						</div>
-					@endforeach
-					
-				</div>
-				<div class="swiper-button-prev">
-					<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M31.25 37.5L18.75 25L31.25 12.5" stroke="#FF9900" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div class="swiper-button-next">
-					<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M18.75 37.5L31.25 25L18.75 12.5" stroke="#FF9900" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-			</div>
-		</div>
-		<div class="text-center">
-			<a href="{{ route('user.news') }}" class="bttn bttn-lg mt-4">Все новости</a>
-		</div>
-	</div>
-</section>
+            @foreach ($news as $item)
+              <div class="swiper-slide">
+                <img class="w-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
+                <div class="py-2 px-3">
+                  <a href="{{ route('user.news.item', $item) }}" class="d-block stretched-link m-0">{{ $item->name }}</a>
+                  <time datetime="2021-03-09 18:41">{{ $item->date }}</time>
+                </div>
+              </div>
+            @endforeach
+            
+          </div>
+          <div class="swiper-button-prev">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M31.25 37.5L18.75 25L31.25 12.5" stroke="#FF9900" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="swiper-button-next">
+            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.75 37.5L31.25 25L18.75 12.5" stroke="#FF9900" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="{{ route('user.news') }}" class="bttn bttn-lg mt-4">Все новости</a>
+      </div>
+    </div>
+  </section>
+@endif
 
 <!-- CTA FORM -->
 @include('User.Components.cta_form')
