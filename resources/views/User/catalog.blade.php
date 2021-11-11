@@ -15,228 +15,48 @@
 
 		<div class="col-lg-3 mb-4">
 			<div class="catalogue-sidebar rounded-10">
-				<div class="bg-dark text-white p-3 px-xxl-4 fw-6 fs-5">Мебельные материалы</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ЛДСП</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ХДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">МДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ЛМДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ДВПО</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ЛХДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Столешницы</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Мебельная фурнитура</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Кромка ПВХ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div class="bg-dark text-white p-3 px-xxl-4 fw-6 fs-5">Строительные материалы</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ФК</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ФСФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ламинированная</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ДВП</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ОСБ-3</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ДСП</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Полимерная панель ТИТ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ФБВ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
+
+        @foreach ($category_types as $category_type)
+          @if ($category_type->categories->count())
+            <div class="bg-dark text-white p-3 px-xxl-4 fw-6 fs-5">{{ $category_type->name }}</div>
+
+            @foreach ($category_type->categories as $item)
+              <div
+                class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
+                <a class="stretched-link" href="{{ $item->slug }}">{{ $item->name }}</a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>  
+            @endforeach
+          @endif
+          
+        @endforeach
+				
 			</div>
 		</div>
 
 		<div class="col-lg-9 categ-section">
-			<h4 class="fw-6 mb-4">Мебельные материалы</h4>
-			<div class="row row-cols-lg-3 gy-4 text-center h4 fw-5 pb-5">
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">ЛДСП</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ-2.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">ХДФ</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ-3.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">МДФ</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ-2.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">ХДФ</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ-3.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">МДФ</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">ЛДСП</a>
-					</div>
-				</div>
-			</div>
-			<h4 class="fw-6 mb-4">Строительные материалы</h4>
-			<div class="row row-cols-lg-3 gy-4 text-center h4 fw-5">
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/cart-item.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">Фанера ФК</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ-2.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">Фанера
-							ламинированная</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ-3.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">Фанера ФСФ</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">Фанера ФБВ</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/production-5.jpg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">Полимерная
-							панель ТИТ</a>
-					</div>
-				</div>
-				<div>
-					<div class="rounded-30 position-relative">
-						<img class="w-100 h-100" src="img/images/categ-3.jpeg" alt="">
-						<a href="category.html" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">ДСП</a>
-					</div>
-				</div>
-			</div>
+
+      @foreach ($category_types as $category_type)
+        @if ($category_type->categories->count())
+          <h4 class="fw-6 mb-4">{{ $category_type->name }}</h4>
+          <div class="row row-cols-lg-3 gy-4 text-center h4 fw-5 pb-5">
+
+            @foreach ($category_type->categories as $item)
+              <div>
+                <div class="rounded-30 position-relative">
+                  <img class="w-100 h-100" src="{{ Storage::url($item->image) }}" alt="">
+                  <a href="{{ route('user.category', $item->slug) }}" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">{{ $item->name }}</a>
+                </div>
+              </div>  
+            @endforeach
+            
+          </div>
+        @endif
+      @endforeach
+			
 		</div>
 	</div>
 </div>

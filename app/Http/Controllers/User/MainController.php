@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\User\BaseController;
 use App\Http\Requests\User\NewsRequest;
 use App\Models\Banner;
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
@@ -24,10 +25,13 @@ class MainController extends BaseController
 		$news_count = 20;
 		$news = News::select($news_columns)->take($news_count)->get();
 
+    $categories_columns = ['slug', 'name', 'image'];
+		$categories = Category::select($categories_columns)->toBase()->get();
+
 		return view('User.index', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-			'categories' => $this->categories,
+			'categories' => $categories,
 			'banners' => $banners,
 			'banner_addition' => $banner_addition,
 			'news' => $news

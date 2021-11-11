@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutCompany;
-use App\Models\Category;
 use App\Models\CategoryType;
 
 class BaseController extends Controller
@@ -33,8 +32,5 @@ class BaseController extends Controller
 
 		$category_types_columns = ['id', 'name'];
 		$this->category_types = CategoryType::select($category_types_columns)->get();
-
-		$categories_columns = ['slug', 'name', 'image'];
-		$this->categories = Category::select($categories_columns)->toBase()->get();
 	}
 }
