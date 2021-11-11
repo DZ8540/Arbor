@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\User\BaseController;
+use App\Http\Requests\User\NewsRequest;
 use App\Models\Banner;
 use App\Models\News;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends BaseController
 {
@@ -46,18 +50,54 @@ class MainController extends BaseController
 		]);
 	}
 
-	public function news()
+	public function news(NewsRequest $request)
   {
+    $columns = ['slug', 'name', 'image', 'description', 'views_count', 'created_at'];
+    $allNews = News::select($columns);
+
+    $count = 4;
+    if ($request->has('count'))
+      $count = $request->count;
+
+    $news = $allNews;
+    if ($request->has('date') && $request->date != 'reset')
+      $news = $news->whereYear('created_at', '<=', $request->date);
+
+    $popularNews = collect($allNews->get())->sortBy('views_count')->reverse();
+    $news = $news->paginate($count);
+
+    if ($request->ajax()) {
+      $old_count = $count;
+      $count = $count * $request->page;
+      $ajaxNews = $allNews->skip($count)->take($old_count)->get();
+
+      foreach ($ajaxNews as $item) {
+        $item->image = Storage::url($item->image);
+        $item->itemDate = $item->date; // itemDate, because item has date getter in his model
+        $item->route = route('user.news.item', $item->slug);
+      }
+
+      return response()->json($ajaxNews);
+    }
+
 		return view('User.news', [
 			'about_company' => $this->about_company,
-			'category_types' => $this->category_types
+			'category_types' => $this->category_types,
+      'popularNews' => $popularNews,
+      'news' => $news,
+      'count' => $count,
+      'date' => $request->date
 		]);
 	}
 
 	public function news_item($slug)
   {
-		$columns = ['id', 'name', 'image', 'description', 'created_at'];
+		$columns = ['id', 'name', 'image', 'description', 'views_count', 'created_at'];
 		$news = News::select($columns)->firstWhere('slug', $slug);
+
+    $news->views_count = ++$news->views_count;
+    $news->save();
+
 		return view('User.news_item', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,

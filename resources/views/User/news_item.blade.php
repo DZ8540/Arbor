@@ -62,13 +62,13 @@
 				</div>
 			</div>
 			<div class="col-md-8">
-				<div class="text-muted mb-3">9 марта 2021</div>
+				<div class="text-muted mb-3">{{ $news->dateForPage }}</div>
 				<div>
 
 					<p>{{ $news->description }}</p>
 
 				</div>
-				<a href="news.html" class="c-accent fw-5 fs-5 roboto">
+				<a href="{{ route('user.news') }}" class="c-accent fw-5 fs-5 roboto">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M19 12L5 12" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 						<path d="M12 19L5 12L12 5" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

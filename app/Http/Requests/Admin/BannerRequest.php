@@ -18,7 +18,6 @@ class BannerRequest extends FormRequest
 		return Auth::check();
 	}
 
-  // TODO: Не сохраняется значение "нет"
   protected function prepareForValidation()
 	{
 		if ($this->is_additional) {

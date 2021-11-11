@@ -145,7 +145,7 @@
 							<img class="w-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
 							<div class="py-2 px-3">
 								<a href="{{ route('user.news.item', $item) }}" class="d-block stretched-link m-0">{{ $item->name }}</a>
-								<time datetime="2021-03-09 18:41">{{ $item->timeForCard }} {{ $item->dateForCard }}</time>
+								<time datetime="2021-03-09 18:41">{{ $item->date }}</time>
 							</div>
 						</div>
 					@endforeach

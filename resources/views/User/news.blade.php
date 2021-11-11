@@ -14,48 +14,17 @@
 	<div class="position-relative">
 		<div class="swiper-container position-static swiper-news col-xxl-10">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<img class="w-100" src="img/images/news-1.jpeg" alt="">
-					<div class="py-2 px-3">
-						<a href="new.html" class="d-block stretched-link m-0">Распродажа выставочных образцов</a>
-						<time datetime="2021-03-09 18:41">18:41 9.03</time>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<img class="w-100" src="img/images/categ-3.jpeg" alt="">
-					<div class="py-2 px-3">
-						<a href="new.html" class="d-block stretched-link m-0">Заголовок новости или акции</a>
-						<time datetime="2021-03-09 18:41">18:41 9.03</time>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<img class="w-100" src="img/images/news-1.jpeg" alt="">
-					<div class="py-2 px-3">
-						<a href="new.html" class="d-block stretched-link m-0">Распродажа выставочных образцов</a>
-						<time datetime="2021-03-09 18:41">18:41 9.03</time>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<img class="w-100" src="img/images/categ-3.jpeg" alt="">
-					<div class="py-2 px-3">
-						<a href="new.html" class="d-block stretched-link m-0">Заголовок новости или акции</a>
-						<time datetime="2021-03-09 18:41">18:41 9.03</time>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<img class="w-100" src="img/images/news-1.jpeg" alt="">
-					<div class="py-2 px-3">
-						<a href="new.html" class="d-block stretched-link m-0">Распродажа выставочных образцов</a>
-						<time datetime="2021-03-09 18:41">18:41 9.03</time>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<img class="w-100" src="img/images/categ-3.jpeg" alt="">
-					<div class="py-2 px-3">
-						<a href="new.html" class="d-block stretched-link m-0">Заголовок новости или акции</a>
-						<time datetime="2021-03-09 18:41">18:41 9.03</time>
-					</div>
-				</div>
+
+        @foreach ($popularNews as $item)
+          <div class="swiper-slide">
+            <img class="w-100" src="{{ Storage::url($item->image) }}" alt="">
+            <div class="py-2 px-3">
+              <a href="{{ route('user.news.item', $item->slug) }}" class="d-block stretched-link m-0">{{ $item->name }}</a>
+              <time datetime="2021-03-09 18:41">{{ $item->dateTime }}</time>
+            </div>
+          </div>
+        @endforeach
+				
 			</div>
 			<div class="swiper-button-prev">
 				<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,77 +43,62 @@
 
 	<section class="company-news my-5">
 		<h2 class="h1 mb-4 mb-lg-5">Новости компании</h2>
-		<div class="border-bottom d-flex flex-column flex-md-row justify-content-between mb-5">
-			<div class="w-100 news-filter d-flex align-items-start text-start fs-5 mb-3 mb-md-0">
-				<button class="active px-0 pb-2 pb-lg-4 me-3 text-start">За всё время</button>
-				<button class=" pb-2 pb-lg-4 px-0 me-3 text-start">2021</button>
-				<button class=" pb-2 pb-lg-4 px-0 me-3 text-start">2020</button>
-				<button class=" pb-2 pb-lg-4 px-0 me-3 text-start">2019</button>
-			</div>
-			<div class="d-inline-flex">
-				<select name="" id="" class="form-select border-0 w-auto">
-					<option value="">Показать по 4</option>
-					<option value="">Показать по 8</option>
-				</select>
-			</div>
-		</div>
-		<!-- new big preview -->
-		<div class="row mb-4">
-			<div class="new-img col-lg-4 pe-xxl-4 mb-3 mb-lg-0">
-				<img class="w-100 h-100 rounded-10" src="img/images/production-1.jpg" alt="">
-			</div>
-			<div class="col-sm-7 col-lg-8 d-flex flex-column pb-xxl-3">
-				<span class="text-muted">9 марта 2021</span>
-				<div class="mt-2 mt-xxl-5 mb-auto">
-					<h5 class="fw-6 mb-xl-3">Новое тиснение в Компании</h5>
-					<p>Равным образом, постоянный количественный рост и сфера нашей активности в значительной степени
-						обусловливает важность инновационных методов управления процессами. Для современного мира укрепление
-						и развитие внутренней структуры
-						прекрасно подходит для реализации своевременного выполнения сверхзадачи. Безусловно, внедрение современных
-						методик создаёт необходимость включения в производственный план целого ряда внеочередных мероприятий
-						с учётом комплекса
-						первоочередных требований.
-					</p>
-				</div>
-				<a href="new.html" class="c-accent fw-5 roboto">
-					<span>Подробнее</span>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M5 12H19" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-						<path d="M12 5L19 12L12 19" stroke="#FF9900" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</a>
-			</div>
-		</div>
 
-		<button class="bttn c-accent bg-transparent rounded-10 w-100 mt-4">Показать ещё</button>
+    <form action="{{ route('user.news') }}" id="newsForm" method="GET">
+      <div class="border-bottom d-flex flex-column flex-md-row justify-content-between mb-5">
+        <div class="w-100 news-filter d-flex align-items-start text-start fs-5 mb-3 mb-md-0" id="dates">
+          <label class="active px-0 pb-2 pb-lg-4 me-3 text-start" role="button">
+            <input type="radio" name="date" value="reset" @if ($date == 'reset') checked @endif class="d-none" />
+            За всё время
+          </label>
+        </div>
+        <div class="d-inline-flex">
+          <select name="count" class="form-select border-0 w-auto" role="button">
+            <option value="4">Показать по 4</option>
+            <option value="8" @if ($count == 8) selected @endif>Показать по 8</option>
+          </select>
+        </div>
+      </div>
+    </form>
+		<!-- new big preview -->
+
+    <div id="news">
+      @foreach ($news as $item)
+        <div class="row mb-4">
+          <div class="new-img col-lg-4 pe-xxl-4 mb-3 mb-lg-0">
+            <img class="w-100 h-100 rounded-10" src="{{ Storage::url($item->image) }}" alt="">
+          </div>
+          <div class="col-sm-7 col-lg-8 d-flex flex-column pb-xxl-3">
+            <span class="text-muted">{{ $item->date }}</span>
+            <div class="mt-2 mt-xxl-5 mb-auto">
+              <h5 class="fw-6 mb-xl-3">{{ $item->name }}</h5>
+              <p>{{ $item->description }}</p>
+            </div>
+            <a href="{{ route('user.news.item', $item->slug) }}" class="c-accent fw-5 roboto">
+              <span>Подробнее</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 5L19 12L12 19" stroke="#FF9900" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      @endforeach
+    </div>
+
+		<button class="bttn c-accent bg-transparent rounded-10 w-100 mt-4" id="showMore">Показать ещё</button>
+
 		<!-- pagination -->
-		<nav class="fs-20 fw-5 mt-4 mt-lg-5 roboto" aria-label="Навигация по страницам объявлений аукциона">
-			<ul class="pagination justify-content-center flex-wrap">
-				<li class="page-item disabled">
-					<a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-						<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M7 13L1 7L7 1" stroke="#4D2077" stroke-width="2" stroke-linecap="round"
-								stroke-linejoin="round" />
-						</svg>
-					</a>
-				</li>
-				<li class="page-item active"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">...</a></li>
-				<li class="page-item"><a class="page-link" href="#">6</a></li>
-				<li class="page-item">
-					<a class="page-link" href="#">
-						<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M1 13L7 7L1 1" stroke="#4D2077" stroke-width="2" stroke-linecap="round"
-								stroke-linejoin="round" />
-						</svg>
-					</a>
-				</li>
-			</ul>
-		</nav>
+		{{ $news->links() }}
+
 	</section>
 </div>
+
+<input type="hidden" value="{{ route('user.news') }}" id="currentPageLink">
+<input type="hidden" value="{{ $date }}" id="currentDateFromInput">
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/User/news.js') }}"></script>
 @endsection

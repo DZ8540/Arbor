@@ -66,6 +66,7 @@
 	<script src="{{ asset('js/User/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('js/User/script.js') }}"></script>
 	<script src="{{ asset('js/User/my-swipers.js') }}"></script>
+  @yield('scripts')
 
 </body>
 

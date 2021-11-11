@@ -24,7 +24,6 @@
 								<td>Отображение в адресной строке</td>
 								<td>Название</td>
 								<td>Дата создания</td>
-								<td>Время создания</td>
 								<td>Изображение</td>
 								<td>Действия</td>
 							</tr>
@@ -35,8 +34,7 @@
 									<td>{{ $item->id }}</td>
 									<td>{{ $item->slug }}</td>
 									<td>{{ $item->name }}</td>
-									<td>{{ $item->date }}</td>
-									<td>{{ $item->time }}</td>
+									<td>{{ $item->created_at }}</td>
 									<td>
                     <img src="{{ Storage::url($item->image) }}" width="200px" alt="">
                   </td>
