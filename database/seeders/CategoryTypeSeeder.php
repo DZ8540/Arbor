@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\CategoryType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,17 +16,20 @@ class CategoryTypeSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$furniture_type = [
-			'name' => 'Мебельные материалы'
-		];
+    CategoryType::factory()->state([ 'name' => 'Мебельные материалы' ])->has(
+      Category::factory()->count(20)->state(
+        function (array $attributes, CategoryType $category_type) {
+          return ['category_type_id' => $category_type->id];
+        }
+      )
+    )->create();
 
-		$build_type = [
-			'name' => 'Строительные материалы'
-		];
-
-		DB::table('category_types')->insert([
-			$furniture_type,
-			$build_type
-		]);
+    CategoryType::factory()->state([ 'name' => 'Строительные материалы' ])->has(
+      Category::factory()->count(26)->state(
+        function (array $attributes, CategoryType $category_type) {
+          return ['category_type_id' => $category_type->id];
+        }
+      )
+    )->create();
 	}
 }
