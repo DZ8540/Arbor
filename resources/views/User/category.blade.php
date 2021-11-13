@@ -11,269 +11,57 @@
 			<li class="breadcrumb-item active" aria-current="page">ЛДСП</li>
 		</ol>
 	</nav>
-	<h1 class="mb-4">ЛДСП</h1>
+	<h1 class="mb-4">{{ $category->name }}</h1>
 	<div class="row gx-xxl-5">
 
 		<div class="col-lg-3 mb-4">
 			<fieldset class="mb-25 roboto rounded-10 bg-gray-light py-3 py-xl-4 px-4 mb-4">
 				<div class="h5 mb-3">Цвет</div>
 				<div class="colors-wr d-flex flex-wrap flex-xxl-row mb-2">
-					<div class="me-xxl-4">
-						<div class="color-wr mb-2" style="color: #AF4444">
-							<input class="color-input" type="checkbox" name="ha" id="color-1" checked>
-							<div class="color"></div>
-							<label for="color-1">Кирпичный</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #757E38;">
-							<input class="color-input" type="checkbox" name="ha" id="color-2">
-							<div class="color"></div>
-							<label for="color-2">Болотный</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #F0744E;">
-							<input class="color-input" type="checkbox" name="ha" id="color-3">
-							<div class="color"></div>
-							<label for="color-3">Лососёвый</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #FF7F00;">
-							<input class="color-input" type="checkbox" name="ha" id="color-4">
-							<div class="color"></div>
-							<label for="color-4">Оранжевый</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #008001;">
-							<input class="color-input" type="checkbox" name="ha" id="color-5">
-							<div class="color"></div>
-							<label for="color-5">Зелёный</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #8E4FC2;">
-							<input class="color-input" type="checkbox" name="ha" id="color-6">
-							<div class="color"></div>
-							<label for="color-6">Сиреневый</label>
-						</div>
-					</div>
-					<div>
-						<div class="color-wr mb-2" style="color: #721301;">
-							<input class="color-input" type="checkbox" name="ha" id="color-7">
-							<div class="color"></div>
-							<label for="color-7">Бургунди</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #A83D13;">
-							<input class="color-input" type="checkbox" name="ha" id="color-8">
-							<div class="color"></div>
-							<label for="color-8">Оранжевый</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #CE5F3D;">
-							<input class="color-input" type="checkbox" name="ha" id="color-9">
-							<div class="color"></div>
-							<label for="color-9">Лососёвый</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #730000;">
-							<input class="color-input" type="checkbox" name="ha" id="color-10">
-							<div class="color"></div>
-							<label for="color-10">Бургунди</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #A4560E;">
-							<input class="color-input" type="checkbox" name="ha" id="color-11">
-							<div class="color"></div>
-							<label for="color-11">Коричневый</label>
-						</div>
-						<div class="color-wr mb-2" style="color: #785534;">
-							<input class="color-input" type="checkbox" name="ha" id="color-12">
-							<div class="color"></div>
-							<label for="color-12">Коричневый</label>
-						</div>
-					</div>
+
+          @foreach ($colors as $item)
+            <div class="color-wr mb-2" style="color: {{ $item->hex_code }}">
+              <input class="color-input" type="checkbox" name="color_{{ $item->slug }}" id="color-1">
+              <div class="color"></div>
+              <label for="color-1">{{ $item->name }}</label>
+            </div>
+          @endforeach
+					
 				</div>
-				<button class="c-accent dashed p-0">Показать всё</button>
 
 				<div class="h5 mb-3 mt-4">Толщина</div>
 				<div class="d-flex flex-wrap flex-xxl-row">
-					<div class="me-xxl-4">
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-1" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-1">10 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-2" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-2">12 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-3" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-3">16 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-4" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-4">22 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-5" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-5">24 мм</label>
-						</fieldset>
-					</div>
-					<div>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-6" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-6">28 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-7" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-7">30 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-8" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-8">45 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-9" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-9">16 мм</label>
-						</fieldset>
-						<fieldset class="form-check align-items-center mb-3">
-							<input name="category" id="thick-10" type="checkbox" class="form-check-input me-2">
-							<label class="me-4" for="thick-10">16 мм</label>
-						</fieldset>
-					</div>
+          
+          @foreach ($thicknesses as $item)
+            <fieldset class="form-check color-wr align-items-center mb-3">
+              <input name="thickness_{{ $item->slug }}" id="thick-1" type="checkbox" class="form-check-input me-2">
+              <label class="me-4" for="thick-1">{{ $item->name }}</label>
+            </fieldset>
+          @endforeach
+          
 				</div>
-				<button class="c-accent dashed p-0">Показать всё</button>
 			</fieldset>
 
 			<div class="catalogue-sidebar rounded-10">
-				<div class="bg-dark text-white p-3 px-xxl-4 fw-6 fs-5">Мебельные материалы</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ЛДСП</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ХДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">МДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ЛМДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ДВПО</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ЛХДФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Столешницы</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Мебельная фурнитура</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Кромка ПВХ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div class="bg-dark text-white p-3 px-xxl-4 fw-6 fs-5">Строительные материалы</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ФК</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ФСФ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ламинированная</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ДВП</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ОСБ-3</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">ДСП</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Полимерная панель ТИТ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
-				<div
-					class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-					<a class="stretched-link" href="category.html">Фанера ФБВ</a>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</div>
+				
+        @foreach ($category_types as $category_type)
+          @if ($category_type->categories->count())
+            <div class="bg-dark text-white p-3 px-xxl-4 fw-6 fs-5">{{ $category_type->name }}</div>
+
+            @foreach ($category_type->categories as $item)
+              <div
+                class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
+                <a class="stretched-link" href="{{ $item->slug }}">{{ $item->name }}</a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>  
+            @endforeach
+          @endif
+          
+        @endforeach
+
 			</div>
 		</div>
 		<div class="col-lg-9 categ-section">

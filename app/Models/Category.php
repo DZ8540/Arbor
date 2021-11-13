@@ -20,4 +20,8 @@ class Category extends Model
 	public function category_type() {
 		return $this->belongsTo(CategoryType::class);
 	}
+
+  public function products() {
+    return $this->hasMany(Product::class);
+  }
 }

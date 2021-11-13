@@ -668,6 +668,7 @@ legend {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  flex: 50%;
 }
 
 .color-wr label {

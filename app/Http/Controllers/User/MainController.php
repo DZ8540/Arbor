@@ -6,9 +6,9 @@ use App\Http\Controllers\User\BaseController;
 use App\Http\Requests\User\NewsRequest;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\News;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Carbon;
+use App\Models\Thickness;
 use Illuminate\Support\Facades\Storage;
 
 class MainController extends BaseController
@@ -98,9 +98,7 @@ class MainController extends BaseController
   {
 		$columns = ['id', 'name', 'image', 'description', 'views_count', 'created_at'];
 		$news = News::select($columns)->firstWhere('slug', $slug);
-
-    $news->views_count = ++$news->views_count;
-    $news->save();
+    $news->increment('views_count');
 
 		return view('User.news_item', [
 			'about_company' => $this->about_company,
@@ -117,15 +115,22 @@ class MainController extends BaseController
 		]);
 	}
 
-	public function category($slug = null)
+	public function category($slug)
   {
+    $category = Category::firstWhere('slug', $slug);
+    $colors = Color::get();
+    $thicknesses = Thickness::get();
+
 		return view('User.category', [
 			'about_company' => $this->about_company,
-			'category_types' => $this->category_types
+			'category_types' => $this->category_types,
+      'category' => $category,
+      'colors' => $colors,
+      'thicknesses' => $thicknesses
 		]);
 	}
 
-	public function product($category_slug = null, $product_slug = null)
+	public function product($category_slug, $product_slug)
   {
 		return view('User.product', [
 			'about_company' => $this->about_company,
