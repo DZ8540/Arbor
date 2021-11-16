@@ -17,7 +17,7 @@ class CategoryTypeSeeder extends Seeder
 	public function run()
 	{
     CategoryType::factory()->state([ 'name' => 'Мебельные материалы' ])->has(
-      Category::factory()->count(20)->state(
+      Category::factory()->count(8)->state(
         function (array $attributes, CategoryType $category_type) {
           return ['category_type_id' => $category_type->id];
         }
@@ -25,7 +25,7 @@ class CategoryTypeSeeder extends Seeder
     )->create();
 
     CategoryType::factory()->state([ 'name' => 'Строительные материалы' ])->has(
-      Category::factory()->count(26)->state(
+      Category::factory()->count(10)->state(
         function (array $attributes, CategoryType $category_type) {
           return ['category_type_id' => $category_type->id];
         }

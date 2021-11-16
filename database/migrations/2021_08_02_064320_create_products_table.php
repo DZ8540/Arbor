@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
 			$table->string('format');
 			$table->string('article');
 			$table->integer('count')->unsigned()->default(0);
+      $table->bigInteger('views_count')->unsigned()->default(0);
 
 			$table->foreignId('manufacturer_id')->constrained();
 			$table->foreignId('color_id')->constrained();

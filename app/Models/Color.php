@@ -11,7 +11,8 @@ class Color extends Model
 
   protected $fillable = ['slug', 'name', 'hex_code'];
 
-  public function getRouteKeyName() {
+  public function getRouteKeyName() 
+  {
     return 'slug';
   }
 }

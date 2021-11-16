@@ -97,6 +97,7 @@
 
 <input type="hidden" value="{{ route('user.news') }}" id="currentPageLink">
 <input type="hidden" value="{{ $date }}" id="currentDateFromInput">
+<input type="hidden" value="{{ $count }}" id="currentCount">
 @endsection
 
 @section('scripts')

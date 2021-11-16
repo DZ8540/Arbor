@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
    */
   public function run()
   {
-    Product::factory()->count(150)->state(new Sequence(
+    Product::factory()->count(800)->state(new Sequence(
       fn ($sequence) => [
         'manufacturer_id' => Manufacturer::all()->random(),
         'color_id' => Color::all()->random(),

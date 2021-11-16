@@ -21,9 +21,9 @@
 
           @foreach ($colors as $item)
             <div class="color-wr mb-2" style="color: {{ $item->hex_code }}">
-              <input class="color-input" type="checkbox" name="color_{{ $item->slug }}" id="color-1">
+              <input type="checkbox" id="color-{{ $item->slug }}" @if ($item->checked) checked @endif class="color-input Filter" name="color" value="{{ $item->id }}">
               <div class="color"></div>
-              <label for="color-1">{{ $item->name }}</label>
+              <label for="color-{{ $item->slug }}">{{ $item->name }}</label>
             </div>
           @endforeach
 					
@@ -34,8 +34,8 @@
           
           @foreach ($thicknesses as $item)
             <fieldset class="form-check color-wr align-items-center mb-3">
-              <input name="thickness_{{ $item->slug }}" id="thick-1" type="checkbox" class="form-check-input me-2">
-              <label class="me-4" for="thick-1">{{ $item->name }}</label>
+              <input name="thickness" id="thick-{{ $item->slug }}" @if ($item->checked) checked @endif type="checkbox" value="{{ $item->id }}" class="Filter form-check-input me-2">
+              <label class="me-4" for="thick-{{ $item->slug }}">{{ $item->name }}</label>
             </fieldset>
           @endforeach
           
@@ -64,636 +64,83 @@
 
 			</div>
 		</div>
+
 		<div class="col-lg-9 categ-section">
-			<div class="border-bottom fs-5 pb-2 pb-xl-3 mb-4 d-flex flex-column flex-md-row justify-content-between">
-				<div class="sort-items d-flex flex-column flex-sm-row mb-4 mb-md-0">
-					<fieldset class="d-flex align-items-center">
-						<input type="radio" name="sort-items" id="by-popul" checked>
-						<label for="by-popul" class="me-1">По популярности</label>
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round"
-								stroke-linejoin="round" />
-						</svg>
-					</fieldset>
-					<fieldset class="d-flex align-items-center mx-sm-3 mx-lg-4 my-3 my-sm-0">
-						<input type="radio" name="sort-items" id="by-words">
-						<label for="by-words" class="me-1">По алфавиту</label>
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round"
-								stroke-linejoin="round" />
-						</svg>
-					</fieldset>
-					<fieldset class="d-flex align-items-center">
-						<input type="radio" name="sort-items" id="by-price">
-						<label for="by-price" class="me-1">По цене</label>
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round"
-								stroke-linejoin="round" />
-						</svg>
-					</fieldset>
-				</div>
+
+			<form class="border-bottom fs-5 pb-2 pb-xl-3 mb-4 d-flex flex-column flex-md-row justify-content-between" id="sort">
+        <div class="sort-items d-flex flex-column flex-sm-row mb-4 mb-md-0">
+
+          @foreach ($sorts as $item)
+            <fieldset class="d-flex align-items-center">
+              <input type="radio" name="sort-items" id="by-{{ $item['value'] }}" value="{{ $item['value'] }}" @if ($item['value'] == $sort) checked @endif />
+              <label for="by-{{ $item['value'] }}" class="me-1">{{ $item['name'] }}</label>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </fieldset>
+          @endforeach
+          
+        </div>
 				<div class="d-inline-flex">
-					<select name="" id="" class="form-select border-0 w-auto p-0 pe-5">
-						<option value="">Показать по 16</option>
-						<option value="">Показать по 32</option>
-						<option value="">Показать по 48</option>
+					<select name="show_count" id="showCount" class="form-select border-0 w-auto p-0 pe-5" role="button">
+						<option value="16">Показать по 16</option>
+						<option value="32" @if ($show_count == 32) selected @endif>Показать по 32</option>
+						<option value="48" @if ($show_count == 48) selected @endif>Показать по 48</option>
 					</select>
 				</div>
-			</div>
+			</form>
+
 			<div class="me-xxl-5">
-				<div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 g-2 g-xl-4">
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGRng_S13vIw9-8iIpYBZatZiuXrlgXiSrNQ&usqp=CAU"
-								alt="">
-							<div class="card-body d-flex flex-column d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Намбия (R)</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">3505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans p-2 px-3">
-										<span>В корзину</span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top" src="img/images/cart-item.jpeg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top" src="https://st27.stpulscen.ru/images/product/196/711/226_big.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Намбия (R)</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">3505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS77yJd9O4vUjCx2OnYYkke5d7Q6TlnuBUebVsw26jxOfj1QX94UsZy86gun4Uk7C_W4G4&usqp=CAU"
-								alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://rondo-perm.ru/upload/iblock/247/24710ab055295e111a560602e827e279.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Намбия (R)</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">3505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://expo-torg.ru/upload/iblock/6ce/6cee7db109a1c17d39c9080ae671147c.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top" src="https://st24.stpulscen.ru/images/product/220/404/177_big.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGRng_S13vIw9-8iIpYBZatZiuXrlgXiSrNQ&usqp=CAU"
-								alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Намбия (R)</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">3505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top" src="img/images/cart-item.jpeg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top" src="https://st27.stpulscen.ru/images/product/196/711/226_big.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Намбия (R)</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">3505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS77yJd9O4vUjCx2OnYYkke5d7Q6TlnuBUebVsw26jxOfj1QX94UsZy86gun4Uk7C_W4G4&usqp=CAU"
-								alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://rondo-perm.ru/upload/iblock/247/24710ab055295e111a560602e827e279.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Намбия (R)</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">3505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://expo-torg.ru/upload/iblock/6ce/6cee7db109a1c17d39c9080ae671147c.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top" src="https://st24.stpulscen.ru/images/product/220/404/177_big.jpg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top"
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGRng_S13vIw9-8iIpYBZatZiuXrlgXiSrNQ&usqp=CAU"
-								alt="">
-							<div class="card-body d-flex flex-column d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Намбия (R)</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">3505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans p-2 px-3">
-										<span>В корзину</span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="position-relative">
-						<div class="card">
-							<img class="card-img-top" src="img/images/cart-item.jpeg" alt="">
-							<div class="card-body d-flex flex-column p-2 p-xxl-3 text-center">
-								<a href="card.html" class="card-title stretched-link fw-6">ЛДСП Мадейра (А) АРТЕКС</a>
-								<div class="card-subtitle">2750*1830*16</div>
-								<div class="small text-muted text-end my-2">Код: 00-0012345</div>
-								<div class="fw-6 mb-3">12 505 руб./шт</div>
-								<div class="card-hov flex-column justify-content-between mt-auto">
-									<div
-										class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-										<div>
-											<input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
-										</div>
-										<button class="px-0">
-											<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-												<path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
-													stroke-linejoin="round" />
-											</svg>
-										</button>
-									</div>
-									<button class="fs-6 bttn open-sans py-1 px-3">В корзину</button>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 g-2 g-xl-4" id="products">
+
+          @foreach ($products as $item)        
+            <div class="position-relative">
+              <div class="card">
+                <img class="card-img-top"
+                  src="{{ Storage::url($item->image) }}"
+                  alt="{{ $item->name }}">
+                <div class="card-body d-flex flex-column d-flex flex-column p-2 p-xxl-3 text-center">
+                  <a href="{{ route('user.product', [$category->slug, $item->slug]) }}" class="card-title stretched-link fw-6">{{ $item->name }}</a>
+                  <div class="card-subtitle">{{ $item->format }}</div>
+                  <div class="small text-muted text-end my-2">Код: {{ $item->code }}</div>
+                  <div class="fw-6 mb-3">{{ $item->price }} руб./шт</div>
+                  <div class="card-hov flex-column justify-content-between mt-auto">
+                    <div
+                      class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
+                      <button class="px-0">
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </svg>
+                      </button>
+                      <div>
+                        <input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
+                      </div>
+                      <button class="px-0">
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M3.89355 8H13.2269" stroke="black" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </svg>
+                      </button>
+                    </div>
+                    <button class="fs-6 bttn open-sans p-2 px-3">
+                      <span>В корзину</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          @endforeach
+
 				</div>
-				<!-- show more -->
-				<button class="bttn c-accent bg-transparent rounded-10 mt-4 w-100">Показать ещё</button>
-				<!-- pagination -->
-				<nav class="fs-20 fw-5 mt-4 mt-lg-5 roboto" aria-label="Навигация по страницам объявлений аукциона">
-					<ul class="pagination justify-content-center flex-wrap">
-						<li class="page-item disabled">
-							<a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M7 13L1 7L7 1" stroke="#4D2077" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" />
-								</svg>
-							</a>
-						</li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">...</a></li>
-						<li class="page-item"><a class="page-link" href="#">6</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#">
-								<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M1 13L7 7L1 1" stroke="#4D2077" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" />
-								</svg>
-							</a>
-						</li>
-					</ul>
-				</nav>
+
+				<button class="bttn c-accent bg-transparent rounded-10 w-100 mt-4" id="showMore">Показать ещё</button>
+
+        <!-- pagination -->
+        {{ $products->links() }}
 			</div>
 		</div>
 	</div>
@@ -841,4 +288,19 @@
 		</form>
 	</div>
 </section>
+
+<form action="{{ route('user.category', $category->slug) }}" id="form" method="GET">
+  <input type="hidden" name="sort" id="formSort" value="">
+  <input type="hidden" name="show_count" id="formShowCount" value="">
+  <input type="hidden" name="colors" id="formColors" value="{{ $form_colors }}">
+  <input type="hidden" name="thicknesses" id="formThicknesses" value="{{ $form_thicknesses }}">
+</form>
+
+<input type="hidden" value="{{ route('user.category', $category->slug) }}{{ $current_url }}" id="currentPageLink">
+<input type="hidden" value="{{ $show_count }}" id="currentShowCount">
+<input type="hidden" value="{{ $current_page }}" id="currentPage">
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/User/products.js') }}"></script>
 @endsection

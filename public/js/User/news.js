@@ -1,3 +1,4 @@
+// Sorting
 let form = document.querySelector('#newsForm');
 form.onchange = form.submit;
 
@@ -15,7 +16,10 @@ for (let i = 0; i < 3; i++) {
 
   console.log(currentDateFromInput == now);
 }
+// Sorting
 
+// Show more
+let currentCount = document.querySelector('#currentCount').value;
 let currentPageLink = document.querySelector('#currentPageLink').value;
 let page = 1;
 
@@ -26,7 +30,7 @@ let showMore = document.querySelector('#showMore').onclick = () => {
    
 function loadMore(page) {
   $.ajax({
-    url: `${currentPageLink}?page=${page}`,
+    url: `${currentPageLink}?page=${page}&count=${currentCount}`,
     type: 'get',
     datatype: 'html',
     success: (data) => {
@@ -59,14 +63,4 @@ function loadMore(page) {
     }
   });
 }
-
-// !!! Remove this code if it dont need
-// let paginationItems = document.querySelectorAll('[data-id="paginationItems"]');
-
-// let pagination = {
-//   items: paginationItems,
-//   removeItem() {
-    
-//   }
-// };
-// paginationItems[0].parentElement.removeChild(paginationItems[0]);
+// Show more
