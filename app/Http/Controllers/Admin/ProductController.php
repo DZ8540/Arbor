@@ -25,7 +25,7 @@ class ProductController extends BaseController
 	public function index()
 	{
 		$columns = ['id', 'slug', 'name', 'price', 'category_id', 'count', 'image'];
-		$products = Product::select($columns)->get();
+		$products = Product::select($columns)->paginate(20);
 		return view('Admin.Products.index', compact('products'));
 	}
 

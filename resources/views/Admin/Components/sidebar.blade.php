@@ -21,6 +21,8 @@
 		<nav id="left-sidebar-nav" class="sidebar-nav">
 			<ul id="main-menu" class="metismenu">
 				<li class="@if(Route::is('admin.index')) active @endif"><a href="{{ route('admin.index') }}"><i class="lnr lnr-home"></i> <span>Главная</span></a></li>
+
+				<li class="@if(Route::is('admin.news*')) active @endif"><a href="{{ route('admin.news.index') }}"><i class="lnr lnr-flag"></i> <span>Новости</span></a></li>
 				
 				<li class="@if(Route::is('admin.category.types')) active @endif"><a href="{{ route('admin.category.types') }}"><i class="lnr lnr-star"></i> <span>Главные категории</span></a></li>
 
@@ -32,13 +34,11 @@
 
 				<li class="@if(Route::is('admin.thicknesses*')) active @endif"><a href="{{ route('admin.thicknesses.index') }}"><i class="lnr lnr-layers"></i> <span>Толщина</span></a></li>
 
-				<li class="@if(Route::is('admin.about.company*')) active @endif"><a href="{{ route('admin.about.company.index') }}"><i class="lnr lnr-cog"></i> <span>О компании</span></a></li>
-
 				<li class="@if(Route::is('admin.products*')) active @endif"><a href="{{ route('admin.products.index') }}"><i class="lnr lnr-inbox"></i> <span>Товары</span></a></li>
 
 				<li class="@if(Route::is('admin.banners*')) active @endif"><a href="{{ route('admin.banners.index') }}"><i class="lnr lnr-picture"></i> <span>Баннеры на главной</span></a></li>
 
-				<li class="@if(Route::is('admin.news*')) active @endif"><a href="{{ route('admin.news.index') }}"><i class="lnr lnr-flag"></i> <span>Новости</span></a></li>
+				<li class="@if(Route::is('admin.about.company*')) active @endif"><a href="{{ route('admin.about.company.index') }}"><i class="lnr lnr-cog"></i> <span>О компании</span></a></li>
 			</ul>
 		</nav>
 	</div>
