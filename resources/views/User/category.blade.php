@@ -95,7 +95,7 @@
 				<div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 g-2 g-xl-4" id="products">
 
           @foreach ($products as $item)        
-            <div class="position-relative">
+            <div class="position-relative product">
               <div class="card">
                 <img class="card-img-top"
                   src="{{ Storage::url($item->image) }}"
@@ -108,16 +108,16 @@
                   <div class="card-hov flex-column justify-content-between mt-auto">
                     <div
                       class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-                      <button class="px-0">
+                      <button class="px-0 decrement">
                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
                         </svg>
                       </button>
                       <div>
-                        <input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
+                        <input class="bg-transparent border-0 text-center fw-6" type="number" value="1" readonly>
                       </div>
-                      <button class="px-0">
+                      <button class="px-0 increment">
                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
@@ -126,9 +126,13 @@
                         </svg>
                       </button>
                     </div>
-                    <button class="fs-6 bttn open-sans p-2 px-3">
-                      <span>В корзину</span>
-                    </button>
+                    <form action="{{ route('user.cart.add', $item->id) }}" method="POST">
+                      @csrf
+                      <input type="hidden" name="count" value="1">
+                      <button type="submit" class="fs-6 bttn open-sans p-2 px-3">
+                        <span>В корзину</span>
+                      </button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -163,4 +167,5 @@
 
 @section('scripts')
 <script src="{{ asset('js/User/products.js') }}"></script>
+<script src="{{ asset('js/User/cart.js') }}"></script>
 @endsection

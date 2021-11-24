@@ -106,7 +106,7 @@
 				<!-- cart -->
 				<div class="ms-auto d-flex flex-column align-items-center cart-hover bg-white text-center py-2 px-3">
 					<div class="bg-gray-light rounded-circle p-3 position-relative small">
-						<div class="px-1 rounded-circle bg-orange roboto position-absolute end-0 top-0 small mt-2">12</div>
+						<div class="px-1 rounded-circle bg-orange roboto position-absolute end-0 top-0 small mt-2">{{ $cart['total_count'] }}</div>
 						<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<g clip-path="url(#clip0)">
 								<path
@@ -126,174 +126,66 @@
 							</defs>
 						</svg>
 					</div>
-					<a class="stretched-link" href="cart.html">Корзина</a>
+					<a class="stretched-link" href="{{ route('user.cart') }}">Корзина</a>
 				</div>
 				<!-- cart -->
 				<div class="d-none cart-hover-block bg-white position-absolute px-4 py-3 end-0">
-					<div class="border-bottom py-3 d-flex justify-content-between">
-						<!-- img and article -->
-						<div>
-							<img class="rounded-10 mb-1" src="img/images/cart-item.jpeg" alt="" />
-							<div class="c-gray text-secondary small">Код: 00-0012345</div>
-						</div>
-						<div class="d-flex flex-fill mx-3 flex-column">
-							<a href="card.html" class="mb-2">ЛДСП Намбия (R)</a>
-							<span class="mb-3">2750*1830*16</span>
-							<div class="d-flex align-items-center justify-content-between bg-orange rounded-pill px-3"
-								style="width: 104px">
-								<button class="btn p-0">
-									<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M3.33337 8.55188H12.6667" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-								<input class="bg-transparent text-center text-white border-0 roboto fw-5" type="number" name="" id=""
-									value="1" />
-								<button class="btn p-0">
-									<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M8.12048 3.88525V13.2186" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-										<path d="M3.45422 8.55188H12.7876" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-							</div>
-						</div>
-						<!-- delete and price -->
-						<div class="d-flex flex-column align-items-end text-end">
-							<button class="btn p-0">
-								<svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M5.75033 18.4787C5.75033 19.5272 6.61283 20.3851 7.66699 20.3851H15.3337C16.3878 20.3851 17.2503 19.5272 17.2503 18.4787V7.04034H5.75033V18.4787ZM18.2087 4.18074H14.8545L13.8962 3.22754H9.10449L8.14616 4.18074H4.79199V6.08714H18.2087V4.18074Z"
-										fill="#D00B0B" />
-								</svg>
-							</button>
-							<span class="roboto fw-5">3505 руб./шт</span>
-						</div>
-					</div>
-					<div class="border-bottom py-3 d-flex justify-content-between">
-						<!-- img and article -->
-						<div>
-							<img class="rounded-10 mb-1" src="img/images/cart-item.jpeg" alt="" />
-							<div class="c-gray text-secondary small">Код: 00-0012345</div>
-						</div>
-						<div class="d-flex flex-fill mx-3 flex-column">
-							<a href="card.html" class="mb-2">ЛДСП Береза нордик (T)</a>
-							<span class="mb-3">2750*1830*16</span>
-							<div class="d-flex align-items-center justify-content-between bg-orange rounded-pill px-3"
-								style="width: 104px">
-								<button class="btn p-0">
-									<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M3.33337 8.55188H12.6667" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-								<input class="bg-transparent text-center text-white border-0 roboto fw-5" type="number" name="" id=""
-									value="1" />
-								<button class="btn p-0">
-									<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M8.12048 3.88525V13.2186" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-										<path d="M3.45422 8.55188H12.7876" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-							</div>
-						</div>
-						<!-- delete and price -->
-						<div class="d-flex flex-column align-items-end text-end">
-							<button class="btn p-0">
-								<svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M5.75033 18.4787C5.75033 19.5272 6.61283 20.3851 7.66699 20.3851H15.3337C16.3878 20.3851 17.2503 19.5272 17.2503 18.4787V7.04034H5.75033V18.4787ZM18.2087 4.18074H14.8545L13.8962 3.22754H9.10449L8.14616 4.18074H4.79199V6.08714H18.2087V4.18074Z"
-										fill="#D00B0B" />
-								</svg>
-							</button>
-							<span class="roboto fw-5">12 505 <span class="text-nowrap">руб./шт</span></span>
-						</div>
-					</div>
-					<div class="border-bottom py-3 d-flex justify-content-between">
-						<!-- img and article -->
-						<div>
-							<img class="rounded-10 mb-1" src="img/images/cart-item.jpeg" alt="" />
-							<div class="c-gray text-secondary small">Код: 00-0012345</div>
-						</div>
-						<div class="d-flex flex-fill mx-3 flex-column">
-							<a href="card.html" class="mb-2">ЛДСП Намбия (R)</a>
-							<span class="mb-3">2750*1830*16</span>
-							<div class="d-flex align-items-center justify-content-between bg-orange rounded-pill px-3"
-								style="width: 104px">
-								<button class="btn p-0">
-									<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M3.33337 8.55188H12.6667" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-								<input class="bg-transparent text-center text-white border-0 roboto fw-5" type="number" name="" id=""
-									value="1" />
-								<button class="btn p-0">
-									<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M8.12048 3.88525V13.2186" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-										<path d="M3.45422 8.55188H12.7876" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-							</div>
-						</div>
-						<!-- delete and price -->
-						<div class="d-flex flex-column align-items-end text-end">
-							<button class="btn p-0">
-								<svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M5.75033 18.4787C5.75033 19.5272 6.61283 20.3851 7.66699 20.3851H15.3337C16.3878 20.3851 17.2503 19.5272 17.2503 18.4787V7.04034H5.75033V18.4787ZM18.2087 4.18074H14.8545L13.8962 3.22754H9.10449L8.14616 4.18074H4.79199V6.08714H18.2087V4.18074Z"
-										fill="#D00B0B" />
-								</svg>
-							</button>
-							<span class="roboto fw-5">22 505 руб./шт</span>
-						</div>
-					</div>
-					<div class="border-bottom py-3 d-flex justify-content-between">
-						<!-- img and article -->
-						<div>
-							<img class="rounded-10 mb-1" src="img/images/cart-item.jpeg" alt="" />
-							<div class="c-gray text-secondary small">Код: 00-0012345</div>
-						</div>
-						<div class="d-flex flex-fill mx-3 flex-column">
-							<a href="card.html" class="mb-2">ЛДСП Береза нордик (T)</a>
-							<span class="mb-3">2750*1830*16</span>
-							<div class="d-flex align-items-center justify-content-between bg-orange rounded-pill px-3"
-								style="width: 104px">
-								<button class="btn p-0">
-									<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M3.33337 8.55188H12.6667" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-								<input class="bg-transparent text-center text-white border-0 roboto fw-5" type="number" name="" id=""
-									value="1" />
-								<button class="btn p-0">
-									<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M8.12048 3.88525V13.2186" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-										<path d="M3.45422 8.55188H12.7876" stroke="white" stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round" />
-									</svg>
-								</button>
-							</div>
-						</div>
-						<!-- delete and price -->
-						<div class="d-flex flex-column align-items-end text-end">
-							<button class="btn p-0">
-								<svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M5.75033 18.4787C5.75033 19.5272 6.61283 20.3851 7.66699 20.3851H15.3337C16.3878 20.3851 17.2503 19.5272 17.2503 18.4787V7.04034H5.75033V18.4787ZM18.2087 4.18074H14.8545L13.8962 3.22754H9.10449L8.14616 4.18074H4.79199V6.08714H18.2087V4.18074Z"
-										fill="#D00B0B" />
-								</svg>
-							</button>
-							<span class="roboto fw-5">3505 руб./шт</span>
-						</div>
-					</div>
+					
+          @foreach ($cart['products'] as $item)
+            <div class="border-bottom py-3 d-flex justify-content-between">
+              <!-- img and article -->
+              <div>
+                <img class="rounded-10 mb-1" src="{{ Storage::url($item->image) }}" alt="" />
+                <div class="c-gray text-secondary small">Код: {{ $item->code }}</div>
+              </div>
+              <div class="d-flex flex-fill mx-3 flex-column">
+                <a href="card.html" class="mb-2">{{ $item->name }}</a>
+                <span class="mb-3">{{ $item->format }}</span>
+                <div class="d-flex align-items-center justify-content-between bg-orange rounded-pill px-3"
+                  style="width: 104px">
+                  <form action="{{ route('user.cart.remove', $item->id) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit" class="btn p-0">
+                      <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.33337 8.55188H12.6667" stroke="white" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </button>
+                  </form>
+                  <input class="bg-transparent text-center text-white border-0 roboto fw-5" type="number" name="" id=""
+                    value="{{ $item['cart_count'] }}" />
+                  <form action="{{ route('user.cart.add', $item->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn p-0">
+                      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.12048 3.88525V13.2186" stroke="white" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M3.45422 8.55188H12.7876" stroke="white" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <!-- delete and price -->
+              <div class="d-flex flex-column align-items-end text-end">
+                <form action="{{ route('user.cart.delete', $item->id) }}" method="POST" class="delete mt-3 mt-md-0 d-flex justify-content-xl-center">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn p-0">
+                    <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5.75033 18.4787C5.75033 19.5272 6.61283 20.3851 7.66699 20.3851H15.3337C16.3878 20.3851 17.2503 19.5272 17.2503 18.4787V7.04034H5.75033V18.4787ZM18.2087 4.18074H14.8545L13.8962 3.22754H9.10449L8.14616 4.18074H4.79199V6.08714H18.2087V4.18074Z"
+                        fill="#D00B0B" />
+                    </svg>
+                  </button>
+                </form>
+                <span class="roboto fw-5">{{ $item->price }} руб./шт</span>
+              </div>
+            </div>  
+          @endforeach
+					
 				</div>
 			</div>
 		</div>

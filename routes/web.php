@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\AboutCompanyController;
 use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\BannersAdditionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
@@ -10,7 +9,10 @@ use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ThicknessController;
+use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\MainController as UserMainController;
+use App\Http\Controllers\User\NewsController as UserNewsController;
+use App\Http\Controllers\User\ProductController as UserProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,17 +45,17 @@ Route::name('user.')->group(function () {
 
 	Route::get('/services', [UserMainController::class, 'services'])->name('services');
 
-	Route::get('/news', [UserMainController::class, 'news'])->name('news');
+	Route::get('/news', [UserNewsController::class, 'news'])->name('news');
+	Route::get('/news/{slug}', [UserNewsController::class, 'news_item'])->name('news.item');
 
-	Route::get('/news/{slug}', [UserMainController::class, 'news_item'])->name('news.item');
+	Route::get('/catalog', [UserProductController::class, 'catalog'])->name('catalog');
+	Route::get('/catalog/{slug}', [UserProductController::class, 'category'])->name('category');
+	Route::get('/catalog/{category_slug}/{product_slug}', [UserProductController::class, 'product'])->name('product');
 
-	Route::get('/catalog', [UserMainController::class, 'catalog'])->name('catalog');
-
-	Route::get('/catalog/{slug}', [UserMainController::class, 'category'])->name('category');
-
-	Route::get('/catalog/{category_slug}/{product_slug}', [UserMainController::class, 'product'])->name('product');
-
-	Route::get('/cart', [UserMainController::class, 'cart'])->name('cart');
+	Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+  Route::post('/cart/{id}', [CartController::class, 'add_to_cart'])->name('cart.add');
+  Route::patch('/cart/{id}', [CartController::class, 'remove_from_cart'])->name('cart.remove');
+  Route::delete('/cart/{id}', [CartController::class, 'delete_from_cart'])->name('cart.delete');
 
 	Route::get('/order', [UserMainController::class, 'order'])->name('order');
 });

@@ -60,6 +60,7 @@
 
 			<div class="mb-4">
 				<h4 class="mb-3">Полное описание</h4>
+				{{-- <div>{{ dd($cart) }}</div> --}}
 				<div>{{ $product->description }}</div>
 			</div>
 			<div class="mb-4">
@@ -221,7 +222,10 @@
 				</div>
 				<div class="d-flex flex wrap justify-content-between align-items-center px-3 px-xl-4 px-xxl-5 mt-2 mt-xxl-4">
 					<div class="h4 fw-6 mb-3">{{ $product->price }} руб./шт</div>
-					<a href="cart.html" class="bttn py-3 mb-3">В корзину</a>
+          <form action="{{ route('user.cart.add', $product->id) }}" method="POST">
+            @csrf
+					  <button type="submit" class="bttn py-3 mb-3">В корзину</button>
+          </form>
 				</div>
 			</div>
 		</div>
@@ -232,7 +236,7 @@
 		<div class="row row-cols-2 row-cols-lg-4 row-cols-xxl-6 g-2 g-xl-4 me-xxl-5">
 
       @foreach ($other as $item)
-        <div class="position-relative">
+        <div class="position-relative product">
           <div class="card">
             <img class="card-img-top"
               src="{{ Storage::url($item->image) }}"
@@ -245,16 +249,16 @@
               <div class="card-hov flex-column justify-content-between mt-auto">
                 <div
                   class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
-                  <button class="px-0">
+                  <button class="px-0 decrement">
                     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.77246 8H13.1058" stroke="black" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
                     </svg>
                   </button>
                   <div>
-                    <input class="bg-transparent border-0 text-center fw-6" type="number" value="1">
+                    <input class="bg-transparent border-0 text-center fw-6" type="number" value="1" readonly>
                   </div>
-                  <button class="px-0">
+                  <button class="px-0 increment">
                     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M8.56055 3.33337V12.6667" stroke="black" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -263,9 +267,13 @@
                     </svg>
                   </button>
                 </div>
-                <button class="fs-6 bttn open-sans p-2 px-3">
-                  <span>В корзину</span>
-                </button>
+                <form action="{{ route('user.cart.add', $item->id) }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="count" value="1">
+                  <button type="submit" class="fs-6 bttn open-sans p-2 px-3">
+                    <span>В корзину</span>
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -279,4 +287,8 @@
 
 <!-- CTA FORM -->
 @include('User.Components.cta_form')
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/User/cart.js') }}"></script>
 @endsection
