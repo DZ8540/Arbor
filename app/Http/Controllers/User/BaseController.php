@@ -20,7 +20,7 @@ class BaseController extends Controller
 			'work_end',
 			'email',
 			'phone',
-			'logo',
+			'image',
 			'description',
 			'facebook',
 			'vk',

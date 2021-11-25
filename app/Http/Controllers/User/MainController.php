@@ -21,7 +21,7 @@ class MainController extends CartController
 		$news = News::select($news_columns)->take($news_count)->get();
 
     $categories_columns = ['slug', 'name', 'image'];
-		$categories = Category::select($categories_columns)->take(8)->toBase()->get();
+		$categories = Category::select($categories_columns)->inRandomOrder()->take(4)->toBase()->get();
 
 		return view('User.index', [
 			'about_company' => $this->about_company,

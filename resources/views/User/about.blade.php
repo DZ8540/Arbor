@@ -13,6 +13,8 @@
 </div>
 
 <div class="about-bg d-flex">
+  <img src="{{ $about_company->image ? Storage::url($about_company->image) : asset('img/images/about.jpg') }}" class="about-bg__image" alt="">
+
 	<div class="offset-lg-6 py-5 px-3 px-xl-5 text-md-center d-flex flex-column justify-content-center position-relative">
 		<h1 class="mb-3 mb-xl-4">О компании АРБОР</h1>
 		<p>Торговая Компания «АРБОР» уже более 10 лет является одним из крупнейших поставщиков материалов и комплектующих

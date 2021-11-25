@@ -39,7 +39,7 @@ class NewsController extends CartController
 
     $news = $news->paginate($count);
 
-		return view('User.news', [
+		return view('User.News.news', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
       'cart' => $this->get_products_from_cart(),
@@ -56,7 +56,7 @@ class NewsController extends CartController
 		$news = News::select($columns)->firstWhere('slug', $slug);
     $news->increment('views_count');
 
-		return view('User.news_item', [
+		return view('User.News.news_item', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
       'cart' => $this->get_products_from_cart(),

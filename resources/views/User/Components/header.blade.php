@@ -68,7 +68,7 @@
 		<div class="container d-flex align-items-center pt-2">
 			<!-- logo -->
 			<a href="{{ route('user.index') }}">
-				<img src="{{ $about_company->logo ? Storage::url($about_company->logo) : asset('img/images/logo.svg') }}" alt="{{ $about_company->name }}" height="71" width="85" />
+				<img src="{{ asset('img/images/logo.svg') }}" alt="{{ $about_company->name }}" height="71" width="85" />
 			</a>
 
 			<!-- catalogue -->
@@ -139,7 +139,7 @@
                 <div class="c-gray text-secondary small">Код: {{ $item->code }}</div>
               </div>
               <div class="d-flex flex-fill mx-3 flex-column">
-                <a href="card.html" class="mb-2">{{ $item->name }}</a>
+                <a href="{{ route('user.product', [$item->category->slug, $item->slug]) }}" class="mb-2">{{ $item->name }}</a>
                 <span class="mb-3">{{ $item->format }}</span>
                 <div class="d-flex align-items-center justify-content-between bg-orange rounded-pill px-3"
                   style="width: 104px">

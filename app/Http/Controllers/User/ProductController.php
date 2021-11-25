@@ -13,7 +13,7 @@ class ProductController extends CartController
 {
   public function catalog()
   {
-		return view('User.catalog', [
+		return view('User.Product.catalog', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
       'cart' => $this->get_products_from_cart()
@@ -124,7 +124,7 @@ class ProductController extends CartController
     if ($request->has('page'))
       $current_page = $request->page;
 
-		return view('User.category', [
+		return view('User.Product.category', [
       'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
       'cart' => $this->get_products_from_cart(),
@@ -146,7 +146,7 @@ class ProductController extends CartController
   {
     $other = $category_slug->products->random(6);
 
-		return view('User.product', [
+		return view('User.Product.product', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
       'cart' => $this->get_products_from_cart(),

@@ -19,7 +19,7 @@ class AboutCompany extends Model
     'work_end',
     'email',
     'phone',
-    'logo',
+    'image',
     'address',
     'vk',
     'facebook',

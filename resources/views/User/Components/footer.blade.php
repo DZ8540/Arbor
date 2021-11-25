@@ -4,7 +4,7 @@
 			<!-- copyright -->
 			<div class="col-lg-3 d-flex flex-column">
 				<a href="{{ route('user.index') }}">
-					<img src="{{ $about_company->logo ? Storage::url($about_company->logo) : asset('img/images/logo.svg') }}" width="139" height="117" alt="" />
+					<img src="{{ asset('img/images/logo.svg') }}" width="139" height="117" alt="" />
 				</a>
 				<span class="fs-5 mt-3 mb-2">@ 2021 АРБОР</span>
 				<a href="" target="_blank" rel="noopener noreferrer" class="fs-5 c-accent">Политика конфиденциальности</a>

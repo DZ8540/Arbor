@@ -5,7 +5,7 @@
 /vendor
 /.history
 /.vscode
-.mwb.bak
+*.mwb.bak
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml

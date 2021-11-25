@@ -397,13 +397,19 @@ legend {
 }
 
 .about-bg {
+  position: relative;
   min-height: 28vw;
-  background: url("../img/images/about.jpg") no-repeat center;
-  background-size: cover;
 }
 
 .about-bg .offset-lg-6 {
   background: rgba(244, 244, 244, 0.6);
+}
+
+.about-bg__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about-bg .offset-lg-6::after {

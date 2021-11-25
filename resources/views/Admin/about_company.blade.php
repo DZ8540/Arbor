@@ -65,14 +65,14 @@
 						</div>
 
             <div class="form-group">
-							<label for="image" class="control-label">Логотип</label>
+							<label for="image" class="control-label">Фото о компании</label>
 							<br>
-							<img src="{{ $about->logo ? Storage::url($about->logo) : asset('img/fallback-image.jpg') }}" id="imagePreview" alt="" width="200px">
+							<img src="{{ $about->image ? Storage::url($about->image) : asset('img/fallback-image.jpg') }}" id="imagePreview" alt="" width="200px">
 							<br>
 							<br>
-							<input type="file" class="btn btn-primary" id="image" name="logo">
+							<input type="file" class="btn btn-primary" id="image" name="image">
 
-							@error('logo')
+							@error('image')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
 									<li class="parsley-required">{{ $message }}</li>
 								</ul>

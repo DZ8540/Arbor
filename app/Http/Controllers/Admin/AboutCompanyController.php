@@ -18,7 +18,7 @@ class AboutCompanyController extends BaseController
       'work_end',
       'email',
       'phone',
-      'logo',
+      'image',
       'address',
       'vk',
       'facebook',
@@ -33,10 +33,10 @@ class AboutCompanyController extends BaseController
   {
     $params = $request->all();
 
-    if ($request->has('logo')) {
-      Storage::delete($about->first()->logo);
-      $path = $request->file('logo')->store('public/About');
-      $params['logo'] = $path;
+    if ($request->has('image')) {
+      Storage::delete($about->first()->image);
+      $path = $request->file('image')->store('public/About');
+      $params['image'] = $path;
     }
 
     $about->first()->update($params);

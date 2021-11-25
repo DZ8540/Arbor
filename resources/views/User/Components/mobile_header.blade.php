@@ -9,7 +9,7 @@
 	</button>
 	<!-- logo -->
 	<a href="index.html" class="ms-2 me-auto">
-		<img src="img/images/logo.svg" width="41" height="34" alt="" />
+		<img src="{{ asset('img/images/logo.svg') }}" width="41" height="34" alt="" />
 	</a>
 	<!-- tel -->
 	<a href="tel:+7(917)234-56-78">
