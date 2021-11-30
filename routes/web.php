@@ -57,6 +57,10 @@ Route::name('user.')->group(function () {
   Route::patch('/cart/{id}', [CartController::class, 'remove_from_cart'])->name('cart.remove');
   Route::delete('/cart/{id}', [CartController::class, 'delete_from_cart'])->name('cart.delete');
 
+  Route::post('/cart/service/{id}', [CartController::class, 'add_service'])->name('cart.service.add');
+  Route::patch('/cart/service/{id}', [CartController::class, 'remove_service'])->name('cart.service.remove');
+  Route::delete('/cart/service/{id}', [CartController::class, 'delete_service'])->name('cart.service.delete');
+
 	Route::get('/order', [UserMainController::class, 'order'])->name('order');
 });
 

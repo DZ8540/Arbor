@@ -28,9 +28,3 @@ function changeFieldset(val, name, formId) {
         }
     });
 }
-
-/* adding new inputs */
-function addInput(elem) {
-    let cloneInput = elem.previousElementSibling.cloneNode(true);
-    elem.after(cloneInput);
-}

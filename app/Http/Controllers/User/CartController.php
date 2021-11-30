@@ -21,8 +21,9 @@ class CartController extends BaseController
 
   public function add_to_cart(Request $request, $product)
   {
+    $services = json_decode($request->input('services_sides', "[]"));
     $count = $request->input('count', 1);
-    $this->store_cart($product, $count);
+    $this->store_cart($product, $count, $services);
 
     return redirect()->back();
   }
@@ -40,6 +41,57 @@ class CartController extends BaseController
     $cart = $this->clear_cart($product);
     return redirect()->back();
   }
+
+  public function add_service(Request $request, $service)
+  {
+    $cart = $this->get_cart();
+    $product = $request->input('product', null);
+    if (empty($product))
+      return redirect()->back();
+
+    foreach ($cart[$product]['services'] as $item) {
+      if ($item->id == $service) {
+        ++$item->count;
+      }
+    }
+
+    session(['cart' => $cart]);
+    return redirect()->back();
+  }
+
+  public function remove_service(Request $request, $service)
+  {
+    $cart = $this->get_cart();
+    $product = $request->input('product', null);
+    if (empty($product))
+      return redirect()->back();
+
+    foreach ($cart[$product]['services'] as $item) {
+      if ($item->id == $service && $item->count > 1) {
+        --$item->count;
+      }
+    }
+
+    session(['cart' => $cart]);
+    return redirect()->back();
+  }
+
+  public function delete_service(Request $request, $service)
+  {
+    $cart = $this->get_cart();
+    $product = $request->input('product', null);
+    if (empty($product))
+      return redirect()->back();
+
+    foreach ($cart[$product]['services'] as $key => $item) {
+      if ($item->id == $service) {
+        unset($cart[$product]['services'][$key]);
+      }
+    }
+
+    session(['cart' => $cart]);
+    return redirect()->back();
+  }
   // For pages
 
   // Logic
@@ -51,17 +103,22 @@ class CartController extends BaseController
     return $cart;
   }
 
-  protected function store_cart($product, $count)
+  protected function store_cart($product, $count, $services)
   {
     $cart = $this->get_cart();
 
     $candidate_index = $this->getKeyFromCart($cart, $product);
     if ($candidate_index !== null) {
       $cart[$candidate_index]['count'] += $count;
+      
+      foreach ($services as $item) {
+        $cart[$candidate_index]['services'][] = $item;
+      }
     } else {
       $cart[] = [
         'id' => $product,
-        'count' => $count
+        'count' => $count,
+        'services' => $services
       ];
     }
 
@@ -113,6 +170,7 @@ class CartController extends BaseController
     foreach ($session_cart as $item) {
       $product = Product::find($item['id']);
       $product->cart_count = $item['count'];
+      $product->services = $item['services'];
       $cart['products'][] = $product;
       $total_price += $product->price * $item['count'];
       $total_count += $item['count'];
