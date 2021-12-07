@@ -11,7 +11,7 @@
 		</ol>
 	</nav>
 	<h1 class="mb-5">Оформление заказа</h1>
-	<form class="row justify-content-between align-items-start position-relative" id="order-form">
+	<form class="row justify-content-between align-items-start position-relative" id="order-form" action="{{ route('user.order.add') }}" method="POST">
 		<!-- left -->
 		<div class="col-xl-6">
 			<!-- PAYER TYPE -->
@@ -35,19 +35,24 @@
 						</svg>
 						<span>Тип плательщика</span>
 					</div>
+         
 					<fieldset class="form-check mb-3">
-						<input type="radio" name="payer" value="individ" id="individual" class="form-check-input"
-							onchange="changeFieldset(this.value, this.getAttribute('name'), this.closest('form').id)" checked>
+						<input type="radio" name="payer_type" value="0" id="individual" class="form-check-input"
+							onchange="changeFieldset(this.id, this.getAttribute('name'), this.closest('form').id)">
 						<label for="individual">Физическое лицо</label>
 					</fieldset>
 					<fieldset class="form-check">
-						<input type="radio" name="payer" value="ent" id="entity" class="form-check-input"
-							onchange="changeFieldset(this.value, this.getAttribute('name'), this.closest('form').id)">
+						<input type="radio" name="payer_type" value="1" id="entity" class="form-check-input"
+							onchange="changeFieldset(this.id, this.getAttribute('name'), this.closest('form').id)">
 						<label for="entity">Юридическое лицо</label>
+
+            @error('payer_type')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 				</div>
 				<!-- individual payer -->
-				<fieldset class="mb-4 payer" id="individ">
+				<fieldset class="mb-4 payer_type" id="individual">
 					<div class="h4 mb-4 d-flex align-items-center">
 						<svg class="me-3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -61,30 +66,55 @@
 					</div>
 					<fieldset class="mb-4">
 						<label for="user-name" class="mb-1 required">Имя</label>
-						<input id="user-name" type="text" class="form-control" required>
+						<input id="user-name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+
+            @error('name')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="user-email" class="mb-1 required">E-mail</label>
-						<input id="user-email" type="email" class="form-control" required>
+						<input id="user-email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+            @error('email')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="user-tel" class="mb-1 required">Телефон</label>
-						<input id="user-tel" type="tel" class="form-control" required>
+						<input id="user-tel" type="tel" class="form-control" name="phone" value="{{ old('phone') }}" required>
+
+            @error('phone')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="user-comment" class="mb-1">Комментарий к заказу</label>
-						<textarea id="user-comment" cols="30" rows="3" class="form-control"></textarea>
+						<textarea id="user-comment" name="comment" cols="30" value="{{ old('comment') }}" rows="3" class="form-control"></textarea>
+
+            @error('comment')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 				</fieldset>
 				<!-- entity payer -->
-				<fieldset class="mb-4 payer d-none" id="ent">
+				<fieldset class="mb-4 payer_type d-none" id="entity">
 					<fieldset class="mb-4">
 						<label for="location" class="mb-1 required">Местоположение</label>
-						<input id="location" type="text" class="form-control" required>
+						<input id="location" type="text" name="location" class="form-control" value="{{ old('location') }}" required>
+
+            @error('location')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="Index" class="mb-1 required">Индекс</label>
-						<input id="Index" type="text" class="form-control" required>
+						<input id="Index" type="number" name="index" class="form-control" value="{{ old('index') }}" required>
+
+
+            @error('index')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<div class="h4 mb-4 d-flex align-items-center">
 						<svg class="me-3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,35 +129,67 @@
 					</div>
 					<fieldset class="mb-4">
 						<label for="company-name" class="mb-1 required">Название компании</label>
-						<input id="company-name" type="text" class="form-control" required>
+						<input id="company-name" type="text" name="company_name" class="form-control" name="{{ old('company_name') }}" required>
+
+            @error('company_name')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="legal-address" class="mb-1 required">Юридический адрес</label>
-						<input id="legal-address" type="text" class="form-control" required>
+						<input id="legal-address" type="text" name="address" class="form-control" name="{{ old('address') }}" required>
+
+            @error('address')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="inn" class="mb-1 required" title="Идентификационный номер налогоплательщика">ИНН</label>
-						<input id="inn" type="text" class="form-control" required>
+						<input id="inn" type="number" name="individual_tax_number" class="form-control" name="{{ old('individual_tax_number') }}" required>
+
+            @error('individual_tax_number')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="kpp" class="mb-1 required" title="КПП — это набор цифр, дополняющий ИНН">КПП</label>
-						<input id="kpp" type="text" class="form-control" required>
+						<input id="kpp" type="number" name="reason_code" class="form-control" name="{{ old('reason_code') }}" required>
+
+            @error('reason_code')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="contact" class="mb-1 required">Контактное лицо</label>
-						<input id="contact" type="text" class="form-control" required>
+						<input id="contact" type="text" name="name" class="form-control" name="{{ old('name') }}" required>
+
+            @error('name')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
-						<label for="email" class="mb-1 required">E-mai</label>
-						<input id="email" type="email" class="form-control" required>
+						<label for="email" class="mb-1 required">E-mail</label>
+						<input id="email" type="email" name="email" class="form-control" name="{{ old('email') }}" required>
+
+            @error('email')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="tel" class="mb-1 required">Телефон</label>
-						<input id="tel" type="tel" class="form-control" required>
+						<input id="tel" type="tel" name="phone" class="form-control" name="{{ old('phone') }}" required>
+
+            @error('phone')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="comment" class="mb-1">Комментарий к заказу</label>
-						<textarea name="" id="comment" cols="30" rows="3" class="form-control"></textarea>
+						<textarea name="comment" id="comment" cols="30" rows="3" name="{{ old('comment') }}" class="form-control"></textarea>
+
+            @error('comment')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 				</fieldset>
 			</div>
@@ -151,29 +213,43 @@
 						<span>Доставка</span>
 					</div>
 					<fieldset class="form-check mb-3">
-						<input type="radio" name="delivery" value="cour" id="courier" class="form-check-input"
-							onchange="changeFieldset(this.value, this.getAttribute('name'), this.closest('form').id)" checked>
+						<input type="radio" name="delivery_type" value="courier" id="courier" class="form-check-input"
+							onchange="changeFieldset(this.value, 'delivery', this.closest('form').id)" checked>
 						<label for="courier">Доставка курьером</label>
+
+            @csrf
 					</fieldset>
 					<fieldset class="form-check">
-						<input type="radio" name="delivery" value="pick" id="pickup" class="form-check-input"
-							onchange="changeFieldset(this.value, this.getAttribute('name'), this.closest('form').id)">
+						<input type="radio" name="delivery_type" value="pickup" id="pickup" class="form-check-input"
+							onchange="changeFieldset(this.value, 'delivery', this.closest('form').id)">
 						<label for="pickup">Самовывоз</label>
+
+            @error('delivery_type')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 				</div>
 				<!-- courier -->
-				<fieldset class="delivery" id="cour">
+				<fieldset class="delivery" id="courier">
 					<fieldset class="mb-4">
 						<label for="address" class="mb-1 required">Адрес доставки</label>
-						<input id="address" type="text" class="form-control" required>
+						<input id="address" type="text" name="delivery_address" value="{{ old('delivery_address') }}" class="form-control" required>
+            
+            @error('delivery_address')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="mb-4">
 						<label for="deliv-comment" class="mb-1">Комментарий к доставке</label>
-						<textarea name="" id="deliv-comment" cols="30" rows="3" class="form-control"></textarea>
+						<textarea name="delivery_comment" id="deliv-comment" value="{{ old('delivery_comment') }}" cols="30" rows="3" class="form-control"></textarea>
+            
+            @error('delivery_comment')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 				</fieldset>
 				<!-- pickup -->
-				<fieldset class="delivery d-none mb-4" id="pick">
+				<fieldset class="delivery d-none mb-4" id="pickup">
 					<div class="d-flex flex-wrap rounded-10 bg-gray-light p-3 fs-5 mb-4">
 						<span class="me-4">Мы находимся по адресу:</span>
 						<span class="fw-6">ул. Улица, д.35</span>
@@ -197,16 +273,28 @@
 						<span>Тип оплаты</span>
 					</div>
 					<fieldset class="form-check mb-3">
-						<input type="radio" name="payment-type" id="bank-card" class="form-check-input" checked>
+						<input type="radio" name="pay_type" id="bank-card" value="card" class="form-check-input" checked>
 						<label for="bank-card">Банковская карта</label>
+
+            @error('pay_type')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="form-check mb-3">
-						<input type="radio" name="payment-type" id="qr-code" class="form-check-input">
+						<input type="radio" name="pay_type" id="qr-code" value="qr" class="form-check-input">
 						<label for="qr-code">По QR-коду</label>
+
+            @error('pay_type')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 					<fieldset class="form-check">
-						<input type="radio" name="payment-type" id="cash-money" class="form-check-input">
+						<input type="radio" name="pay_type" id="cash-money" value="money" class="form-check-input">
 						<label for="cash-money">При получении</label>
+
+            @error('pay_type')
+              <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
 					</fieldset>
 				</div>
 				<div></div>
@@ -217,12 +305,12 @@
 			<div class="shopping-sidebar pb-4 fw-6 rounded-10">
 				<div class="border-bottom d-flex justify-content-between p-3 pt-4 px-xl-4">
 					<div class="h4 mb-0">Ваш заказ</div>
-					<a href="cart.html" class="c-accent">Изменить</a>
+					<a href="{{ route('user.cart') }}" class="c-accent">Изменить</a>
 				</div>
 				<div class="p-3 px-xl-4 border-bottom">
 					<div class="d-flex justify-content-between mb-2 mb-lg-3">
-						<div class="fw-normal">Товары, 3 шт.</div>
-						<div>10515 ₽</div>
+						<div class="fw-normal">Товары, {{ $cart['total_count'] }} шт.</div>
+						<div>{{ $cart['total_price'] }} ₽</div>
 					</div>
 					<!-- если выбран самовывоз -->
 					<div class="d-flex justify-content-between mb-2 mb-lg-3">
@@ -232,53 +320,47 @@
 				</div>
 				<div class="d-flex p-3 px-xl-4 justify-content-between h4 mb-0">
 					<div>Итого</div>
-					<div>10515 ₽</div>
+					<div>{{ $cart['total_price'] }} ₽</div>
 				</div>
 				<!-- Выбранные услуги -->
 				<div>
-					<div class="h4 mb-3 px-3 px-xl-4">Выбранные услуги</div>
-					<div class="border-top p-3 px-xl-4">
-						<div class="d-flex justify-content-between mb-4">
-							<div>1 ДЕТАЛЬ</div>
-							<div>х 12 шт.</div>
-						</div>
-						<div class="d-flex justify-content-between mb-4">
-							<div class="fw-normal">Распиловка</div>
-							<div>
-								<div class="mb-1">a. 17 мм</div>
-								<div class="mb-1">b. 20 мм</div>
-								<div class="mb-1">c. 20 мм</div>
-								<div>d. 17 мм</div>
-							</div>
-						</div>
-						<div class="d-flex justify-content-between">
-							<div class="fw-normal">Кромление</div>
-							<div>
-								<div>Стороны: a, b, c, d</div>
-							</div>
-						</div>
-					</div>
-					<div class="border-top p-3 px-xl-4">
-						<div class="d-flex justify-content-between mb-4">
-							<div>2 ДЕТАЛЬ</div>
-							<div>х 5 шт.</div>
-						</div>
-						<div class="d-flex justify-content-between mb-4">
-							<div class="fw-normal">Распиловка</div>
-							<div>
-								<div class="mb-1">a. 17 мм</div>
-								<div class="mb-1">b. 20 мм</div>
-								<div class="mb-1">c. 20 мм</div>
-								<div>d. 17 мм</div>
-							</div>
-						</div>
-						<div class="d-flex justify-content-between">
-							<div class="fw-normal">Кромление</div>
-							<div>
-								<div>Стороны: a, b, c, d</div>
-							</div>
-						</div>
-					</div>
+					<div class="h4 mb-3 px-3 px-xl-4">Выбранные товары</div>
+					
+					@foreach ($cart['products'] as $item)
+            <div class="border-top p-3 px-xl-4">
+              <div class="d-flex justify-content-between mb-4">
+                <div>{{ $item->name }}</div>
+                <div>х {{ $item->cart_count }} шт.</div>
+              </div>
+
+              @if (!empty($item->services))
+                @foreach ($item->services as $service)
+                  <div class="d-flex justify-content-between mb-4 border-bottom">
+                    <div>Услуги товара</div>
+                    <div>х {{ $service->count }}</div>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <div class="fw-normal">Распиловка</div>
+                    <div>
+                      <div class="mb-1">a. {{ $service->sides->sideA }} мм</div>
+                      <div class="mb-1">b. {{ $service->sides->sideB }} мм</div>
+                      <div class="mb-1">c. {{ $service->sides->sideC }} мм</div>
+                      <div>d. {{ $service->sides->sideD }} мм</div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div class="fw-normal">Кромление</div>
+                    <div>
+                      <div>Стороны: a, b, c, d</div>
+                    </div>
+                  </div>
+                @endforeach
+              @endif
+
+            </div>
+          @endforeach
+
 					<!-- если выбрана доставка -->
 					<div class="border-top p-3 px-xl-4">
 						<div class="d-flex justify-content-between">
@@ -288,13 +370,15 @@
 					</div>
 				</div>
 				<div class="px-3 px-xl-4 mt-2 mt-xxl-4">
-					<button class="bttn py-3 mb-3 w-100" data-bs-toggle="modal" data-bs-target="#checkoutModal">Оформить
+					{{-- <button class="bttn py-3 mb-3 w-100" data-bs-toggle="modal" data-bs-target="#checkoutModal">Оформить
+						заказ</button> --}}
+					<button class="bttn py-3 mb-3 w-100" type="submit">Оформить
 						заказ</button>
 					<button class="bttn py-3 mb-3 w-100" data-bs-toggle="modal" data-bs-target="#paymentQRModal">Оплатить
 						QR</button>
 				</div>
 				<fieldset class="px-3 px-xl-4 d-flex fs-6">
-					<input required type="checkbox" name="check" id="check" class="form-check-input flex-shrink-0 me-2 mt-0">
+					<input required type="checkbox" name="check" id="check" @if(old('check') != '') checked @endif class="form-check-input flex-shrink-0 me-2 mt-0">
 					<div>
 						<label for="check" class="d-inline">Согласен на </label><a href="" class="d-inline">обработку персональных
 							данных</a>
@@ -302,6 +386,11 @@
 				</fieldset>
 			</div>
 		</div>
+    <input type="hidden" name="price" value="{{ $cart['total_price'] }}">
 	</form>
 </div>
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('js/User/order.js') }}"></script>
 @endsection

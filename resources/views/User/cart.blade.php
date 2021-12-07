@@ -295,7 +295,7 @@
 				<div class="roboto fw-bold fs-4 me-4">Итого: </div>
 				<div class="fw-6 fs-5">{{ $cart['total_price'] }} ₽</div>
 			</div>
-			<a href="order.html" class="bttn bttn-lg">Оформление заказа</a>
+			<a href="{{ route('user.order') }}" class="bttn bttn-lg">Оформление заказа</a>
 		</div>
 	</div>
 

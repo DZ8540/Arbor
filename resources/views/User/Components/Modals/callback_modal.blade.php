@@ -8,16 +8,16 @@
 				<form class="modal-body col-lg-10 px-xl-4 mx-auto pt-0 pb-5">
 					<h3 class="h4 mb-4">Заказать обратный звонок</h3>
 					<fieldset class="mb-4">
-						<label for="user-name" class="mb-1 required">Имя</label>
-						<input id="user-name" type="text" class="form-control" required />
+						<label for="callback-name" class="mb-1 required">Имя</label>
+						<input id="callback-name" type="text" class="form-control" required />
 					</fieldset>
 					<fieldset class="mb-4">
-						<label for="user-tel" class="mb-1 required">Телефон</label>
-						<input id="user-tel" type="tel" class="form-control" required />
+						<label for="callback-tel" class="mb-1 required">Телефон</label>
+						<input id="callback-tel" type="tel" class="form-control" required />
 					</fieldset>
 					<fieldset class="mb-4">
-						<label for="user-email" class="mb-1">Время звонка</label>
-						<input id="user-email" type="time" class="form-control" />
+						<label for="callback-email" class="mb-1">Время звонка</label>
+						<input id="callback-email" type="time" class="form-control" />
 					</fieldset>
 					<button class="bttn mx-auto mb-4 py-3" data-bs-dismiss="modal">Отправить</button>
 					<p class="mb-0"><span class="required"></span> — обязательно для заполнения</p>

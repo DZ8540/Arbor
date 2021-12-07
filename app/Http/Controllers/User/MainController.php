@@ -51,13 +51,4 @@ class MainController extends CartController
       'cart' => $this->get_products_from_cart(),
 		]);
 	}
-
-	public function order()
-  {
-		return view('User.order', [
-			'about_company' => $this->about_company,
-			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
-		]);
-	}
 }

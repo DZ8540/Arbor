@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ThicknessController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\MainController as UserMainController;
 use App\Http\Controllers\User\NewsController as UserNewsController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\ProductController as UserProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
 	return view('welcome');
 });
 
@@ -38,7 +39,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 ************************ User **************************
 =======================================================*/
 
-Route::name('user.')->group(function () {
+Route::name('user.')->group(function() {
 	Route::get('/', [UserMainController::class, 'index'])->name('index');
 
 	Route::get('/about', [UserMainController::class, 'about'])->name('about');
@@ -61,7 +62,10 @@ Route::name('user.')->group(function () {
   Route::patch('/cart/service/{id}', [CartController::class, 'remove_service'])->name('cart.service.remove');
   Route::delete('/cart/service/{id}', [CartController::class, 'delete_service'])->name('cart.service.delete');
 
-	Route::get('/order', [UserMainController::class, 'order'])->name('order');
+  Route::middleware('empty.cart')->group(function() {
+    Route::get('/order', [OrderController::class, 'order'])->name('order');
+    Route::post('/order', [OrderController::class, 'order_add'])->name('order.add');
+  });
 });
 
 /*=======================================================

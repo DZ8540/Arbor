@@ -17,14 +17,16 @@ $(function() {
     });
 });
 
-function changeFieldset(val, name, formId) {
-    document.querySelectorAll('#' + formId + ' fieldset.' + name).forEach(function(item, i, arr) {
-        if (item.id != val) {
-            item.classList.add('d-none');
-            item.setAttribute("disabled", "disabled");
-        } else {
-            item.classList.remove('d-none');
-            item.removeAttribute("disabled");
-        }
-    });
-}
+// function changeFieldset(val, name, formId) {
+//   document.querySelectorAll('#' + formId + ' fieldset.' + name).forEach(function(item, i, arr) {
+//     if (item.id != val) {
+//       item.classList.add('d-none');
+//       item.setAttribute("disabled", "disabled");
+//     } else {
+//       item.classList.remove('d-none');
+//       item.removeAttribute("disabled");
+//     }
+//   });
+// }
+
+// TODO: в самом конце убрать это

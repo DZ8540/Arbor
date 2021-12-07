@@ -46,7 +46,8 @@ class CartController extends BaseController
   {
     $cart = $this->get_cart();
     $product = $request->input('product', null);
-    if (empty($product))
+
+    if ($product === null)
       return redirect()->back();
 
     foreach ($cart[$product]['services'] as $item) {
