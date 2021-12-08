@@ -130,6 +130,10 @@
 				</div>
 				<!-- cart -->
 				<div class="d-none cart-hover-block bg-white position-absolute px-4 py-3 end-0">
+
+          @if (!count($cart['products']))
+            Ваша корзина пуста
+          @endif
 					
           @foreach ($cart['products'] as $item)
             <div class="border-bottom py-3 d-flex justify-content-between">

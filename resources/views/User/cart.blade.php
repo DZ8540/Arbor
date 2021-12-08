@@ -10,7 +10,13 @@
 			<li class="breadcrumb-item active" aria-current="page">Корзина</li>
 		</ol>
 	</nav>
-	<h1 class="mb-4">Корзина</h1>
+	<h1 class="mb-4">
+    @if (count($cart['products']))
+      Корзина
+    @else
+      Ваша корзина пуста!
+    @endif
+  </h1>
   @foreach ($cart['products'] as $item_key => $item)
     <div
       class="d-flex flex-column flex-lg-row align-items-center align-items-md-start justify-content-xxl-between mb-4 border-bottom pb-4">
