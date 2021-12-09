@@ -2,53 +2,40 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\Banner;
-use App\Models\Category;
-use App\Models\News;
+use App\Http\Providers\User\MainProvider;
 
 class MainController extends CartController
 {
-  public function index()
+  public function index(MainProvider $provider)
   {
-		$banners_columns = ['title', 'description', 'link', 'image'];
-		$banners = Banner::where('is_additional', '0')->select($banners_columns)->get();
-
-		$banner_addition_columns = ['title', 'description', 'link'];
-		$banner_addition = Banner::where('is_additional', '1')->select($banner_addition_columns)->toBase()->first();
-
-		$news_columns = ['slug', 'image', 'name', 'created_at'];
-		$news_count = 20;
-		$news = News::select($news_columns)->take($news_count)->get();
-
-    $categories_columns = ['slug', 'name', 'image'];
-		$categories = Category::select($categories_columns)->inRandomOrder()->take(4)->toBase()->get();
+		$data = $provider->index();
 
 		return view('User.index', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
-			'categories' => $categories,
-			'banners' => $banners,
-			'banner_addition' => $banner_addition,
-			'news' => $news
+      'cart' => $provider->get_products_from_cart(),
+			'categories' => $data['categories'],
+			'banners' => $data['banners'],
+			'banner_addition' => $data['banner_addition'],
+			'news' => $data['news']
 		]);
 	}
 
-	public function about()
+	public function about(MainProvider $provider)
   {
 		return view('User.about', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
+      'cart' => $provider->get_products_from_cart(),
 		]);
 	}
 
-	public function services()
+	public function services(MainProvider $provider)
   {
 		return view('User.services', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
+      'cart' => $provider->get_products_from_cart(),
 		]);
 	}
 }

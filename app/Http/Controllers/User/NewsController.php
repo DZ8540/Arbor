@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Providers\User\NewsProvider;
 use App\Http\Requests\User\NewsRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\News;
 
 class NewsController extends CartController
 {
-  public function news(NewsRequest $request)
+  public function news(NewsRequest $request, NewsProvider $provider)
   {
     $columns = ['slug', 'name', 'image', 'description', 'views_count', 'created_at'];
     $allNews = News::select($columns);
@@ -42,7 +43,7 @@ class NewsController extends CartController
 		return view('User.News.news', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
+      'cart' => $provider->get_products_from_cart(),
       'popularNews' => $popularNews,
       'news' => $news,
       'count' => $count,

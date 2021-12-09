@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Providers\User\ProductProvider;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
@@ -11,16 +12,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends CartController
 {
-  public function catalog()
+  public function catalog(ProductProvider $provider)
   {
 		return view('User.Product.catalog', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart()
+      'cart' => $provider->get_products_from_cart()
 		]);
 	}
 
-	public function category(Request $request, Category $slug)
+	public function category(Request $request, ProductProvider $provider, Category $slug)
   {
     $products_columns = ['id', 'slug', 'name', 'price', 'code', 'format', 'image', 'views_count', 'color_id', 'thickness_id'];
     $products = Product::select($products_columns)->where('category_id', $slug->id); 
@@ -127,7 +128,7 @@ class ProductController extends CartController
 		return view('User.Product.category', [
       'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
+      'cart' => $provider->get_products_from_cart(),
       'sorts' => $sorts,
       'category' => $slug,
       'colors' => $colors,
@@ -142,14 +143,14 @@ class ProductController extends CartController
 		]);
 	}
 
-	public function product(Category $category_slug, Product $product_slug)
+	public function product(ProductProvider $provider, Category $category_slug, Product $product_slug)
   {
     $other = $category_slug->products->random(6);
 
 		return view('User.Product.product', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
+      'cart' => $provider->get_products_from_cart(),
       'product' => $product_slug,
       'other' => $other,
       'category' => $category_slug,

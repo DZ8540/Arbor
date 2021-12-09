@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\AboutCompany;
-use App\Models\CategoryType;
+use App\Http\Providers\User\BaseProvider;
 
 class BaseController extends Controller
 {
@@ -12,25 +11,11 @@ class BaseController extends Controller
 	public $category_types;
 	public $categories;
 
-	public function __construct()
+	public function __construct(BaseProvider $provider)
 	{
-		$about_company_columns = [
-			'name',
-			'work_start',
-			'work_end',
-			'email',
-			'phone',
-			'image',
-			'description',
-			'facebook',
-			'vk',
-			'instagram',
-			'telegram',
-			'address'
-		];
-		$this->about_company = AboutCompany::select($about_company_columns)->toBase()->first();
+    $data = $provider->get_default_data();
 
-		$category_types_columns = ['id', 'name'];
-		$this->category_types = CategoryType::select($category_types_columns)->get();
+    $this->about_company = $data['about_company'];
+		$this->category_types = $data['category_types'];
 	}
 }
