@@ -16,7 +16,7 @@ class OrderProvider extends CartProvider
     $order_item = Order::create($data);
 
     foreach ($cart['products'] as $item) {
-      $order_item->products()->attach($item->id);
+      $order_item->products()->attach($item->id, ['count' => $item->cart_count]);
       $order_product = OrderProduct::latest()->select('id')->first()->id;
 
       foreach ($item->services as $service_item) {

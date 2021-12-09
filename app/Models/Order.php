@@ -17,6 +17,28 @@ class Order extends Model
 
   public function products()
   {
-    return $this->belongsToMany(Product::class)->withPivot('id')->withTimestamps();
+    return $this->belongsToMany(Product::class)->withPivot('id', 'count')->withTimestamps();
+  }
+
+  public function getPayerTypeForUserAttribute()
+  {
+    if ($this->payer_type)
+      return 'Юр. лицо';
+
+    return 'Физ. лицо';
+  }
+
+  public function getPayTypeForUserAttribute()
+  {
+    switch ($this->pay_type) {
+      case 'card':
+        return 'Банковская карта';
+      
+      case 'qr':
+        return 'QR код';
+
+      case 'money':
+        return 'Оплата при получении';
+    }
   }
 }

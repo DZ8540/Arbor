@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MainController as AdminMainController;
 use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ThicknessController;
 use App\Http\Controllers\User\CartController;
@@ -27,13 +28,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-	return view('welcome');
-});
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /*=======================================================
 ************************ User **************************
@@ -110,6 +105,10 @@ Route::name('admin.')
 	Route::resource('/banners', BannerController::class);
 
 	Route::resource('/news', NewsController::class);
+
+  Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
+  Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('orders.show');
+  Route::delete('/orders/{id}', [AdminOrderController::class, 'delete'])->name('orders.delete');
 });
 
 /*=======================================================
