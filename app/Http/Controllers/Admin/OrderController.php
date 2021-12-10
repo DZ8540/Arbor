@@ -10,7 +10,7 @@ class OrderController extends BaseController
   public function index()
   {
     $order_columns = ['id', 'payer_type', 'name', 'email', 'phone', 'pay_type', 'package_count', 'price', 'created_at'];
-    $orders = Order::select($order_columns)->get();
+    $orders = Order::select($order_columns)->paginate(20);
 
     return view('Admin.Orders.index', compact('orders'));
   }

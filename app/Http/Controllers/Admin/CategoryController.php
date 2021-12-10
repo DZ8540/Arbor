@@ -20,7 +20,7 @@ class CategoryController extends BaseController
 	public function index()
 	{
     $columns = ['id', 'slug', 'name', 'category_type_id'];
-		$categories = Category::select($columns)->with(['category_type:id,name'])->get();
+		$categories = Category::select($columns)->with(['category_type:id,name'])->paginate(20);
 		return view('Admin.Categories.index', compact('categories'));
 	}
 

@@ -16,7 +16,7 @@ class ManufacturerController extends BaseController
    */
   public function index()
   {
-    $manufacturers = Manufacturer::select('id', 'name')->get();
+    $manufacturers = Manufacturer::select('id', 'name')->paginate(20);
     return view('Admin.Manufacturers.index', compact('manufacturers'));
   }
 

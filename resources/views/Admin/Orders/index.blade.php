@@ -57,6 +57,10 @@
 					</table>
 
 				</div>
+
+        <div class="row">
+          {{ $orders->links() }}
+        </div>
 			</div>
 			
 		</div>

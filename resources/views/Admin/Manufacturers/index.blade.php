@@ -45,6 +45,10 @@
 					</table>
 
 				</div>
+
+        <div class="row">
+          {{ $manufacturers->links() }}
+        </div>
 			</div>
 			
 		</div>

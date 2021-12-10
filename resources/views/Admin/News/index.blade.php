@@ -53,6 +53,10 @@
 					</table>
 
 				</div>
+
+        <div class="row">
+          {{ $news->links() }}
+        </div>
 			</div>
 			
 		</div>
