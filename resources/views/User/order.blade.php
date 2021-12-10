@@ -251,7 +251,7 @@
 				<!-- pickup -->
 				<fieldset class="delivery d-none mb-4" id="pickup">
 					<div class="d-flex flex-wrap rounded-10 bg-gray-light p-3 fs-5 mb-4">
-						<span class="me-4">Мы находимся по адресу:</span>
+						<span class="me-4">Мы находимся по адресу:</span>
 						<span class="fw-6">ул. Улица, д.35</span>
 					</div>
 					<script async

@@ -41,4 +41,15 @@ class Order extends Model
         return 'Оплата при получении';
     }
   }
+
+  public function getDeliveryTypeForUserAttribute()
+  {
+    switch ($this->delivery_type) {
+      case 'courier':
+        return 'Доставка курьером';
+      
+      case 'pickup':
+        return 'Самовывоз';
+    }
+  }
 }

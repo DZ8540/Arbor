@@ -46,7 +46,7 @@ class OrderRequest extends FormRequest
       'comment' => 'string|size:255|nullable',
 
       'delivery_type' => ['required', 'string', Rule::in($delivery_types)],
-      'delivery_address' => 'required|string',
+      'delivery_address' => 'string',
       'delivery_comment' => 'string|size:255|nullable',
       'pay_type' => ['required', 'string', Rule::in($pay_types)],
 

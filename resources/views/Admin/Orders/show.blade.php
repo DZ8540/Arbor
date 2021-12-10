@@ -70,18 +70,20 @@
 
             <div class="form-group">
               <label for="name">Тип доставки</label>
-              <input type="text" class="form-control" disabled value="{{ $item->delivery_type }}">
+              <input type="text" class="form-control" disabled value="{{ $item->deliveryTypeForUser }}">
             </div>
 
-            <div class="form-group">
-              <label for="name">Адрес доставки</label>
-              <input type="text" class="form-control" disabled value="{{ $item->delivery_address }}">
-            </div>
+            @if ($item->delivery_type == 'courier')
+              <div class="form-group">
+                <label for="name">Адрес доставки</label>
+                <input type="text" class="form-control" disabled value="{{ $item->delivery_address }}">
+              </div>
 
-            <div class="form-group">
-							<label for="description">Сообщение доставки</label>
-							<textarea name="description" id="description" cols="30" rows="10" disabled class="form-control">{{ old('description', $item->delivery_comment) }}</textarea>
-						</div>
+              <div class="form-group">
+                <label for="description">Сообщение доставки</label>
+                <textarea name="description" id="description" cols="30" rows="10" disabled class="form-control">{{ old('description', $item->delivery_comment) }}</textarea>
+              </div>
+            @endif
 
             <div class="form-group">
               <label for="name">Тип оплаты</label>
