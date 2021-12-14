@@ -40,6 +40,8 @@
 
 				<li class="@if(Route::is('admin.banners*')) active @endif"><a href="{{ route('admin.banners.index') }}"><i class="lnr lnr-picture"></i> <span>Баннеры на главной</span></a></li>
 
+				<li class="@if(Route::is('admin.xml*')) active @endif"><a href="{{ route('admin.xml.products') }}"><i class="lnr lnr-database"></i> <span>Добавить товары</span></a></li>
+
 				<li class="@if(Route::is('admin.about.company*')) active @endif"><a href="{{ route('admin.about.company.index') }}"><i class="lnr lnr-cog"></i> <span>О компании</span></a></li>
 			</ul>
 		</nav>

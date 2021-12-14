@@ -44,7 +44,7 @@ class ProductRequest extends FormRequest
 			'code' => 'required|alpha_dash|unique:products,code,' . $this->product,
 			'price' => 'numeric|min:0|nullable',
 			'format' => 'required|string',
-			'article' => 'required|string|unique:products,article,' . $this->product,
+			'article' => 'required|string',
 			'count' => 'numeric|min:0|nullable',
 			'manufacturer_id' => 'required|numeric|exists:manufacturers,id',
 			'color_id' => 'required|numeric|exists:colors,id',

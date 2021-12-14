@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ThicknessController;
+use App\Http\Controllers\Admin\XmlProductController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\MainController as UserMainController;
 use App\Http\Controllers\User\NewsController as UserNewsController;
@@ -109,6 +110,9 @@ Route::name('admin.')
   Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
   Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('orders.show');
   Route::delete('/orders/{id}', [AdminOrderController::class, 'delete'])->name('orders.delete');
+
+  Route::get('/xml_products', [XmlProductController::class, 'index'])->name('xml.products');
+  Route::post('/xml_products', [XmlProductController::class, 'add'])->name('xml.products.add');
 });
 
 /*=======================================================

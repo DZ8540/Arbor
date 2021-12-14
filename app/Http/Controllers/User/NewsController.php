@@ -51,7 +51,7 @@ class NewsController extends CartController
 		]);
 	}
 
-	public function news_item($slug)
+	public function news_item(NewsProvider $provider, $slug)
   {
 		$columns = ['id', 'name', 'image', 'description', 'views_count', 'created_at'];
 		$news = News::select($columns)->firstWhere('slug', $slug);
@@ -60,7 +60,7 @@ class NewsController extends CartController
 		return view('User.News.news_item', [
 			'about_company' => $this->about_company,
 			'category_types' => $this->category_types,
-      'cart' => $this->get_products_from_cart(),
+      'cart' => $provider->get_products_from_cart(),
 			'news' => $news
 		]);
 	}
