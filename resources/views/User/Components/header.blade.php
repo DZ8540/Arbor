@@ -83,8 +83,9 @@
 				<span class="d-none d-xxl-block">Каталог</span>
 			</a>
 			<!-- search -->
-			<form class="flex-fill position-relative rounded-pill border p-2">
-				<input class="border-0 ps-3 ps-xl-4" type="search" placeholder="Поиск по сайту…" />
+			<form class="flex-fill position-relative rounded-pill border p-2" method="GET" action="{{ route('user.search') }}">
+        @csrf
+				<input class="border-0 ps-3 ps-xl-4" type="search" name="search" placeholder="Поиск по сайту…" />
 				<button class="position-absolute end-0 me-3">
 					<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" clip-rule="evenodd"
@@ -95,6 +96,7 @@
 					</svg>
 				</button>
 			</form>
+
 			<div class="d-flex mx-xl-3 mx-xxl-4 text-nowrap">
 				<a class="bg-gray-light rounded-pill py-1 px-3" href="{{ route('user.services') }}">Услуги</a>
 				<a class="mx-3 mx-xxl-4 bg-gray-light rounded-pill py-1 px-3" href="{{ route('user.about') }}">О компании</a>

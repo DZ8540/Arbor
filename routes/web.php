@@ -62,6 +62,8 @@ Route::name('user.')->group(function() {
     Route::get('/order', [OrderController::class, 'order'])->name('order');
     Route::post('/order', [OrderController::class, 'order_add'])->name('order.add');
   });
+
+  Route::get('/search', [UserMainController::class, 'search'])->name('search');
 });
 
 /*=======================================================
