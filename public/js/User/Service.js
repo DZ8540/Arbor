@@ -47,18 +47,21 @@ class Service {
 
         <div class="d-flex flex-column">
           <fieldset class="form-check align-items-center mb-3">
+            <label class="fw-6 me-4">a</label>
             <div class="position-relative flex-fill">
               <input class="form-control sideA" type="number" placeholder="0">
               <span class="position-absolute end-0 top-0 py-1 pe-3 text-muted">мм</span>
             </div>
           </fieldset>
           <fieldset class="form-check align-items-center mb-3">
+            <label class="fw-6 me-4">b</label>
             <div class="position-relative flex-fill">
               <input class="form-control sideB" type="number" placeholder="0">
               <span class="position-absolute end-0 top-0 py-1 pe-3 text-muted">мм</span>
             </div>
           </fieldset>
           <fieldset class="form-check align-items-center mb-3">
+            <label class="fw-6 me-4">c</label>
             <div class="position-relative flex-fill">
               <input class="form-control sideC" type="number" placeholder="0">
               <span class="position-absolute end-0 top-0 py-1 pe-3 text-muted">мм</span>
@@ -66,6 +69,7 @@ class Service {
           </fieldset>
           </fieldset>
           <fieldset class="form-check align-items-center mb-3">
+            <label class="fw-6 me-4">d</label>
             <div class="position-relative flex-fill">
               <input class="form-control sideD" type="number" placeholder="0">
               <span class="position-absolute end-0 top-0 py-1 pe-3 text-muted">мм</span>

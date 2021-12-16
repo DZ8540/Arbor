@@ -58,7 +58,7 @@ class CartController extends BaseController
   public function remove_service(Request $request, CartProvider $provider, $service)
   {
     $product = $request->input('product', null);
-    if (empty($product))
+    if ($product === null)
       return redirect()->back();
 
     $provider->remove_service($product, $service);
@@ -69,7 +69,7 @@ class CartController extends BaseController
   public function delete_service(Request $request, CartProvider $provider, $service)
   {
     $product = $request->input('product', null);
-    if (empty($product))
+    if ($product === null)
       return redirect()->back();
     
     $provider->delete_service($product, $service);
