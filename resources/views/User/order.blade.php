@@ -4,12 +4,9 @@
 		
 @section('content')
 <div class="container mb-5 cart-page">
-	<nav aria-label="breadcrumb" class="mt-4 mt-xxl-5">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Оформление заказа</li>
-		</ol>
-	</nav>
+	
+  {{ Breadcrumbs::render('order') }}
+
 	<h1 class="mb-5">Оформление заказа</h1>
 	<form class="row justify-content-between align-items-start position-relative" id="order-form" action="{{ route('user.order.add') }}" method="POST">
 		<!-- left -->

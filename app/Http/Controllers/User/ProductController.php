@@ -145,7 +145,11 @@ class ProductController extends CartController
 
 	public function product(ProductProvider $provider, Category $category_slug, Product $product_slug)
   {
-    $other = $category_slug->products->random(6);
+    $count = count($category_slug->products);
+    if ($count >= 6)
+      $count = 6;
+
+    $other = $category_slug->products->random($count);
 
 		return view('User.Product.product', [
 			'about_company' => $this->about_company,

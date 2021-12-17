@@ -4,12 +4,9 @@
 		
 @section('content')
 <div class="container">
-	<nav aria-label="breadcrumb" class="mt-4 mt-xxl-5">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Новости</li>
-		</ol>
-	</nav>
+
+	{{ Breadcrumbs::render('news') }}
+
 	<h2 class="h1 mb-5">Популярные новости</h2>
 	<div class="position-relative">
 		<div class="swiper-container position-static swiper-news col-xxl-10">

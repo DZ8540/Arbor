@@ -53,7 +53,7 @@ class NewsController extends CartController
 
 	public function news_item(NewsProvider $provider, $slug)
   {
-		$columns = ['id', 'name', 'image', 'description', 'views_count', 'created_at'];
+		$columns = ['id', 'slug', 'name', 'image', 'description', 'views_count', 'created_at'];
 		$news = News::select($columns)->firstWhere('slug', $slug);
     $news->increment('views_count');
 

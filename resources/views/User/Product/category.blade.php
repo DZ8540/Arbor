@@ -4,13 +4,9 @@
 		
 @section('content')
 <div class="container mb-5">
-	<nav aria-label="breadcrumb" class="mt-4 mt-xxl-5">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-			<li class="breadcrumb-item"><a href="catalogue.html">Каталог</a></li>
-			<li class="breadcrumb-item active" aria-current="page">ЛДСП</li>
-		</ol>
-	</nav>
+	
+  {{ Breadcrumbs::render('catalog.category', $category) }}
+
 	<h1 class="mb-4">{{ $category->name }}</h1>
 	<div class="row gx-xxl-5">
 

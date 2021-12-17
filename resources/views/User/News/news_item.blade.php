@@ -5,13 +5,7 @@
 @section('content')
 <div class="mb-5">
 	<div class="container">
-		<nav aria-label="breadcrumb" class="mt-4 mt-xxl-5">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-				<li class="breadcrumb-item"><a href="news.html">Новости</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Новое тиснение в Компании</li>
-			</ol>
-		</nav>
+		{{ Breadcrumbs::render('news.item', $news) }}
 
 		<h2 class="h1 mb-4">{{ $news->name }}</h2>
 

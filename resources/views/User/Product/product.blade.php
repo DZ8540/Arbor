@@ -4,14 +4,8 @@
 		
 @section('content')
 <div class="container mb-5">
-	<nav aria-label="breadcrumb" class="mt-4 mt-xxl-5">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-			<li class="breadcrumb-item"><a href="catalogue.html">Каталог</a></li>
-			<li class="breadcrumb-item"><a href="category.html">ЛДСП</a></li>
-			<li class="breadcrumb-item active" aria-current="page">ЛДСП Мадейра (А) АРТЕКС 2750*1830*10</li>
-		</ol>
-	</nav>
+  {{ Breadcrumbs::render('catalog.product', $product) }}
+
 	<h1 class="mb-4">{{ $product->name }} {{ $product->format }}</h1>
 	<div class="row gx-xxl-5 mb-5 pe-xxl-5 justify-content-between align-items-start position-relative">
 		<div class=" col-lg-6 mb-4">
