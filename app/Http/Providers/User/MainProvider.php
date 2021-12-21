@@ -5,6 +5,7 @@ namespace App\Http\Providers\User;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Product;
 
 class MainProvider extends CartProvider
 {
@@ -24,5 +25,13 @@ class MainProvider extends CartProvider
 		$categories = Category::select($categories_columns)->inRandomOrder()->take(4)->toBase()->get();
 
     return compact('banners', 'banner_addition', 'news', 'categories');
+  }
+
+  public function search($search_text)
+  {
+    $products_columns = ['id', 'slug', 'name', 'price', 'code', 'format', 'image', 'views_count', 'category_id'];
+    $products = Product::select($products_columns)->where('name', 'LIKE', "%{$search_text}%")->paginate(16);
+
+    return $products;
   }
 }

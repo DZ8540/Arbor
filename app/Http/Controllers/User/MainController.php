@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Providers\User\MainProvider;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends CartController
@@ -44,8 +43,7 @@ class MainController extends CartController
   public function search(Request $request, MainProvider $provider)
   {
     $search_text = $request->input('search', '');
-    $products_columns = ['id', 'slug', 'name', 'price', 'code', 'format', 'image', 'views_count', 'category_id'];
-    $products = Product::select($products_columns)->where('name', 'LIKE', "%{$search_text}%")->paginate(16);
+    $products = $provider->search($search_text);
 
     return view('User.search', [
       'about_company' => $this->about_company,
