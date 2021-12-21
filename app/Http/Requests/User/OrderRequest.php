@@ -43,7 +43,7 @@ class OrderRequest extends FormRequest
       'individual_tax_number' => 'numeric|nullable',
       'reason_code' => 'numeric|nullable',
 
-      'comment' => 'string|size:255|nullable',
+      'comment' => 'string|max:255|nullable',
 
       'delivery_type' => ['required', 'string', Rule::in($delivery_types)],
       'delivery_address' => 'string',

@@ -2,9 +2,11 @@
 
 namespace App\Http\Providers\User;
 
+use App\Mail\OrderMailer;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Service;
+use Illuminate\Support\Facades\Mail;
 
 class OrderProvider extends CartProvider
 {
@@ -33,6 +35,7 @@ class OrderProvider extends CartProvider
       }
     }
 
+    Mail::to($data['email'])->send(new OrderMailer($order_item));
     session()->flush();
   }
 }
