@@ -17,7 +17,7 @@ class EmptyCart
   public function handle(Request $request, Closure $next)
   {
     if (empty($request->session()->get('cart', [])))
-      return redirect()->back();
+      return redirect()->route('user.cart');
 
     return $next($request);
   }
