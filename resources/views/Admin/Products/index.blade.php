@@ -39,7 +39,7 @@
 									<td>{{ $item->category->name }}</td>
 									<td>{{ $item->count }}</td>
 									<td>
-										<img src="{{ Storage::url($item->image) }}" width="200px" alt="">
+										<img src="{{ $item->image }}" width="200px" alt="">
 									</td>
 									<td>
 										<a href="{{ route('admin.products.show', $item) }}" class="btn btn-primary">Просмотр</a>

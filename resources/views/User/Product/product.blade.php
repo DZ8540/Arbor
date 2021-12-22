@@ -14,7 +14,7 @@
 			<div class="card-swiper d-flex justify-content-between mb-4">
 				<div class="swiper-container gallery-thumbs card-gallery-thumbs me-2">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide"><img src="{{ Storage::url($product->image) }}" alt="">
+						<div class="swiper-slide"><img src="{{ $product->image }}" alt="">
 						</div>
 
             @foreach ($product->productImages as $item)
@@ -40,7 +40,7 @@
 				</div>
 				<div class="swiper-container rounded-10 gallery-top card-gallery-top my-auto">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide"><img src="{{ Storage::url($product->image) }}" alt="">
+						<div class="swiper-slide"><img src="{{ $product->image }}" alt="">
 						</div>
 
             @foreach ($product->productImages as $item)
@@ -126,7 +126,7 @@
         <div class="position-relative product">
           <div class="card">
             <img class="card-img-top"
-              src="{{ Storage::url($item->image) }}"
+              src="{{ $item->image }}"
               alt="{{ $item->name }}">
             <div class="card-body d-flex flex-column d-flex flex-column p-2 p-xxl-3 text-center">
               <a href="{{ route('user.product', [$category->slug, $item->slug]) }}" class="card-title stretched-link fw-6">{{ $item->name }}</a>

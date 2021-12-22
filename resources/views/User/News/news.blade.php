@@ -14,7 +14,7 @@
 
         @foreach ($popularNews as $item)
           <div class="swiper-slide">
-            <img class="w-100" src="{{ Storage::url($item->image) }}" alt="">
+            <img class="w-100" src="{{ $item->image }}" alt="">
             <div class="py-2 px-3">
               <a href="{{ route('user.news.item', $item->slug) }}" class="d-block stretched-link m-0">{{ $item->name }}</a>
               <time datetime="2021-03-09 18:41">{{ $item->dateTime }}</time>
@@ -63,7 +63,7 @@
       @foreach ($news as $item)
         <div class="row mb-4">
           <div class="new-img col-lg-4 pe-xxl-4 mb-3 mb-lg-0">
-            <img class="w-100 h-100 rounded-10" src="{{ Storage::url($item->image) }}" alt="">
+            <img class="w-100 h-100 rounded-10" src="{{ $item->image }}" alt="">
           </div>
           <div class="col-sm-7 col-lg-8 d-flex flex-column pb-xxl-3">
             <span class="text-muted">{{ $item->date }}</span>

@@ -34,7 +34,7 @@
             <div class="form-group">
 							<label for="image" class="control-label">Главное изображение новости</label>
 							<br>
-							<img src="{{ $news->image ? Storage::url($news->image) : asset('img/fallback-image.jpg') }}" alt="" width="200px">
+							<img src="{{ $news->image }}" alt="" width="200px">
 							<br>
 						</div>
 

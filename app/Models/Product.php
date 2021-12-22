@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -29,6 +30,11 @@ class Product extends Model
 	{
 		return 'slug';
 	}
+
+  public function getImageAttribute($val)
+  {
+    return $val ? Storage::url($val) : asset('img/placeholder.png');
+  }
 
 	public function category() 
 	{

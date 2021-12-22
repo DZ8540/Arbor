@@ -56,7 +56,7 @@
 						<div class="form-group">
 							<label for="image" class="control-label">Изображение</label>
 							<br>
-							<img src="{{ Storage::url($banner->image) }}" id="imagePreview" alt="" width="200px">
+							<img src="{{ $banner->image }}" id="imagePreview" alt="" width="200px">
 							<br>
 							<br>
 							<input type="file" class="btn btn-primary" id="image" name="image">

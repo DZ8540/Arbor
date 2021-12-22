@@ -43,7 +43,7 @@
 						<div class="form-group">
 							<label for="image" class="control-label">Главное изображение товара</label>
 							<br>
-							<img src="{{ Storage::url($product->image) }}" alt="" width="200px">
+							<img src="{{ $product->image }}" alt="" width="200px">
 							<br>
 						</div>
 

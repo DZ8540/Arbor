@@ -18,7 +18,7 @@
 									<p class="fs-5 mb-4">{{ $item->description }}</p>
 									<a href="{{ $item->link }}" class="bttn bttn-lg">Подробнее</a>
 								</div>
-								<img src="{{ Storage::url($item->image) }}" alt="" />
+								<img src="{{ $item->image }}" alt="" />
 							</div>
 						</div>
 					@endforeach
@@ -62,7 +62,7 @@
       @foreach ($categories as $item)
         <div>
           <div class="rounded-30">
-            <img class="w-100 h-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
+            <img class="w-100 h-100" src="{{ $item->image }}" alt="{{ $item->name }}" />
             <a href="{{ route('user.category', $item->slug) }}" class="p-3 w-100 start-0 bottom-0 position-absolute">{{ $item->name }}</a>
           </div>
         </div>
@@ -145,7 +145,7 @@
 
             @foreach ($news as $item)
               <div class="swiper-slide">
-                <img class="w-100" src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" />
+                <img class="w-100" src="{{ $item->image }}" alt="{{ $item->name }}" />
                 <div class="py-2 px-3">
                   <a href="{{ route('user.news.item', $item) }}" class="d-block stretched-link m-0">{{ $item->name }}</a>
                   <time datetime="2021-03-09 18:41">{{ $item->date }}</time>

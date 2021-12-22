@@ -93,7 +93,7 @@
             <div class="position-relative product">
               <div class="card">
                 <img class="card-img-top"
-                  src="{{ Storage::url($item->image) }}"
+                  src="{{ $item->image }}"
                   alt="{{ $item->name }}">
                 <div class="card-body d-flex flex-column d-flex flex-column p-2 p-xxl-3 text-center">
                   <a href="{{ route('user.product', [$item->category->slug, $item->slug]) }}" class="card-title stretched-link fw-6">{{ $item->name }}</a>

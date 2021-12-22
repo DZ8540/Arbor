@@ -141,7 +141,7 @@
             <div class="border-bottom py-3 d-flex justify-content-between">
               <!-- img and article -->
               <div>
-                <img class="rounded-10 mb-1" src="{{ Storage::url($item->image) }}" alt="" />
+                <img class="rounded-10 mb-1" src="{{ $item->image }}" alt="" />
                 <div class="c-gray text-secondary small">Код: {{ $item->code }}</div>
               </div>
               <div class="d-flex flex-fill mx-3 flex-column">

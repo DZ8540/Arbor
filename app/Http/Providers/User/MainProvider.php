@@ -22,7 +22,7 @@ class MainProvider extends CartProvider
 		$news = News::select($news_columns)->take($news_count)->get();
 
     $categories_columns = ['slug', 'name', 'image'];
-		$categories = Category::select($categories_columns)->inRandomOrder()->take(4)->toBase()->get();
+		$categories = Category::select($categories_columns)->inRandomOrder()->take(4)->get();
 
     return compact('banners', 'banner_addition', 'news', 'categories');
   }

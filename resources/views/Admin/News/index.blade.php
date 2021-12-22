@@ -36,7 +36,7 @@
 									<td>{{ $item->name }}</td>
 									<td>{{ $item->created_at }}</td>
 									<td>
-                    <img src="{{ Storage::url($item->image) }}" width="200px" alt="">
+                    <img src="{{ $item->image }}" width="200px" alt="">
                   </td>
 									<td>
 										<a href="{{ route('admin.news.show', $item) }}" class="btn btn-primary">Просмотр</a>

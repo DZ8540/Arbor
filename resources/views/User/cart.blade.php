@@ -18,7 +18,7 @@
     <div
       class="d-flex flex-column flex-lg-row align-items-center align-items-md-start justify-content-xxl-between mb-4 border-bottom pb-4">
       <div class="img mb-3 mb-md-0">
-        <img src="{{ Storage::url($item->image) }}"
+        <img src="{{ $item->image }}"
           class="w-100 h-100 rounded-10" alt="{{ $item->name }}">
       </div>
       <div class="flex-fill">

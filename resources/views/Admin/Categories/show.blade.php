@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<label for="image" class="control-label">Изображение категории</label>
 							<br>
-							<img src="{{ Storage::url($category->image) }}" alt="" width="200px">
+							<img src="{{ $category->image }}" alt="" width="200px">
 						</div>
 
 						<br>

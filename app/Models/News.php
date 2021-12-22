@@ -6,6 +6,7 @@ use Carbon\Translator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class News extends Model
@@ -19,9 +20,9 @@ class News extends Model
     return 'slug';
   }
 
-  public function newsImages()
+  public function getImageAttribute($val)
   {
-    return $this->hasMany(NewsImages::class);
+    return $val ? Storage::url($val) : asset('img/placeholder.png');
   }
 
   public function getDateTimeAttribute()
@@ -48,5 +49,10 @@ class News extends Model
   {
     $created_at = Str::of($this->created_at)->explode(' ');
     return $date_time == 0 ? $created_at[0] : $created_at[1];
+  }
+
+  public function newsImages()
+  {
+    return $this->hasMany(NewsImages::class);
   }
 }

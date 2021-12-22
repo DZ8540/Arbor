@@ -69,7 +69,7 @@
 						<div class="form-group">
 							<label for="image" class="control-label">Главное изображение товара *</label>
 							<br>
-							<img src="{{ $product->image ? Storage::url($product->image) : asset('img/fallback-image.jpg') }}" id="imagePreview" alt="" width="200px">
+							<img src="{{ $product->image }}" id="imagePreview" alt="" width="200px">
 							<br>
 							<br>
 							<input type="file" class="btn btn-primary" id="image" name="image">

@@ -36,7 +36,7 @@
 									<td>{{ $item->description }}</td>
 									<td>{{ $item->link }}</td>
 									<td>
-										<img src="{{ Storage::url($item->image) }}" width="200px" alt="">
+										<img src="{{ $item->image }}" width="200px" alt="">
 									</td>
 									<td>{{ $item->is_additional }}</td>
 									<td>

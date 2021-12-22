@@ -44,7 +44,7 @@
             @foreach ($category_type->categories as $item)
               <div>
                 <div class="rounded-30 position-relative">
-                  <img class="w-100 h-100" src="{{ Storage::url($item->image) }}" alt="">
+                  <img class="w-100 h-100" src="{{ $item->image }}" alt="">
                   <a href="{{ route('user.category', $item->slug) }}" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">{{ $item->name }}</a>
                 </div>
               </div>  

@@ -62,7 +62,7 @@
 						<div class="form-group">
 							<label for="image" class="control-label">Изображение категории</label>
 							<br>
-							<img src="{{ Storage::url($category->image) }}" id="imagePreview" alt="" width="200px">
+							<img src="{{ $category->image }}" id="imagePreview" alt="" width="200px">
 							<br>
 							<br>
 							<input type="file" class="btn btn-primary" id="image" name="image" value="{{ old('image', Storage::path($category->image)) }}">

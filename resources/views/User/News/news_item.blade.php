@@ -17,7 +17,7 @@
 					<div class="swiper-wrapper">
 
 						<div class="swiper-slide">
-							<img src="{{ Storage::url($news->image) }}" alt="{{ $news->name }}">
+							<img src="{{ $news->image }}" alt="{{ $news->name }}">
 						</div>
 						
 						@foreach ($news->newsImages as $item)
@@ -43,7 +43,7 @@
 					<div class="swiper-wrapper w-100">
 
 						<div class="swiper-slide">
-							<img src="{{ Storage::url($news->image) }}" alt="{{ $news->name }}">
+							<img src="{{ $news->image }}" alt="{{ $news->name }}">
 						</div>
 
 						@foreach ($news->newsImages as $item)

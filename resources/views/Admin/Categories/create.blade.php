@@ -58,7 +58,7 @@
 						<div class="form-group">
 							<label for="image" class="control-label">Изображение категории</label>
 							<br>
-							<img src="{{ asset('img/fallback-image.jpg') }}" id="imagePreview" alt="" width="200px">
+							<img src="{{ asset('img/placeholder.png') }}" id="imagePreview" alt="" width="200px">
 							<br>
 							<br>
 							<input type="file" class="btn btn-primary" id="image" name="image">

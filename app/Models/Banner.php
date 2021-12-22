@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Banner extends Model
 {
@@ -15,4 +16,9 @@ class Banner extends Model
 	{
 		return $val ? 'Да' : 'Нет';
 	}
+
+  public function getImageAttribute($val)
+  {
+    return $val ? Storage::url($val) : asset('img/placeholder.png');
+  }
 }
