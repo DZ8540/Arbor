@@ -15,7 +15,7 @@
 					</svg>
 					<div class="ms-3 d-flex flex-column align-items-start">
 						<a href="tel:{{ $about_company->phone }}" class="fs-5 mb-1 text-nowrap">{{ $about_company->phone }}</a>
-						<button class="p-0 c-accent">Оставить заявку</button>
+						<button class="p-0 c-accent" data-bs-toggle="modal" data-bs-target="#callModal">Оставить заявку</button>
 					</div>
 				</div>	
 			@endif
@@ -39,7 +39,7 @@
 				</div>
 			@endif
 			
-			@if(!empty($about_company->email))
+			@if(!empty($about_company->call_email))
 			<div class="d-flex">
 				<svg class="flex-shrink-0" width="56" height="56" viewBox="0 0 56 56" fill="none"
 					xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +52,7 @@
 						stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
 				<div class="ms-3 d-flex flex-column align-items-start">
-					<a href="mailto:{{ $about_company->email }}" class="fs-5 mb-1 c-accent">{{ $about_company->email }}</a>
+					<a href="mailto:{{ $about_company->call_email }}" class="fs-5 mb-1 c-accent">{{ $about_company->call_email }}</a>
 					<span>Предложение о сотрудничестве</span>
 				</div>
 			</div>

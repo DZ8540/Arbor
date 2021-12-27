@@ -19,8 +19,16 @@ class CreateAboutCompanyTable extends Migration
       $table->text('description')->nullable();
       $table->time('work_start')->nullable();
       $table->time('work_end')->nullable();
+
       $table->string('email')->nullable();
+      $table->string('call_email')->nullable();
+
       $table->string('phone')->nullable();
+      $table->string('commercial_phone')->nullable();
+      $table->string('other_phone_1')->nullable();
+      $table->string('other_phone_2')->nullable();
+      $table->string('other_phone_3')->nullable();
+
       $table->string('image')->nullable();
       $table->string('address')->nullable();
       $table->string('vk')->nullable();

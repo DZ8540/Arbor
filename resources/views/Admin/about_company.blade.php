@@ -39,10 +39,65 @@
 						</div>
 
             <div class="form-group">
-							<label for="phone">Телефон компании</label>
+							<label for="call_email">Электронная почта для заявок</label>
+							<input type="call_email" id="call_email" class="form-control @error('call_email') parsley-error @enderror" name="call_email" value="{{ old('call_email', $about->call_email) }}">
+
+              @error('call_email')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+            <div class="form-group">
+							<label for="phone">Телефон компании, отображающийся в шапке</label>
 							<input type="text" id="phone" class="form-control @error('phone') parsley-error @enderror" name="phone" value="{{ old('phone', $about->phone) }}">
 
               @error('phone')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+            <div class="form-group">
+							<label for="commercial_phone">Телефон для коммерческих предложений</label>
+							<input type="text" id="commercial_phone" class="form-control @error('commercial_phone') parsley-error @enderror" name="commercial_phone" value="{{ old('commercial_phone', $about->commercial_phone) }}">
+
+              @error('commercial_phone')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+            <div class="form-group">
+							<label for="other_phone_1">Второй телефон</label>
+							<input type="text" id="other_phone_1" class="form-control @error('other_phone_1') parsley-error @enderror" name="other_phone_1" value="{{ old('other_phone_1', $about->other_phone_1) }}">
+
+              @error('other_phone_1')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+            <div class="form-group">
+							<label for="other_phone_2">Третий телефон</label>
+							<input type="text" id="other_phone_2" class="form-control @error('other_phone_2') parsley-error @enderror" name="other_phone_2" value="{{ old('other_phone_2', $about->other_phone_2) }}">
+
+              @error('other_phone_2')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
+            <div class="form-group">
+							<label for="other_phone_3">Четвертый телефон</label>
+							<input type="text" id="other_phone_3" class="form-control @error('other_phone_3') parsley-error @enderror" name="other_phone_3" value="{{ old('other_phone_3', $about->other_phone_3) }}">
+
+              @error('other_phone_3')
 								<ul class="parsley-errors-list filled" id="parsley-id-29">
 									<li class="parsley-required">{{ $message }}</li>
 								</ul>

@@ -17,8 +17,16 @@ class AboutCompany extends Model
     'description',
     'work_start',
     'work_end',
+
     'email',
+    'call_email',
+
     'phone',
+    'commercial_phone',
+    'other_phone_1',
+    'other_phone_2',
+    'other_phone_3',
+
     'image',
     'address',
     'vk',
