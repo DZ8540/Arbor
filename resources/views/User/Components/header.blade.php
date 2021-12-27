@@ -103,7 +103,7 @@
 				<a class="bg-gray-light rounded-pill py-1 px-3" href="{{ route('user.news') }}">Новости</a>
 			</div>
 			<!-- call -->
-			<button class="bttn bttn-lg mx-xxl-4 d-none d-xxl-block">Заказать звонок</button>
+			<button class="bttn bttn-lg mx-xxl-4 d-none d-xxl-block" data-bs-toggle="modal" data-bs-target="#callModal">Заказать звонок</button>
 			<div class="position-relative cart-hover-main">
 				<!-- cart -->
 				<div class="ms-auto d-flex flex-column align-items-center cart-hover bg-white text-center py-2 px-3">

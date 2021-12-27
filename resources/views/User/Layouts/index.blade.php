@@ -33,6 +33,28 @@
 </head>
 
 <body>
+  @if (session()->has('success'))
+    <div style="position: absolute; z-index: 1000; display: flex; justify-content: center; width: 100%; top: 15px;">
+      <div>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <i class="fa fa-check-circle"></i> {{ session()->get('success') }}
+        </div>
+      </div>
+    </div>
+  @endif
+
+  @if (session()->has('danger'))
+    <div style="position: absolute; z-index: 1000; display: flex; justify-content: center; width: 100%; top: 15px;">
+      <div>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <i class="fa fa-times-circle"></i> {{ session()->get('danger') }}
+        </div>
+      </div>
+    </div>
+  @endif
+
 	<!-- header -->
 	@include('User.Components.header')
 

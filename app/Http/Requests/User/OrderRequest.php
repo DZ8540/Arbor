@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use App\Models\Product;
+use App\Rules\Phone;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -34,7 +35,7 @@ class OrderRequest extends FormRequest
 
       'name' => 'required|string',
       'email' => 'required|email',
-      'phone' => 'required|regex:/[0-9+]{9}/',
+      'phone' => ['required', new Phone],
 
       'location' => 'string',
       'index' => 'numeric|nullable',
