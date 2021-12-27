@@ -138,19 +138,34 @@
 
 		</div>
 		<h2 class="text-center mt-5 pt-xl-3 mb-4">Не нашли нужный товар? Напишите и мы Вам поможем</h2>
-		<form action="#" method="GET" class="row row-cols-lg-1 row-cols-xl-3 gy-4 gx-xl-5 col-lg-5 col-xl-12 mx-auto">
+		<form action="{{ route('user.consult.find_product') }}" method="POST" class="row row-cols-lg-1 row-cols-xl-3 gy-4 gx-xl-5 col-lg-5 col-xl-12 mx-auto">
 			<fieldset class="d-flex flex-column">
 				<label class="mb-2" for="cta-name">Ваше имя:</label>
-				<input id="cta-name" type="text" class="form-control ps-lg-4 rounded-pill" placeholder="Иван Иванов" />
+				<input id="cta-name" type="text" name="name" required class="form-control ps-lg-4 rounded-pill" placeholder="Иван Иванов" />
+
+        @error('name')
+          <div class="alert alert-danger mt-2">{{ $message }}</div>
+        @enderror
 			</fieldset>
+
+      @csrf
+
 			<fieldset class="d-flex flex-column">
 				<label class="mb-2" for="cta-tel">Ваш номер телефона:</label>
-				<input required id="cta-tel" type="tel" class="form-control ps-lg-4 rounded-pill"
+				<input required id="cta-tel" type="tel" name="phone" class="form-control ps-lg-4 rounded-pill"
 					placeholder="+7 (917) 123-45-67" />
+
+          @error('phone')
+            <div class="alert alert-danger mt-2">{{ $message }}</div>
+          @enderror
 			</fieldset>
 			<fieldset class="d-flex flex-column">
 				<label class="mb-2" for="cta-art">Введите артикул или название товара:</label>
-				<input id="cta-art" type="text" class="form-control ps-lg-4 rounded-pill" placeholder="" />
+				<input id="cta-art" required type="text" name="product" class="form-control ps-lg-4 rounded-pill" placeholder="" />
+
+        @error('product')
+          <div class="alert alert-danger mt-2">{{ $message }}</div>
+        @enderror
 			</fieldset>
 			<div>
 				<button class="bttn bttn-lg rounded-pill w-100" type="submit">Отправить</button>
@@ -158,7 +173,7 @@
 			<fieldset class="form-chec d-flex">
 				<input required type="checkbox" name="check" id="check" class="form-check-input flex-shrink-0 me-3" />
 				<div>
-					<label for="check" class="d-inline">Нажимая на кнопку, я соглашаюсь на </label><a href=""
+					<label for="check" class="d-inline">Нажимая на кнопку, я соглашаюсь на </label><a href="#"
 						class="text-decoration-underline d-inline">обработку персональных данных</a><label for="check">.</label>
 				</div>
 			</fieldset>

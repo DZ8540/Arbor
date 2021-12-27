@@ -5,7 +5,7 @@
 				<div class="modal-header border-0">
 					<button type="button" class="btn-close mt-xxl-2 me-xxl-2" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<form class="modal-body col-lg-10 px-xl-4 mx-auto pt-0 pb-5" action="{{ route('user.modal.call') }}" method="POST">
+				<form class="modal-body col-lg-10 px-xl-4 mx-auto pt-0 pb-5" action="{{ route('user.consult.call') }}" method="POST">
 					<h3 class="h4 mb-4">Заказать обратный звонок</h3>
           @csrf
 					<fieldset class="mb-4">

@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\ThicknessController;
 use App\Http\Controllers\Admin\XmlProductController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\MainController as UserMainController;
-use App\Http\Controllers\User\ModalController;
+use App\Http\Controllers\User\ConsultController;
 use App\Http\Controllers\User\NewsController as UserNewsController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\ProductController as UserProductController;
@@ -66,8 +66,9 @@ Route::name('user.')->group(function() {
 
   Route::get('/search', [UserMainController::class, 'search'])->name('search');
 
-  Route::name('modal.')->prefix('/modal')->group(function() {
-    Route::post('/call', [ModalController::class, 'call'])->name('call');
+  Route::name('consult.')->prefix('/consult')->group(function() {
+    Route::post('/call', [ConsultController::class, 'call'])->name('call');
+    Route::post('/find_product', [ConsultController::class, 'find_product'])->name('find_product');
   });
 });
 
