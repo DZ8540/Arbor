@@ -17,6 +17,7 @@ use App\Http\Controllers\User\ConsultController;
 use App\Http\Controllers\User\NewsController as UserNewsController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\ProductController as UserProductController;
+use App\Http\Controllers\User\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +42,8 @@ Route::name('user.')->group(function() {
 
 	Route::get('/about', [UserMainController::class, 'about'])->name('about');
 
-	Route::get('/services', [UserMainController::class, 'services'])->name('services');
+	Route::get('/services', [ServiceController::class, 'services'])->name('services');
+	Route::post('/services', [ServiceController::class, 'get_services_data']);
 
 	Route::get('/news', [UserNewsController::class, 'news'])->name('news');
 	Route::get('/news/{slug}', [UserNewsController::class, 'news_item'])->name('news.item');

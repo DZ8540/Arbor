@@ -27,6 +27,21 @@ class MainProvider extends CartProvider
     return compact('banners', 'banner_addition', 'news', 'categories');
   }
 
+  public function services($category_id = null, $with_thicknesses = false, $with_colors = false)
+  {
+    $categories_columns = ['id', 'name'];
+    $categories = Category::select($categories_columns);
+
+    if ($with_thicknesses) {
+      $products = $categories->where('id', $category_id)->get();
+      dd($products);
+      // $data['thicknesses'] = 
+    }
+
+    $data['categories'] = $categories->get();
+    return $data;
+  }
+
   public function search($search_text)
   {
     $products_columns = ['id', 'slug', 'name', 'price', 'code', 'format', 'image', 'views_count', 'category_id'];
