@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
 			$table->text('description');
 			$table->string('image')->nullable();
 			$table->string('code')->unique();
-			$table->integer('price')->unsigned()->default(0);
+			$table->decimal('price', 8, 2)->unsigned()->default(0);
 			$table->string('format');
 			$table->string('article');
 			$table->integer('count')->unsigned()->default(0);
