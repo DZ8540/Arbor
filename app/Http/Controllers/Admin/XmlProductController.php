@@ -118,8 +118,8 @@ class XmlProductController extends Controller
       }
 
       $format = 'XML';
-      if (!empty($attrs['measure'])) {
-        $format = $attrs['measure'];
+      if (!empty($attrs['format'])) {
+        $format = $attrs['format'];
       }
 
       $article = 'XML';
