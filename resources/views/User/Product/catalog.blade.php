@@ -18,14 +18,14 @@
             <div class="bg-dark text-white p-3 px-xxl-4 fw-6 fs-5">{{ $category_type->name }}</div>
 
             @foreach ($category_type->categories as $item)
-              <div
+              <a href="{{ route('user.category', $item->slug) }}"
                 class="d-flex justify-content-between align-items-center position-relative border-bottom p-3 ps-xxl-5 pe-xxl-4">
-                <a class="stretched-link" href="{{ $item->slug }}">{{ $item->name }}</a>
+                <span class="stretched-link">{{ $item->name }}</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9 18L15 12L9 6" stroke="#4B4B4B" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                 </svg>
-              </div>  
+              </a>  
             @endforeach
           @endif
           
@@ -43,10 +43,10 @@
 
             @foreach ($category_type->categories as $item)
               <div>
-                <div class="rounded-30 position-relative">
+                <a href="{{ route('user.category', $item->slug) }}" class="rounded-30 position-relative">
                   <img class="w-100 h-100" src="{{ $item->image }}" alt="">
-                  <a href="{{ route('user.category', $item->slug) }}" class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">{{ $item->name }}</a>
-                </div>
+                  <span class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">{{ $item->name }}</span>
+                </a>
               </div>  
             @endforeach
             

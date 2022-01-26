@@ -13,7 +13,7 @@
 		<div class="col-lg-3 mb-4">
 			<fieldset class="mb-25 roboto rounded-10 bg-gray-light py-3 py-xl-4 px-4 mb-4">
 				<div class="h5 mb-3">Цвет</div>
-				<div class="colors-wr d-flex flex-wrap flex-xxl-row mb-2">
+				<div class="colors-wr d-flex flex-xxl-row mb-2">
 
           @foreach ($colors as $item)
             <div class="color-wr mb-2" style="color: {{ $item->hex_code }}">

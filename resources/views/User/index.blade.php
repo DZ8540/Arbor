@@ -61,10 +61,10 @@
       
       @foreach ($categories as $item)
         <div>
-          <div class="rounded-30">
+          <a href="{{ route('user.category', $item->slug) }}" class="rounded-30">
             <img class="w-100 h-100" src="{{ $item->image }}" alt="{{ $item->name }}" />
-            <a href="{{ route('user.category', $item->slug) }}" class="p-3 w-100 start-0 bottom-0 position-absolute">{{ $item->name }}</a>
-          </div>
+            <span class="p-3 w-100 start-0 bottom-0 position-absolute">{{ $item->name }}</span>
+          </a>
         </div>
       @endforeach
 
