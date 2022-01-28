@@ -92,10 +92,13 @@ class XmlProductController extends Controller
     // }
 
     foreach ($items as $item) {
-      $attrs = $item['@attributes'];
-      $slug = Str::slug($attrs['name']);
-      
+      $attrs = $item['@attributes'];      
       $name = $attrs['name'];
+      
+      if (!empty($attrs['category']))
+        $category_id = $this->addCategory($attrs['category']);
+      else
+        break;
 
       $code = rand(10000000, 99999999);
       if (!empty($attrs['code'])) {
@@ -127,6 +130,8 @@ class XmlProductController extends Controller
         $article = $attrs['article'];
       }
 
+      $slug = Str::slug($attrs['name'] . $attrs['code']);
+
       $photo = '';
       if (!empty($attrs['photo'])) {
         $photo = $attrs['photo'];
@@ -137,8 +142,6 @@ class XmlProductController extends Controller
         }
       }
 
-      $category_id = $this->addCategory($attrs['category']);
-
       $thickness = 'XML';
       if (!empty($attrs['thickness'])) {
         $thickness = $attrs['thickness'];
@@ -146,10 +149,12 @@ class XmlProductController extends Controller
       $thickness_id = $this->addThickness($thickness);
 
       $color = 'XML';
-      if (!empty($attrs['color'])) {
+      $color_hex = null;
+      if (!empty($attrs['color']))
         $color = $attrs['color'];
-      }
-      $color_id = $this->addColor($color);
+      if (!empty($attrs['colorhex']))
+        $color_hex = '#' . $attrs['colorhex'];
+      $color_id = $this->addColor($color, $color_hex);
 
       $producer = 'XML';
       if (!empty($attrs['producer'])) {
@@ -177,10 +182,10 @@ class XmlProductController extends Controller
     return redirect()->route('admin.xml.products')->with('success', 'Продукты были успешно добавлены!');
   }
 
-  private function addColor($color)
+  private function addColor($color_name, $color_hex)
   {
-    $slug = Str::slug($color);
-    $name = $color;
+    $slug = Str::slug($color_name);
+    $name = $color_name;
 
     $color_item = Color::where('slug', $slug)->first();
     if (!empty($color_item))
@@ -188,7 +193,8 @@ class XmlProductController extends Controller
 
     $color_item = Color::create([
       'slug' => $slug,
-      'name' => $name
+      'name' => $name,
+      'hex_code' => $color_hex
     ]);
 
     return $color_item->id;
