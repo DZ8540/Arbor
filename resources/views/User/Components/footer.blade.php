@@ -170,7 +170,7 @@
 				<div class="d-flex align-items-center mt-3">
 					<span class="text-uppercase small me-2 roboto">Создание и продвижение&#10;сайтов</span>
 					<a href="https://asmpromo.ru/" target="_blank" rel="noopener noreferrer">
-						<img src="img/images/asmpromo.png" width="87" height="59" alt="" />
+						<img src="{{ asset('img/images/asmpromo.png') }}" width="87" height="59" alt="" />
 					</a>
 				</div>
 			</div>

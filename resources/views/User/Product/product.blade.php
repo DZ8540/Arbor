@@ -52,11 +52,11 @@
 			</div>
 			<!-- slider -->
       
-			<div class="mb-4">
+			{{-- <div class="mb-4">
 				<h4 class="mb-3">Полное описание</h4>
         
 				<div>{{ $product->description }}</div>
-			</div>
+			</div> --}}
 			<div class="mb-4">
 				<h4 class="mb-3">Услуга распиловки и кромления</h4>
 				<div>Равным образом, постоянный количественный рост и сфера нашей активности в значительной степени
@@ -92,14 +92,14 @@
 						<div class="fw-normal">Толщина:</div>
 						<div>{{ $product->thickness->name }}</div>
 					</div>
-					<div class="d-flex justify-content-between mb-2 mb-lg-3">
+					{{-- <div class="d-flex justify-content-between mb-2 mb-lg-3">
 						<div class="fw-normal">Артикул:</div>
 						<div>{{ $product->article }}</div>
 					</div>
 					<div class="d-flex justify-content-between">
 						<div class="fw-normal">Производитель:</div>
 						<div>{{ $product->manufacturer->name }}</div>
-					</div>
+					</div> --}}
 				</div>
 				<div>
 					<div class="h4 mb-3 px-3 px-xl-4 px-xxl-5">Выбранные услуги</div>
