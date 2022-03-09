@@ -12,7 +12,7 @@
 					@foreach ($banners as $item)
 						<div class="swiper-slide">
 							<div
-								class="d-flex flex-column-reverse align-items-center text-center text-xl-start flex-xl-row linear rounded-30">
+								class="d-flex bannerContent flex-column-reverse align-items-center text-center text-xl-start flex-xl-row linear rounded-30">
 								<div>
 									<h2 class="mb-3">{{ $item->title }}</h2>
 									<p class="fs-5 mb-4">{{ $item->description }}</p>
@@ -61,7 +61,7 @@
       
       @foreach ($categories as $item)
         <div>
-          <a href="{{ route('user.category', $item->slug) }}" class="rounded-30">
+          <a href="{{ route('user.category', $item->slug) }}" class="rounded-30 CategoryCard">
             <img class="w-100 h-100" src="{{ $item->image }}" alt="{{ $item->name }}" />
             <span class="p-3 w-100 start-0 bottom-0 position-absolute">{{ $item->name }}</span>
           </a>

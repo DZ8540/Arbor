@@ -43,7 +43,7 @@
 
             @foreach ($category_type->categories as $item)
               <div>
-                <a href="{{ route('user.category', $item->slug) }}" class="rounded-30 position-relative">
+                <a href="{{ route('user.category', $item->slug) }}" class="rounded-30 CategoryCard position-relative">
                   <img class="w-100 h-100" src="{{ $item->image }}" alt="">
                   <span class="p-3 w-100 start-0 bottom-0 position-absolute stretched-link">{{ $item->name }}</span>
                 </a>

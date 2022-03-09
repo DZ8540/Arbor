@@ -1053,3 +1053,16 @@ footer {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+.bannerContent {
+  justify-content: space-between;
+}
+
+.CategoryCard {
+  width: 100%;
+  height: 250px;
+}
+
+.CategoryCard > img {
+  object-fit: cover;
+}
