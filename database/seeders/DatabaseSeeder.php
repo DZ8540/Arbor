@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
       CategoryTypeSeeder::class,
       AboutCompanySeeder::class,
       BannerSeeder::class,
-      ColorSeeder::class,
-      ManufacturerSeeder::class,
+      // ColorSeeder::class,
+      // ManufacturerSeeder::class,
       NewsSeeder::class,
-      ThicknessSeeder::class,
-      ProductSeeder::class
+      // ThicknessSeeder::class,
+      // ProductSeeder::class
     ]);
   }
 }

@@ -11,6 +11,7 @@ use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\Thickness;
 use Illuminate\Http\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -91,6 +92,11 @@ class XmlProductController extends Controller
     //   Product::create($attrs);
     // }
 
+    $products = Product::get();
+    foreach ($products as $item) {
+      $item->delete();
+    }
+
     foreach ($items as $item) {
       $attrs = $item['@attributes'];      
       $name = $attrs['name'];
@@ -133,7 +139,7 @@ class XmlProductController extends Controller
       $slug = Str::slug($attrs['name'] . $attrs['code']);
 
       $photo = '';
-      if (!empty($attrs['photo'])) {
+      if (!empty($attrs['photo']) && !empty($request->images)) {
         $photo = $attrs['photo'];
         foreach ($request->images as $image) {
           if ($image->getClientOriginalName() == $photo) {

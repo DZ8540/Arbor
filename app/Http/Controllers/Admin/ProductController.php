@@ -9,7 +9,7 @@ use App\Models\Color;
 use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\ProductImage;
-use App\Models\thickness;
+use App\Models\Thickness;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -41,7 +41,7 @@ class ProductController extends BaseController
 		$categories = Category::select($columns)->toBase()->get();
 		$manufacturers = Manufacturer::select($columns)->toBase()->get();
 		$colors = Color::select($columns)->toBase()->get();
-		$thicknesses = thickness::select($columns)->toBase()->get();
+		$thicknesses = Thickness::select($columns)->toBase()->get();
 
 		return view('Admin.Products.create', compact('categories', 'manufacturers', 'colors', 'thicknesses'));
 	}
@@ -101,7 +101,7 @@ class ProductController extends BaseController
 		$categories = Category::select($columns)->toBase()->get();
 		$manufacturers = Manufacturer::select($columns)->toBase()->get();
 		$colors = Color::select($columns)->toBase()->get();
-		$thicknesses = thickness::select($columns)->toBase()->get();
+		$thicknesses = Thickness::select($columns)->toBase()->get();
 
 		return view('Admin.Products.edit', compact('product', 'categories', 'manufacturers', 'colors', 'thicknesses'));
 	}

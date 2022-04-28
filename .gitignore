@@ -6,6 +6,7 @@
 /.history
 /.vscode
 *.mwb.bak
+.env
 .env.backup
 .phpunit.result.cache
 .DS_Store
