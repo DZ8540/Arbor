@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\CategoryType;
 use App\Models\Color;
 use App\Models\Manufacturer;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Thickness;
 use Illuminate\Http\File;
@@ -92,11 +93,24 @@ class XmlProductController extends Controller
     //   Product::create($attrs);
     // }
 
-    $products = Product::get();
-    foreach ($products as $item) {
-      $item->delete();
-    }
+    /**
+     * * Should remove code below, it's govnocode, i'm forget laravel(((
+     */
 
+    if (!empty($items)) {
+      DB::table('order_product')->delete();
+
+      $orders = Order::get();
+      foreach ($orders as $item) {
+        $item->delete();
+      }
+
+      $products = Product::get();
+      foreach ($products as $item) {
+        $item->delete();
+      }
+    }
+    
     foreach ($items as $item) {
       $attrs = $item['@attributes'];      
       $name = $attrs['name'];
