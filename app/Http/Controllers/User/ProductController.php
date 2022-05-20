@@ -92,7 +92,7 @@ class ProductController extends CartController
           break;
 
         case $words_sort:
-          $products = $products->orderBy('name', 'desc');
+          $products = $products->orderBy('name', 'asc');
           break;
 
         case $price_sort:
