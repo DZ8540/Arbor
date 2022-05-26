@@ -125,7 +125,7 @@
                       @csrf
                       <input type="hidden" name="count" value="1">
                       <button type="submit" class="fs-6 bttn open-sans p-2 px-3">
-                        <span>В корзину</span>
+                        <span style="background: transparent">В корзину</span>
                       </button>
                     </form>
                   </div>

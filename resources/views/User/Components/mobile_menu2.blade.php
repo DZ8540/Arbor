@@ -12,68 +12,24 @@
 		<div class="c-accent">Каталог</div>
 	</div>
 	<div class="offcanvas-body px-0">
-		<!-- furniture materials -->
-		<ul class="list-unstyled">
-			<li class="p-3 border-bottom fw-6">
-				<a href="catalogue.html">Мебельные материалы</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ЛДСП</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ХДФ</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">МДФ</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ЛМДФ</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ДВПО</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ЛХДФ</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Столешницы</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Мебельная фурнитура</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Кромка ПВХ</a>
-			</li>
-		</ul>
-		<!-- сonstruction materials -->
-		<ul class="list-unstyled">
-			<li class="p-3 border-bottom fw-6">
-				<a href="catalogue.html">Строительные материалы</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Фанера ФК</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Фанера ФСФ</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Фанера ламинированная</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ДВП</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ОСБ-3</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">ДСП</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Полимерная панель ТИТ</a>
-			</li>
-			<li class="p-3 border-bottom">
-				<a href="category.html">Фанера ФБВ</a>
-			</li>
-		</ul>
+
+    @foreach ($category_types as $item)
+
+      <ul class="list-unstyled">
+
+        <li class="p-3 border-bottom fw-6">
+          <a href="{{ route('user.catalog') }}">{{ $item->name }}</a>
+        </li>
+
+        @foreach ($item->categories as $category)
+          <li class="p-3 border-bottom">
+            <a href="{{ route('user.category', $category->slug) }}">{{ $category->name }}</a>
+          </li>
+        @endforeach
+        
+      </ul>
+
+    @endforeach
+		
 	</div>
 </div>
