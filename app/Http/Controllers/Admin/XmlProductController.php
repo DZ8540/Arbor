@@ -113,12 +113,14 @@ class XmlProductController extends Controller
     
     foreach ($items as $item) {
       $attrs = $item['@attributes'];      
+
+      if (
+        empty($attrs['category']) ||
+        empty($attrs['detailed_category'])
+      ) break;
+
       $name = $attrs['name'];
-      
-      if (!empty($attrs['category']))
-        $category_id = $this->addCategory($attrs['category']);
-      else
-        break;
+      $category_id = $this->addCategory($attrs['detailed_category'], $attrs['detailed_category']);
 
       $code = rand(10000000, 99999999);
       if (!empty($attrs['code'])) {
@@ -214,26 +216,34 @@ class XmlProductController extends Controller
     $color_item = Color::create([
       'slug' => $slug,
       'name' => $name,
-      'hex_code' => $color_hex
+      'hex_code' => $color_hex,
     ]);
 
     return $color_item->id;
   }
 
-  private function addCategory($category)
+  private function addCategory($category, $category_type)
   {
     $slug = Str::slug($category);
-    $name = $category;
+    $name = trim($category);
 
     $category_item = Category::where('slug', $slug)->first();
     if (!empty($category_item))
       return $category_item->id;
+    
+    $category_type_name = trim($category_type);
+    $category_type = CategoryType::where('name', $category_type_name)->first();
 
-    $category_type = CategoryType::all()->random()->id;
+    if (empty($category_type)) {
+      $category_type = CategoryType::create([
+        'name' => $category_type_name,
+      ]);
+    }
+
     $category_item = Category::create([
       'slug' => $slug,
       'name' => $name,
-      'category_type_id' => $category_type
+      'category_type_id' => $category_type->id,
     ]);
 
     return $category_item->id;
