@@ -23,7 +23,7 @@ class ProductController extends CartController
 
 	public function category(Request $request, ProductProvider $provider, Category $slug)
   {
-    $products_columns = ['id', 'slug', 'name', 'price', 'code', 'format', 'image', 'views_count', 'color_id', 'thickness_id'];
+    $products_columns = ['id', 'slug', 'name', 'price', 'code', 'format', 'measure', 'image', 'views_count', 'color_id', 'thickness_id'];
     $products = Product::select($products_columns)->where('category_id', $slug->id); 
 
     $colors_columns = ['id', 'slug', 'name', 'hex_code'];

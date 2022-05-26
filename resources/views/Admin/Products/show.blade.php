@@ -71,6 +71,11 @@
 						</div>
 
 						<div class="form-group">
+							<label for="manufacturer">Единица измерения</label>
+							<input type="text" class="form-control" value="{{ $product->manufacturer }}" disabled>
+						</div>
+
+						<div class="form-group">
 							<label for="format">Формат</label>
 							<input type="text" class="form-control" value="{{ $product->format }}" disabled>
 						</div>

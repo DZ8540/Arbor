@@ -112,6 +112,17 @@
 							@enderror
 						</div>
 
+            <div class="form-group">
+							<label for="measure">Единица измерения *</label>
+							<input type="text" id="measure" class="form-control @error('measure') parsley-error @enderror" name="measure" value="{{ old('measure', $product->measure) }}">
+
+							@error('measure')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
 						<div class="form-group">
 							<label for="price">Цена</label>
 							<input type="number" id="price" class="form-control" name="price" value="{{ old('price', $product->price) }}">
@@ -159,12 +170,12 @@
 								</ul>
 							@enderror
 						</div>
-
+            
 						<div class="form-group">
 							<label class="control-label" for="manufacturer_id">Производитель *</label>
 							<select class="form-control @error('manufacturer_id') parsley-error @enderror" id="manufacturer_id" name="manufacturer_id">
 								@foreach ($manufacturers as $item)
-									<option @if($product->manufacturer->id == $item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+									<option @if($product->manufacturer && $product->manufacturer->id == $item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
 								@endforeach
 							</select>
 
@@ -179,7 +190,7 @@
 							<label class="control-label" for="color_id">Цвет *</label>
 							<select class="form-control @error('color_id') parsley-error @enderror" id="color_id" name="color_id">
 								@foreach ($colors as $item)
-									<option @if($product->color->id == $item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+									<option @if($product->color && $product->color->id == $item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
 								@endforeach
 							</select>
 
@@ -194,7 +205,7 @@
 							<label class="control-label" for="thickness_id">Толщина *</label>
 							<select class="form-control @error('thickness_id') parsley-error @enderror" id="thickness_id" name="thickness_id">
 								@foreach ($thicknesses as $item)
-									<option @if($product->thickness->id == $item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
+									<option @if($product->thickness && $product->thickness->id == $item->id) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
 								@endforeach
 							</select>
 

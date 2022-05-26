@@ -6,7 +6,7 @@
 <div class="container mb-5">
   {{ Breadcrumbs::render('catalog.product', $product) }}
 
-	<h1 class="mb-4">{{ $product->name }} {{ $product->format }}</h1>
+	<h1 class="mb-4">{{ $product->name }}</h1>
 	<div class="row gx-xxl-5 mb-5 pe-xxl-5 justify-content-between align-items-start position-relative">
 		<div class=" col-lg-6 mb-4">
 
@@ -82,32 +82,48 @@
 					<div class="me-3">Код: {{ $product->code }}</div>
 					<div>В наличии: {{ $product->count }} штук</div>
 				</div>
-				<div class="mb-4 p-3 px-xl-4 px-xxl-5">
-					<div class="h4 mb-3">Характеристики</div>
-					<div class="d-flex justify-content-between mb-2 mb-lg-3">
-						<div class="fw-normal">Формат:</div>
-						<div>{{ $product->format }}</div>
-					</div>
-					<div class="d-flex justify-content-between mb-2 mb-lg-3">
-						<div class="fw-normal">Толщина:</div>
-						<div>{{ $product->thickness->name }}</div>
-					</div>
-					{{-- <div class="d-flex justify-content-between mb-2 mb-lg-3">
-						<div class="fw-normal">Артикул:</div>
-						<div>{{ $product->article }}</div>
-					</div>
-					<div class="d-flex justify-content-between">
-						<div class="fw-normal">Производитель:</div>
-						<div>{{ $product->manufacturer->name }}</div>
-					</div> --}}
-				</div>
+
+        @if(!empty($product->format) || !empty($product->thickness) || !empty($product->article) || !empty($product->manufacturer))
+          <div class="mb-4 p-3 px-xl-4 px-xxl-5">
+            <div class="h4 mb-3">Характеристики</div>
+
+            @if(!empty($product->format))
+              <div class="d-flex justify-content-between mb-2 mb-lg-3">
+                <div class="fw-normal">Формат:</div>
+                <div>{{ $product->format }}</div>
+              </div>
+            @endif
+
+            @if(!empty($product->thickness))
+              <div class="d-flex justify-content-between mb-2 mb-lg-3">
+                <div class="fw-normal">Толщина:</div>
+                <div>{{ $product->thickness->name }}</div>
+              </div>
+            @endif
+
+            @if(!empty($product->article))
+              <div class="d-flex justify-content-between mb-2 mb-lg-3">
+                <div class="fw-normal">Артикул:</div>
+                <div>{{ $product->article }}</div>
+              </div>
+            @endif
+
+            @if(!empty($product->manufacturer))
+              <div class="d-flex justify-content-between">
+                <div class="fw-normal">Производитель:</div>
+                <div>{{ $product->manufacturer->name }}</div>
+              </div>
+            @endif
+          </div>
+        @endif
+
 				<div>
-					<div class="h4 mb-3 px-3 px-xl-4 px-xxl-5">Выбранные услуги</div>
+					<div class="h4 mb-3 mt-2 px-3 px-xl-4 px-xxl-5">Выбранные услуги</div>
 
           <div id="productServices"></div>
 				</div>
 				<div class="d-flex flex wrap justify-content-between align-items-center px-3 px-xl-4 px-xxl-5 mt-2 mt-xxl-4">
-					<div class="h4 fw-6 mb-3">{{ $product->price }} руб./шт</div>
+					<div class="h4 fw-6 mb-3">{{ $product->price }} руб./{{ $product->measure }}</div>
           <form action="{{ route('user.cart.add', $product->id) }}" method="POST">
             @csrf
             <input type="hidden" name="services_sides" id="formSides" value="[]">
@@ -130,9 +146,11 @@
               alt="{{ $item->name }}">
             <div class="card-body d-flex flex-column d-flex flex-column p-2 p-xxl-3 text-center">
               <a href="{{ route('user.product', [$category->slug, $item->slug]) }}" class="card-title stretched-link fw-6">{{ $item->name }}</a>
-              <div class="card-subtitle">{{ $item->format }}</div>
+              @if(!empty($item->format))
+                <div class="card-subtitle">{{ $item->format }}</div>
+              @endif
               <div class="small text-muted text-end my-2">Код: {{ $item->code }}</div>
-              <div class="fw-6 mb-3">{{ $item->price }} руб./шт</div>
+              <div class="fw-6 mb-3">{{ $item->price }} руб./{{ $item->measure }}</div>
               <div class="card-hov flex-column justify-content-between mt-auto">
                 <div
                   class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">

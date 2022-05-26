@@ -187,7 +187,7 @@
                     </svg>
                   </button>
                 </form>
-                <span class="roboto fw-5">{{ $item->price }} руб./шт</span>
+                <span class="roboto fw-5">{{ $item->price }} руб./{{ $item->measure }}</span>
               </div>
             </div>  
           @endforeach

@@ -119,40 +119,31 @@ class XmlProductController extends Controller
         empty($attrs['detailed_category'])
       ) break;
 
-      $name = $attrs['name'];
-      $category_id = $this->addCategory($attrs['detailed_category'], $attrs['detailed_category']);
-
-      $code = rand(10000000, 99999999);
-      if (!empty($attrs['code'])) {
-        $code = $attrs['code'];
-      }
-
-      $description = 'From XML';
-      if (!empty($attrs['description'])) {
-        $description = $attrs['description'];
-      }
-
-      $count = 0;
-      if (!empty($attrs['quantity'])) {
-        $count = $attrs['quantity'];
-      }
-
-      $price = 0;
-      if (!empty($attrs['price'])) {
-        $price = $attrs['price'];
-      }
-
-      $format = 'XML';
-      if (!empty($attrs['format'])) {
-        $format = $attrs['format'];
-      }
-
-      $article = 'XML';
-      if (!empty($attrs['article'])) {
-        $article = $attrs['article'];
-      }
-
       $slug = Str::slug($attrs['name'] . $attrs['code']);
+      $name = $attrs['name'];
+      $code = $attrs['code'];
+      $measure = $attrs['measure'];
+      $category_id = $this->addCategory($attrs['detailed_category'], $attrs['category']);
+      $description = $attrs['description'] ?? null;
+      $format = $attrs['format'] ?? null;
+      $article = $attrs['article'] ?? null;
+      $count = $attrs['quantity'] ?? null;
+      $price = $attrs['price'] ?? null;
+
+      // $description = 'Не задано.';
+      // if (!empty($attrs['description'])) {
+      //   $description = $attrs['description'];
+      // }
+
+      // $format = 'Не задано.';
+      // if (!empty($attrs['format'])) {
+      //   $format = $attrs['format'];
+      // }
+
+      // $article = 'Не задано.';
+      // if (!empty($attrs['article'])) {
+      //   $article = $attrs['article'];
+      // }
 
       $photo = '';
       if (!empty($attrs['photo']) && !empty($request->images)) {
@@ -164,25 +155,17 @@ class XmlProductController extends Controller
         }
       }
 
-      $thickness = 'XML';
-      if (!empty($attrs['thickness'])) {
-        $thickness = $attrs['thickness'];
-      }
-      $thickness_id = $this->addThickness($thickness);
+      $thickness_id = null;
+      if (!empty($attrs['thickness']))
+        $thickness_id = $this->addThickness($attrs['thickness']);
 
-      $color = 'XML';
-      $color_hex = null;
-      if (!empty($attrs['color']))
-        $color = $attrs['color'];
-      if (!empty($attrs['colorhex']))
-        $color_hex = '#' . $attrs['colorhex'];
-      $color_id = $this->addColor($color, $color_hex);
+      $color_id = null;
+      if (!empty($attrs['color']) && !empty($attrs['colorhex']))
+        $color_id = $this->addColor($attrs['color'], '#' . $attrs['colorhex']);
 
-      $producer = 'XML';
-      if (!empty($attrs['producer'])) {
-        $producer = $attrs['producer'];
-      }
-      $manufacturer_id = $this->addManufacturer($producer);
+      $manufacturer_id = null;
+      if (!empty($attrs['producer']))
+        $manufacturer_id = $this->addManufacturer($attrs['producer']);
 
       Product::create([
         'slug' => $slug,
@@ -197,7 +180,8 @@ class XmlProductController extends Controller
         'manufacturer_id' => $manufacturer_id,
         'color_id' => $color_id,
         'thickness_id' => $thickness_id,
-        'category_id' => $category_id
+        'category_id' => $category_id,
+        'measure' => $measure,
       ]);
     }
 

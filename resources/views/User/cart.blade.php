@@ -57,7 +57,7 @@
           </div>
           <div class="total">
             <div class="h4 fw-6">{{ $item->price }} руб.</div>
-            <div class="fs-5">цена за 1 шт.</div>
+            <div class="fs-5">цена за 1 {{ $item->measure }}.</div>
           </div>
           <form action="{{ route('user.cart.delete', $item->id) }}" method="POST" class="delete mt-3 mt-md-0 d-flex justify-content-xl-center">
             @csrf

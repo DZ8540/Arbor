@@ -17,18 +17,19 @@ class CreateProductsTable extends Migration
 			$table->id();
 			$table->string('slug')->unique();
 			$table->string('name');
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->string('image')->nullable();
 			$table->string('code')->unique();
 			$table->decimal('price', 8, 2)->unsigned()->default(0);
-			$table->string('format');
-			$table->string('article');
+			$table->string('format')->nullable();
+			$table->string('article')->nullable();
+			$table->string('measure');
 			$table->integer('count')->unsigned()->default(0);
       $table->bigInteger('views_count')->unsigned()->default(0);
 
-			$table->foreignId('manufacturer_id')->constrained();
-			$table->foreignId('color_id')->constrained();
-			$table->foreignId('thickness_id')->constrained();
+			$table->foreignId('manufacturer_id')->nullable()->constrained();
+			$table->foreignId('color_id')->nullable()->constrained();
+			$table->foreignId('thickness_id')->nullable()->constrained();
 			$table->foreignId('category_id')->constrained();
 
 			$table->timestamps();

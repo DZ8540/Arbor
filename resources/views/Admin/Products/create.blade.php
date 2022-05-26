@@ -106,6 +106,17 @@
 							@enderror
 						</div>
 
+            <div class="form-group">
+							<label for="measure">Единица измерения *</label>
+							<input type="text" id="measure" class="form-control @error('measure') parsley-error @enderror" name="measure" value="{{ old('measure') }}">
+
+							@error('measure')
+								<ul class="parsley-errors-list filled" id="parsley-id-29">
+									<li class="parsley-required">{{ $message }}</li>
+								</ul>
+							@enderror
+						</div>
+
 						<div class="form-group">
 							<label for="price">Цена</label>
 							<input type="number" id="price" class="form-control" name="price" value="{{ old('price', '0') }}">

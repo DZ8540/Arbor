@@ -327,7 +327,7 @@
             <div class="border-top p-3 px-xl-4">
               <div class="d-flex justify-content-between mb-4">
                 <div>{{ $item->name }}</div>
-                <div>х {{ $item->cart_count }} шт.</div>
+                <div>х {{ $item->cart_count }} {{ $item->measure }}.</div>
               </div>
 
               @if (!empty($item->services))

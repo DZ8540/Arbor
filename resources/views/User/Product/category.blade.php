@@ -100,7 +100,7 @@
                   <a href="{{ route('user.product', [$category->slug, $item->slug]) }}" class="card-title stretched-link fw-6">{{ $item->name }}</a>
                   <div class="card-subtitle">{{ $item->format }}</div>
                   <div class="small text-muted text-end my-2">Код: {{ $item->code }}</div>
-                  <div class="fw-6 mb-3">{{ $item->price }} руб./шт</div>
+                  <div class="fw-6 mb-3">{{ $item->price }} руб./{{ $item->measure }}</div>
                   <div class="card-hov flex-column justify-content-between mt-auto">
                     <div
                       class="rounded-pill px-2 px-lg-3 d-flex align-items-center justify-content-center border b-accent mb-2">
