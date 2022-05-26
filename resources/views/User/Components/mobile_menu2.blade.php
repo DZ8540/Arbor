@@ -13,23 +13,70 @@
 	</div>
 	<div class="offcanvas-body px-0">
 
-    @foreach ($category_types as $item)
+    {{-- <div class="accordion" id="accordionExample">
+      @foreach ($category_types as $item)
 
-      <ul class="list-unstyled">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
+              {{ $item->name }}
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+            <div class="accordion-body">
+              <ul class="list-unstyled">
+                @foreach ($item->categories as $category)
 
-        <li class="p-3 border-bottom fw-6">
-          <a href="{{ route('user.catalog') }}">{{ $item->name }}</a>
-        </li>
+                  <li class="p-3 border-bottom">
+                    <a href="{{ route('user.category', $category->slug) }}">{{ $category->name }}</a>
+                  </li>
 
-        @foreach ($item->categories as $category)
-          <li class="p-3 border-bottom">
-            <a href="{{ route('user.category', $category->slug) }}">{{ $category->name }}</a>
-          </li>
-        @endforeach
-        
-      </ul>
+                @endforeach
+              </ul>
 
-    @endforeach
+            </div>
+          </div>
+        </div>
+
+      @endforeach
+    </div> --}}
+
+    <div class="accordion" id="accordionExample">
+      @foreach ($category_types as $item)
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading{{ $item->id }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $item->id }}" aria-expanded="false" aria-controls="collapse{{ $item->id }}">
+              {{ $item->name }}
+            </button>
+          </h2>
+          <div id="collapse{{ $item->id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $item->id }}" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <ul class="list-unstyled">
+                @foreach ($item->categories as $category)
+  
+                  <li class="p-3 border-bottom">
+                    <a href="{{ route('user.category', $category->slug) }}">{{ $category->name }}</a>
+                  </li>
+  
+                @endforeach
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      @endforeach
+    </div>
 		
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
