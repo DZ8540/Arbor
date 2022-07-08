@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -22,6 +21,7 @@ class XmlProductController extends Controller
 
     public function index()
     {
+//        dd(phpinfo());
         return view('Admin.xml_product');
     }
 
@@ -154,7 +154,7 @@ class XmlProductController extends Controller
                 $photo = $attrs['photo'];
                 foreach ($request->images as $image) {
                     if ($image->getClientOriginalName() == $photo) {
-                        $photo = Storage::putFile("{$this->directory}{$slug}/images", new \Symfony\Component\HttpFoundation\File\File($image));
+                        $photo = Storage::putFile("{$this->directory}{$slug}/images", new File($image));
                     }
                 }
             }
